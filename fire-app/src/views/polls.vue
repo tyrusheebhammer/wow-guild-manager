@@ -1,15 +1,12 @@
 <template>
-    <div>
-      
-  </div>
+  <div></div>
 </template>
 
 <script>
 export default {
-    name: "Polls"
+  name: 'Polls'
 }
 </script>
 
 <style>
-
 </style>
