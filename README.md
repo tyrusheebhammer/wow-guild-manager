@@ -16,4 +16,4 @@ Add firebase to Vue
 
 To Deploy
 1. npm run build
-firebase deploy
+2. firebase deploy
