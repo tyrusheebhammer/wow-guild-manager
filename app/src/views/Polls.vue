@@ -1,15 +1,12 @@
 <template>
-  <div>
-      Hello World!
-  </div>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Polls'
 }
 </script>
 
 <style>
-
 </style>

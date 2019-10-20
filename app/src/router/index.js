@@ -1,29 +1,63 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Router from 'vue-router'
+import HelloWorld from '@/components/HelloWorld'
+import Announcements from '@/views/Announcements.vue'
+import Login from '@/views/Login.vue'
+import GuildSelect from '@/views/GuildSelect.vue'
+import Home from '@/views/Home.vue'
+import Polls from '@/views/Polls.vue'
+import Members from '@/views/Members.vue'
+import Calendar from '@/views/Calendar.vue'
+import Member from '@/views/Member.vue'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
-
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+export default new Router({
+  routes: [
+    {
+      path: '/helloworld',
+      name: 'HelloWorld',
+      component: HelloWorld
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/guildselect',
+      name: 'GuildSelect',
+      component: GuildSelect
+    },
+    {
+      path: '/',
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/polls',
+      name: 'Polls',
+      component: Polls
+    },
+    {
+      path: '/members',
+      name: 'Members',
+      component: Members
+    },
+    {
+      path: '/calendar',
+      name: 'Calendar',
+      component: Calendar
+    },
+    {
+      path: '/member',
+      name: 'Member',
+      component: Member
+    },
+    {
+      path: '/announcements',
+      name: 'Announcements',
+      component: Announcements
+    }
+  ]
 })
-
-export default router
