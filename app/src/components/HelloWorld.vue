@@ -1,20 +1,32 @@
 <template>
-  <div class="hello">
+  <v-container class="hello" fluid>
     <article v-for="(location, idx) in locations" :key="idx">
       <img :src="location.image" alt="">
       <h1>
         {{ location.name }}
       </h1>
-      <button @click="deleteLocation(location.id)">
+      <v-btn small color="primary" @click="deleteLocation(location.id)">
         Delete
-      </button>
+      </v-btn>
     </article>
-    <form @submit="addLocation(name, image)">
-      <input v-model="name" placeholder="Location Name">
-      <input v-model="image" placeholder="Location Image URL">
-      <button type="submit">Add New Dog</button>
-    </form>
-  </div>
+    <v-row align="center" justify="center">
+      <v-col cols="10">
+        <v-row>
+          <v-col cols="12" md="6">
+            <v-text-field label="Location Name" v-model="name"></v-text-field>
+          </v-col>
+          <v-col cols="12" md="6">
+            <v-text-field label="Location Image URL" v-model="image"></v-text-field>
+          </v-col>
+          <v-col cols="12">
+            <v-row justify="end">
+              <v-btn small class="primary--text" @click="addLocation(name, image)" type="submit">Add New Dog</v-btn>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
