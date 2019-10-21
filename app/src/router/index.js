@@ -12,6 +12,7 @@ import Member from '@/views/Member.vue'
 
 Vue.use(Router)
 
+
 export default new Router({
   routes: [
     {
@@ -59,5 +60,8 @@ export default new Router({
       name: 'Announcements',
       component: Announcements
     }
-  ]
+  ],
+  mode: 'history'
 })
+
+

@@ -16,24 +16,27 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
-        <span class="primary--text">Endocry</span>
+        <span class="primary--text">
+        
+          
+          Endocry</span>
       </v-btn>
     </v-app-bar>
-
     <v-content>
-      <HelloWorld />
+      <router-view></router-view>
+    </v-content>
+    <v-content>
+      <router-view></router-view>
+    </v-content>
+    <v-content>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld
-  },
   data: () => ({
     //
   })
