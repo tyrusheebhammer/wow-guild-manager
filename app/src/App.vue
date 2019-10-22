@@ -2,6 +2,7 @@
   <v-app>
     <v-app-bar app class="black">
       <v-row align="center" justify="center" class="">
+        <router-link to="/">
           <v-img
             src="@/assets/Frame.svg"
             lazy-src="https://picsum.photos/id/11/10/6"
@@ -9,7 +10,8 @@
             max-width="40"
             max-height="25"
           ></v-img>
-        </v-row>
+        </router-link>
+      </v-row>
       <v-toolbar-title class="headline text-uppercase">
         <span>WoW Guild Manager</span>
         <span class="font-weight-light"></span>
@@ -17,17 +19,10 @@
       <v-spacer></v-spacer>
       <v-btn text href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
         <span class="primary--text">
-        
-          
-          Endocry</span>
+          <router-link to="/helloworld">Endocrap</router-link>
+        </span>
       </v-btn>
     </v-app-bar>
-    <v-content>
-      <router-view></router-view>
-    </v-content>
-    <v-content>
-      <router-view></router-view>
-    </v-content>
     <v-content>
       <router-view></router-view>
     </v-content>
