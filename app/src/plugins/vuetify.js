@@ -15,6 +15,7 @@ export default new Vuetify({
         lightgray: "#828282",
         background: "#444444",
       },
+      
     },
     options: {
       customProperties: true,
