@@ -42,7 +42,7 @@ export default {
   },
   firestore () {
     return {
-      locations: db.collection('locations').orderBy('createdAt')
+      locations: db.collection('locations')
     }
   },
   methods: {

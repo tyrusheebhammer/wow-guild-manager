@@ -16,6 +16,7 @@
                         <v-col cols="9" class="m-0 pa-0">
                             <v-card-subtitle class="mx-1 pa-0 small-line-height">{{ subtitle }}</v-card-subtitle>
                         </v-col>
+                        
                         </v-row>
                     </v-col>
                 </v-row>
