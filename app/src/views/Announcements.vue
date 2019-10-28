@@ -56,12 +56,24 @@
           <v-card-text>
             <v-row>
               <v-col cols="12" sm="6" md="3">
-                <v-text-field id="titleEntry" label="Solo" placeholder="Title" v-model="announcements[selected].title" solo></v-text-field>
+                <v-text-field
+                  id="titleEntry"
+                  label="Solo"
+                  placeholder="Title"
+                  v-model="announcements[selected].title"
+                  solo
+                ></v-text-field>
               </v-col>
             </v-row>
             <v-row>
               <v-col cols="12" sm="6" md="3">
-                <v-text-field id="messageEntry" label="Solo" placeholder="Message" v-model="announcements[selected].subtitle" solo></v-text-field>
+                <v-text-field
+                  id="messageEntry"
+                  label="Solo"
+                  placeholder="Message"
+                  v-model="announcements[selected].subtitle"
+                  solo
+                ></v-text-field>
               </v-col>
             </v-row>
           </v-card-text>
@@ -107,6 +119,10 @@
         </v-card>
       </v-dialog>
     </v-row>
+
+    <div id="fab" data-toggle="modal">
+      <v-img src="src/assets/AddButton.svg" lazy-src="@/assets/AddButton.svg"></v-img>
+    </div>
   </v-container>
 </template>
 
@@ -171,4 +187,15 @@ export default {
 </script>
 
 <style>
+#fab {
+  position: fixed;
+  bottom: 4px;
+  right: 0px;
+  z-index: 999;
+}
+
+#fab:active {
+  transform: translateY(4px);
+  opacity: 0.8;
+}
 </style>
