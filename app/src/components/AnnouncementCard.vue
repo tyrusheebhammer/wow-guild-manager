@@ -5,7 +5,7 @@
         <v-card max-height="80" class="mx-auto py-1 ma-1">
           <v-row>
             <v-col cols="5" class="center" align-center>
-              <div class="mx-2 primary--text center">{{ title }}</div>
+              <div class="mx-2 primary--text center">{{ date }}</div>
             </v-col>
             <v-divider vertical class="primary"></v-divider>
             <v-col cols="6">
@@ -23,10 +23,10 @@ export default {
   name: "AnnouncementCard",
   props: {
     id: Number,
+    date: String,
     title: String,
     subtitle: String,
     creator: String
-
   },
   methods: {
     cardWasClicked() {
