@@ -1,15 +1,201 @@
 <template>
-    <div>
+  <v-container fluid>
+    <v-row dense>
+      <v-col
+        cols="12"
+        sm="6"
+        v-for="(event, index) in events"
+        :key="event.id"
+        class="py-0 my-0"
+      >
+        <calendar-card
+          @click="showModal"
+          :id="index"
+          :date="event.date"
+          :title="event.title"
+          :subtitle="event.subtitle"
+          :creator="event.creator"
+        ></calendar-card>
+      </v-col>
+    </v-row>
 
-  </div>
+    <v-row justify="center">
+      <v-dialog v-model="dialog" v-if="selected!==null" persistent max-width="290">
+        <v-card>
+          <v-card-title class="headline">{{ events[selected].title }}</v-card-title>
+          <v-card-text>{{ events[selected].subtitle }}</v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              v-if="events[selected].creator===user"
+              color="primary"
+              text
+              @click="showEdit"
+            >Edit</v-btn>
+            <v-btn
+              v-if="events[selected].creator===user"
+              color="primary"
+              text
+              @click="showDelete"
+            >Delete</v-btn>
+            <v-btn
+              v-if="events[selected].creator===user | events[selected].creator!==user"
+              color="primary"
+              text
+              @click="dialog = false"
+            >Close</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
+
+    <v-row justify="center">
+      <v-dialog id="edit" v-model="edit" v-if="selected!==null" persistent max-width="290">
+        <v-card>
+          <v-card-title class="headline">Edit</v-card-title>
+          <v-card-text>
+            <v-row>
+              <v-col cols="12" sm="6" md="3">
+                <v-text-field
+                  id="titleEntry"
+                  label="Solo"
+                  placeholder="Title"
+                  v-model="events[selected].title"
+                  solo
+                ></v-text-field>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" sm="6" md="3">
+                <v-text-field
+                  id="messageEntry"
+                  label="Solo"
+                  placeholder="Message"
+                  v-model="events[selected].subtitle"
+                  solo
+                ></v-text-field>
+              </v-col>
+            </v-row>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              v-if="events[selected].creator===user"
+              color="primary"
+              text
+              @click="saveChanges"
+            >Save</v-btn>
+            <v-btn
+              v-if="events[selected].creator===user"
+              color="primary"
+              text
+              @click="edit = false"
+            >Cancel</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
+
+    <v-row justify="center">
+      <v-dialog id="delete" v-model="del" v-if="selected!==null" persistent max-width="290">
+        <v-card>
+          <v-card-title class="headline">Delete</v-card-title>
+          <v-card-text>Are you sure you want to delete this event?</v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              v-if="events[selected].creator===user"
+              color="primary"
+              text
+              @click="doADelete"
+            >Delete</v-btn>
+            <v-btn
+              v-if="events[selected].creator===user"
+              color="primary"
+              text
+              @click="del = false"
+            >Cancel</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
+
+    <div id="fab" data-toggle="modal">
+      <v-img src="src/assets/AddButton.svg" lazy-src="@/assets/AddButton.svg"></v-img>
+    </div>
+  </v-container>
 </template>
 
 <script>
+/* eslint-disable */
+import CalendarCard from "@/components/CalendarCard.vue";
 export default {
-  name: 'Calendar'
-}
+  name: "Calendar",
+  components: {
+    CalendarCard
+  },
+  methods: {
+    showModal(id, user) {
+      console.log("id is ", id);
+      this.dialog = true;
+      this.selected = id;
+      this.user = "Megan";
+    },
+    showEdit() {
+      this.dialog = false;
+      this.edit = true;
+    },
+    showDelete() {
+      this.dialog = false;
+      this.del = true;
+    },
+    saveChanges() {
+      this.edit = false;
+      console.log("do something with firebase to save changes");
+    },
+    doADelete() {
+      this.del = false;
+      console.log("do something with firebase to delete");
+    }
+  },
+  data() {
+    return {
+      dialog: false,
+      edit: false,
+      del: false,
+      selected: null,
+      user: "Megan",
+      events: [
+        {
+          id: "123",
+          date: "Oct. 1st",
+          title: "EVENT",
+          subtitle: "description",
+          creator: "Megan"
+        },
+        {
+          id: "345",
+          date: "Oct. 2nd",
+          title: "EVENT",
+          subtitle: "description",
+          creator: "Tyrus"
+        }
+      ]
+    };
+  }
+};
 </script>
 
 <style>
+#fab {
+  position: fixed;
+  bottom: 4px;
+  right: 0px;
+  z-index: 999;
+}
 
+#fab:active {
+  transform: translateY(4px);
+  opacity: 0.8;
+}
 </style>
