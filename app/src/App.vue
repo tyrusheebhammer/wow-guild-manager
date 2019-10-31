@@ -27,7 +27,7 @@
             </v-col>
             <v-col cols="4" class="text-right py-0 my-0">
               <span class="primary--text">
-                <router-link to="/helloworld" class="no-underline">Endocrap</router-link>
+                <router-link to="/helloworld" class="no-underline">Endocry</router-link>
               </span>
             </v-col>
           </v-row>
