@@ -8,7 +8,7 @@
         :key="event.id"
         class="py-0 my-0"
       >
-        <calendar-card
+        <calendar-card 
           @click="showModal"
           :id="index"
           :date="event.date"
@@ -22,9 +22,10 @@
     <v-row justify="center">
       <v-dialog v-model="dialog" v-if="selected!==null" persistent max-width="290">
         <v-card>
-          <v-card-title class="headline">{{ events[selected].title }}</v-card-title>
-          <v-card-text>{{ events[selected].subtitle }}</v-card-text>
-          <v-card-actions>
+          <v-card-title class="headline justify-center primary--text">{{ events[selected].title }}</v-card-title>
+          <v-divider class="primary"></v-divider>
+          <v-card-text class="py-3">{{ events[selected].subtitle }}</v-card-text>
+          <v-card-actions class="space-between">
             <v-spacer></v-spacer>
             <v-btn
               v-if="events[selected].creator===user"
@@ -52,7 +53,8 @@
     <v-row justify="center">
       <v-dialog id="edit" v-model="edit" v-if="selected!==null" persistent max-width="290">
         <v-card>
-          <v-card-title class="headline">Edit</v-card-title>
+          <v-card-title class="headline justify-center primary--text">Edit</v-card-title>
+          <v-divider class="primary"></v-divider>
           <v-card-text>
             <v-row>
               <v-col cols="12" sm="6" md="3">
@@ -99,7 +101,8 @@
     <v-row justify="center">
       <v-dialog id="delete" v-model="del" v-if="selected!==null" persistent max-width="290">
         <v-card>
-          <v-card-title class="headline">Delete</v-card-title>
+          <v-card-title class="headline justify-center primary--text">Delete</v-card-title>
+          <v-divider class="primary"></v-divider>
           <v-card-text>Are you sure you want to delete this event?</v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
