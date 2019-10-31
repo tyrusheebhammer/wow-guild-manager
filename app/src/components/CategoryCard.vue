@@ -1,7 +1,8 @@
 <template>
     <router-link :to="href" class="no-underline">
         <v-card
-            class="mx-auto darkgray"
+            outlined
+            class="mx-auto darkgray pink-outline"
             max-width="344"
         >
             <v-card-text>
@@ -9,14 +10,14 @@
                     <v-col cols="3">
                         <v-img :src="src"></v-img>
                     </v-col>
-                    <v-col cols="7" class="mx-2">
+                    <v-col cols="8" class="mx-2">
                         <v-row>
                             <p class="headline primary--text my-0">
                                 {{ title }}
                             </p>
                         </v-row>
                         <v-row>
-                            <div>Word of the Day</div>
+                            <div class="small-line-height">{{ subtitle }}</div>
                         </v-row>
                     </v-col>
                 </v-row>
