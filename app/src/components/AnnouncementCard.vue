@@ -1,14 +1,14 @@
 <template>
   <v-container @click="cardWasClicked" fill-height class="pa-0 ma-0">
     <v-row>
-      <v-col cols="12">
-        <v-card max-height="80" class="mx-auto py-1 ma-1">
+      <v-col cols="12" class="py-0">
+        <v-card max-height="80" class="mx-auto py-1 ma-1 darkgray">
           <v-row>
-            <v-col cols="5" class="center" align-center>
-              <div class="mx-2 primary--text center">{{ date }}</div>
+            <v-col cols="5" class="center py-0" align-center>
+              <div class="mx-2 primary--text center">{{ day }}</div>
             </v-col>
             <v-divider vertical class="primary"></v-divider>
-            <v-col cols="6">
+            <v-col class="py-0" cols="6">
               <div class="mx-2 lightgray--text">{{ subtitle }}</div>
             </v-col>
           </v-row>
@@ -24,6 +24,7 @@ export default {
   props: {
     id: Number,
     date: String,
+    day: String,
     title: String,
     subtitle: String,
     creator: String
