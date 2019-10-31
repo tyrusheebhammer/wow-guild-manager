@@ -1,27 +1,27 @@
 <template>
     <router-link :to="href" class="no-underline">
-        <v-container fill-height class="py-2" >
-            <v-card min-height="110" outlined class="pink-outline">
-                <v-row class="py-3" align-center>
-                    <v-col cols="4" class="py-auto">
-                        <v-img contain :src="imgSrc" class="px-3"></v-img>
-                        {{ imgSrc }}
+        <v-card
+            class="mx-auto darkgray"
+            max-width="344"
+        >
+            <v-card-text>
+                <v-row>
+                    <v-col cols="3">
+                        <v-img :src="src"></v-img>
                     </v-col>
-                    <v-col cols="8" class="m-0 pa-0">
-                        <v-row class="m-0 pa-0">
-                        <v-col cols="9" class="m-0 pa-0 stroke">
-                            <v-card-title class="headline mx-1 pa-0 primary--text ">{{ title }}</v-card-title >
-                        </v-col>
+                    <v-col cols="7" class="mx-2">
+                        <v-row>
+                            <p class="headline primary--text my-0">
+                                {{ title }}
+                            </p>
                         </v-row>
-                        <v-row class="m-0 pa-0">
-                        <v-col cols="9" class="m-0 pa-0">
-                            <v-card-subtitle class="mx-1 pa-0 small-line-height">{{ subtitle }}</v-card-subtitle>
-                        </v-col>
+                        <v-row>
+                            <div>Word of the Day</div>
                         </v-row>
                     </v-col>
                 </v-row>
-            </v-card>
-        </v-container>
+            </v-card-text>
+        </v-card>
     </router-link>
 </template>
 
@@ -29,7 +29,7 @@
 export default {
   name: "CategoryCard",
   props: {
-    "img-src": String,
+    src: String,
     title: String,
     subtitle: String,
     href: String
