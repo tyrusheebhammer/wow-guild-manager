@@ -12,6 +12,7 @@
           @click="showModal"
           :id="index"
           :date="announcement.date"
+          :day="announcement.day"
           :title="announcement.title"
           :subtitle="announcement.subtitle"
           :creator="announcement.creator"
@@ -168,14 +169,16 @@ export default {
       announcements: [
         {
           id: "123",
-          date: "Today",
+          date: "Oct. 30th, 2019",
+          day: "Today",
           title: "title",
           subtitle: "Megatron has been overthrown",
           creator: "Megan"
         },
         {
           id: "345",
-          date: "Tomorrow",
+          date: "Oct. 30th, 2019",
+          day: "Tomorrow",
           title: "title",
           subtitle: "Tyrus reigns",
           creator: "Tyrus"
