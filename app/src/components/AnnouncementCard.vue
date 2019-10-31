@@ -2,7 +2,7 @@
   <v-container @click="cardWasClicked" fill-height class="pa-0 ma-0">
     <v-row>
       <v-col cols="12" class="py-0">
-        <v-card max-height="80" class="mx-auto py-1 ma-1 darkgray">
+        <v-card max-height="100" class="mx-auto py-1 ma-1 darkgray">
           <v-row>
             <v-col cols="5" class="center py-0" align-center>
               <div class="mx-2 primary--text center">{{ day }}</div>
