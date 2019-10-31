@@ -1,7 +1,7 @@
 <template>
   <v-container @click="cardWasClicked" fill-height class="pa-0 ma-0">
     <v-row>
-      <v-col cols="12">
+      <v-col cols="12" class="py-0">
         <v-card max-height="80" class="mx-auto py-1 ma-1 backgroundGray">
           <v-row>
             <v-col cols="5" class="center" align-center>
