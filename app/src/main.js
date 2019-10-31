@@ -11,7 +11,9 @@ Vue.use(firestorePlugin)
 
 firebase.initializeApp({
   projectId: 'wow-guild-manager',
-  databaseURL: 'wow-guild-manager'
+  databaseURL: 'wow-guild-manager',
+  storageBucket: 'gs://wow-guild-manager.appspot.com/'
+  
 })
 export const db = firebase.firestore()
 

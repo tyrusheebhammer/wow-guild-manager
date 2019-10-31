@@ -1,5 +1,8 @@
 <template>
   <v-container fluid>
+    <span >
+      {{ today }}
+    </span>
     <v-row dense>
       <v-col
         cols="12"
@@ -23,24 +26,25 @@
     <v-row justify="center">
       <v-dialog v-model="dialog" v-if="selected!==null" persistent max-width="290">
         <v-card>
-          <v-card-title class="headline">{{ announcements[selected].title }}</v-card-title>
+          <v-card-title class="headline justify-center primary--text">{{ announcements[selected].title }}</v-card-title>
+          <v-divider class="primary"></v-divider>
           <v-card-text>{{ announcements[selected].subtitle }}</v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
+            <span v-if="userIsCreator">
+              <v-btn
+                color="primary"
+                text
+                @click="showEdit"
+              >Edit</v-btn>
+              <v-btn
+                color="primary"
+                text
+                outlined
+                @click="showDelete"
+              >Delete</v-btn>
+            </span>
             <v-btn
-              v-if="announcements[selected].creator===user"
-              color="primary"
-              text
-              @click="showEdit"
-            >Edit</v-btn>
-            <v-btn
-              v-if="announcements[selected].creator===user"
-              color="primary"
-              text
-              @click="showDelete"
-            >Delete</v-btn>
-            <v-btn
-              v-if="announcements[selected].creator===user | announcements[selected].creator!==user"
               color="primary"
               text
               @click="dialog = false"
@@ -51,9 +55,10 @@
     </v-row>
 
     <v-row justify="center">
-      <v-dialog id="edit" v-model="edit" v-if="selected!==null" persistent max-width="290">
+      <v-dialog id="edit" v-model="edit" v-if="selected!==null && userIsCreator" persistent max-width="290">
         <v-card>
-          <v-card-title class="headline">Edit</v-card-title>
+          <v-card-title class="headline justify-center primary--text">Edit</v-card-title>
+          <v-divider class="primary"></v-divider>
           <v-card-text>
             <v-row>
               <v-col cols="12" sm="6" md="3">
@@ -80,42 +85,47 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn
-              v-if="announcements[selected].creator===user"
+            <span v-if="userIsCreator">
+              <v-btn
               color="primary"
               text
+              outlined
               @click="saveChanges"
             >Save</v-btn>
             <v-btn
-              v-if="announcements[selected].creator===user"
               color="primary"
               text
+              outlined
               @click="edit = false"
             >Cancel</v-btn>
+            </span>
           </v-card-actions>
         </v-card>
       </v-dialog>
     </v-row>
 
     <v-row justify="center">
-      <v-dialog id="delete" v-model="del" v-if="selected!==null" persistent max-width="290">
+      <v-dialog id="delete" v-model="del" v-if="selected!==null && userIsCreator" persistent max-width="290">
         <v-card>
-          <v-card-title class="headline">Delete</v-card-title>
+          <v-card-title class="headline justify-center primary--text">Delete</v-card-title>
+          <v-divider class="primary"></v-divider>
           <v-card-text>Are you sure you want to delete this announcement?</v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn
-              v-if="announcements[selected].creator===user"
-              color="primary"
-              text
-              @click="doADelete"
-            >Delete</v-btn>
-            <v-btn
-              v-if="announcements[selected].creator===user"
-              color="primary"
-              text
-              @click="del = false"
-            >Cancel</v-btn>
+            <span v-if="userIsCreator">
+              <v-btn
+                color="primary"
+                text
+                outlined
+                @click="doADelete"
+              >Delete</v-btn>
+              <v-btn
+                color="primary"
+                text
+                outlined
+                @click="del = false"
+              >Cancel</v-btn>
+            </span>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -134,6 +144,11 @@ export default {
   name: "Announcements",
   components: {
     AnnouncementCard
+  },
+  computed: {
+    userIsCreator: function () {
+      return this.announcements[this.selected].creator===this.user;
+    }
   },
   methods: {
     showModal(id, user) {
@@ -166,6 +181,7 @@ export default {
       del: false,
       selected: null,
       user: "Megan",
+      today: document.data.event_timestamp,
       announcements: [
         {
           id: "123",

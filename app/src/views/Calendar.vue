@@ -28,18 +28,21 @@
           <v-card-actions class="space-between">
             <v-spacer></v-spacer>
             <v-btn
+              outlined
               v-if="events[selected].creator===user"
               color="primary"
               text
               @click="showEdit"
             >Edit</v-btn>
             <v-btn
+              outlined
               v-if="events[selected].creator===user"
               color="primary"
               text
               @click="showDelete"
             >Delete</v-btn>
             <v-btn
+              outlined
               v-if="events[selected].creator===user | events[selected].creator!==user"
               color="primary"
               text
@@ -82,12 +85,14 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn
+              outlined
               v-if="events[selected].creator===user"
               color="primary"
               text
               @click="saveChanges"
             >Save</v-btn>
             <v-btn
+              outlined
               v-if="events[selected].creator===user"
               color="primary"
               text
@@ -107,12 +112,14 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn
+              outlined
               v-if="events[selected].creator===user"
               color="primary"
               text
               @click="doADelete"
             >Delete</v-btn>
             <v-btn
+              outlined
               v-if="events[selected].creator===user"
               color="primary"
               text

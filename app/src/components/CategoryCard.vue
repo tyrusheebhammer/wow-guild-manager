@@ -5,6 +5,7 @@
                 <v-row class="py-3" align-center>
                     <v-col cols="4" class="py-auto">
                         <v-img contain :src="imgSrc" class="px-3"></v-img>
+                        {{ imgSrc }}
                     </v-col>
                     <v-col cols="8" class="m-0 pa-0">
                         <v-row class="m-0 pa-0">
@@ -16,7 +17,6 @@
                         <v-col cols="9" class="m-0 pa-0">
                             <v-card-subtitle class="mx-1 pa-0 small-line-height">{{ subtitle }}</v-card-subtitle>
                         </v-col>
-                        
                         </v-row>
                     </v-col>
                 </v-row>
