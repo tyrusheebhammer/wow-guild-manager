@@ -31,9 +31,7 @@
 export default {
   name: 'Login',
   methods: {
-    login() {
-      this.$router.push('')
-    }
+    login() {}
   },
   computed: {
     imageSrc() {
