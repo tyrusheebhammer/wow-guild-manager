@@ -24,5 +24,8 @@ new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
+  render: h => h(App),
+  mounted () {
+    store.dispatch('setupClient')
+  }
 }).$mount('#app')

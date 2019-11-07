@@ -9,11 +9,19 @@
     "logs": "firebase functions:log"
   },
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "dependencies": {
+    "axios": "^0.19.0",
+    "bluebird": "^3.7.1",
     "firebase-admin": "^8.0.0",
-    "firebase-functions": "^3.1.0"
+    "firebase-functions": "^3.1.0",
+    "fs": "0.0.1-security",
+    "ramda": "^0.26.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "simple-oauth2": "^3.0.1",
+    "tmp": "^0.1.0"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.1.6"

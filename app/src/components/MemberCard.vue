@@ -1,6 +1,6 @@
 <template>
   <v-container>
-      <v-card min-height="100" class="darkgray">
+      <v-card min-height="100" max-width="400" class="darkgray">
         <v-row>
             <v-col class="ml-2 my-0" cols="3">
                 <v-img src="https://render-us.worldofwarcraft.com/character/stormrage/231/204308711-avatar.jpg" lazy-src="@/assets/logo.svg">
