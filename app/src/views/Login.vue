@@ -28,16 +28,23 @@
 </template>
 
 <script>
+/* eslint no-console: 0 */  // --> OFF
 export default {
   name: 'Login',
   methods: {
-    login() {}
+    login() {
+      console.log(this.$store.state.playerAuthRequestUri)
+      window.location.href = '//' + this.$store.state.playerAuthRequestUri, true;
+    }
   },
   computed: {
     imageSrc() {
       return this.$store.state.imageSrc.bnet
+    },
+    clientId() {
+      return this.$store.state.clientId
     }
-  }
+  }, 
 }
 </script>
 

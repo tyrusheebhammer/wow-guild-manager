@@ -26,6 +26,6 @@ new Vue({
   vuetify,
   render: h => h(App),
   mounted () {
-    store.dispatch('setupClient')
+    store.commit('setupClient')
   }
 }).$mount('#app')
