@@ -5,7 +5,7 @@
         <v-card max-height="80" class="mx-auto py-1 ma-1 backgroundGray">
           <v-row>
             <v-col cols="5" class="center" align-center>
-              <div class="mx-2 primary--text center">{{ date }}</div>
+              <div class="mx-2 primary--text center">{{ endDate }}</div>
             </v-col>
             <v-divider vertical class="primary"></v-divider>
             <v-col cols="6" class="pa-0 ma-0">
@@ -16,7 +16,7 @@
               </v-row>
               <v-row class="pa-0 ma-0">
                 <v-col cols="12" class="pa-0 ma-0">
-                  <div class="mx-2 lightgray--text">{{ subtitle }}</div>
+                  <div class="mx-2 lightgray--text">{{ desc }}</div>
                 </v-col>
               </v-row>
             </v-col>
@@ -32,9 +32,11 @@ export default {
   name: "CalendarCard",
   props: {
     id: Number,
-    date: String,
+    createDate: String,
+    endDate: String,
+    startDate: String,
     title: String,
-    subtitle: String,
+    desc: String,
     creator: String
   },
   methods: {
