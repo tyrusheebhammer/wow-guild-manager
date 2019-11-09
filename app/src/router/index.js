@@ -21,6 +21,11 @@ export default new Router({
       component: HelloWorld
     },
     {
+      path: '/home',
+      name: 'Home',
+      component: Home
+    },
+    {
       path: '/login',
       name: 'Login',
       component: Login
@@ -32,8 +37,8 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'Login',
+      component: Login
     },
     {
       path: '/polls',
