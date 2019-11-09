@@ -286,8 +286,7 @@ export default {
     },
     doADelete() {
       this.del = false;
-      console.log(this.selected);
-      // db.collection("CalendarEvents").doc("yWW1SR7MCe2y6bffJW9c").delete();;
+      db.collection("CalendarEvents").doc(this.events[this.selected].id.toString()).delete();
     },
     showAdd() {
       this.addEvent = true;

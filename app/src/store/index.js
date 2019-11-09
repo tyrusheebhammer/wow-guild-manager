@@ -52,7 +52,7 @@ export default new Vuex.Store({
       return this.playerAuth.host 
         +  this.playerAuth.endpoints.authorize
         + `?client_id=${this.clientId}`
-        + `&scope=${this.scope.wowProfile}`
+        // + `&scope=${this.scope.wowProfile}`
         + `&state=${this.blob}`
         + `&redirect_uri=${this.playerAuth.redirectUri}`
         + `&response_type=${this.playerAuth.responseType}`

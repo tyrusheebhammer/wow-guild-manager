@@ -271,7 +271,7 @@ export default {
     doADelete() {
       this.del = false;
       console.log("do something with firebase to delete");
-      db.collection("Announcements").delete(selected);
+      db.collection("Announcements").doc(this.announcements[this.selected].id.toString()).delete();
     }, 
     createAnnouncement() {
       console.log("create an announcement");
@@ -295,8 +295,8 @@ export default {
       addAnnouncement: false,
       titleInput: "titleInput",
       descInput: "descInput",
-      startDate: false,
-      endDate: false,
+      startDate: "",
+      endDate: "",
       menu: false,
       date: false,
       today: "Nov. 8th",
