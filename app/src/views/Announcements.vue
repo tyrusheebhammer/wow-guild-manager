@@ -12,15 +12,15 @@
         <announcement-card
           @click="showModal"
           :id="index"
-          :date="announcement.date"
-          :day="announcement.day"
+          :dateCreated="announcement.dateCreated"
+          :desc="announcement.desc"
           :title="announcement.title"
-          :subtitle="announcement.subtitle"
           :creator="announcement.creator"
         ></announcement-card>
       </v-col>
     </v-row>
 
+    <!-- Selected Dialog -->
     <v-row justify="center">
       <v-dialog
         v-model="dialog"
@@ -34,14 +34,14 @@
             class="headline justify-center primary--text"
           >{{ announcements[selected].title }}</v-card-title>
           <v-divider class="primary"></v-divider>
-          <v-card-text>{{ announcements[selected].subtitle }}</v-card-text>
+          <v-card-text>{{ announcements[selected].desc }}</v-card-text>
           <span  class="pa-0 ma-0">
             <v-card-actions class="pa-2">
               <v-row space-between class="mx-2">
                 <v-col>
-                  <v-btn color="primary" text @click="showEdit">Edit</v-btn>
-                  <v-btn color="primary" text outlined @click="showDelete">Delete</v-btn>
-                  <v-btn color="primary" text @click="dialog = false">Close</v-btn>
+                  <v-btn color="primary" outlined text @click="showEdit">Edit</v-btn>
+                  <v-btn color="primary" outlined text @click="showDelete">Delete</v-btn>
+                  <v-btn color="primary" outlined text @click="dialog = false">Close</v-btn>
                 </v-col>
               </v-row>
             </v-card-actions>
@@ -50,6 +50,7 @@
       </v-dialog>
     </v-row>
 
+    <!-- Edit -->
     <v-row justify="center">
       <v-dialog
         id="edit"
@@ -63,7 +64,7 @@
           <v-divider class="primary"></v-divider>
           <v-card-text>
             <v-row>
-              <v-col cols="12" sm="6" md="3">
+              <v-col cols="12">
                 <v-text-field
                   id="titleEntry"
                   label="Solo"
@@ -74,12 +75,12 @@
               </v-col>
             </v-row>
             <v-row>
-              <v-col cols="12" sm="6" md="3">
+              <v-col cols="12">
                 <v-text-field
                   id="messageEntry"
                   label="Solo"
                   placeholder="Message"
-                  v-model="announcements[selected].subtitle"
+                  v-model="announcements[selected].desc"
                   solo
                 ></v-text-field>
               </v-col>
@@ -99,6 +100,7 @@
       </v-dialog>
     </v-row>
 
+    <!-- Delete Dialog -->
     <v-row justify="center">
       <v-dialog
         id="delete"
@@ -125,26 +127,122 @@
       </v-dialog>
     </v-row>
 
-    <div id="fab" data-toggle="modal">
+    <!-- Fab -->
+    <div id="fab" data-toggle="modal" @click="showAdd">
       <v-img
-        src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/Frame.svg?alt=media&token=229652af-3313-46bb-a350-d15b53cefe5c"
+        src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/AddButton.svg?alt=media&token=d47c8227-8ff4-4e5e-8c3b-5e170f64dfb3"
         lazy-src="@/assets/AddButton.svg"
       ></v-img>
     </div>
+
+<!-- Add -->
+<v-row justify="center">
+      <v-dialog v-model="addAnnouncement" persistent max-width="400">
+        <v-card>
+          <v-card-title class="headline justify-center primary--text">New Announcement</v-card-title>
+          <v-divider class="primary"></v-divider>
+          <v-row justify="center">
+            <v-col cols="2" class="px-4">
+              <v-img
+                src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
+                lazy-src="@/assets/calendar-alt-regular.svg"
+                
+              ></v-img>
+            </v-col>
+
+            <v-col cols="3" sm="3" md="3" class="px-0">
+              <v-menu
+                ref="menuStart"
+                v-model="menuStart"
+                :close-on-content-click="false"
+                :return-value.sync="date"
+                transition="scale-transition"
+                offset-y
+                min-width="290px"
+                
+              >
+                <template v-slot:activator="{ on }">
+                  <v-text-field v-model="startDate" label="Start Date" readonly v-on="on"></v-text-field>
+                </template>
+                <v-date-picker v-model="startDate" no-title scrollable>
+                  <v-spacer></v-spacer>
+                  <v-btn text color="primary" outlined @click="menuStart = false">Cancel</v-btn>
+                  <v-btn text color="primary" outlined @click="$refs.menuStart.save(startDate)">OK</v-btn>
+                </v-date-picker>
+              </v-menu>
+            </v-col>
+
+
+            <v-col cols="2" class="px-4">
+              <v-img
+                src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
+                lazy-src="@/assets/calendar-alt-regular.svg"
+                
+              ></v-img>
+            </v-col>
+
+            <v-col cols="3" sm="3" md="3" class="px-0">
+              <v-menu
+                ref="menuEnd"
+                v-model="menuEnd"
+                :close-on-content-click="false"
+                :return-value.sync="date"
+                transition="scale-transition"
+                offset-y
+                min-width="290px"
+                
+              >
+                <template v-slot:activator="{ on }">
+                  <v-text-field v-model="endDate" label="End Date" readonly v-on="on"></v-text-field>
+                </template>
+                <v-date-picker v-model="endDate" no-title scrollable>
+                  <v-spacer></v-spacer>
+                  <v-btn text color="primary" outlined @click="menuEnd = false">Cancel</v-btn>
+                  <v-btn text color="primary" outlined @click="$refs.menuEnd.save(endDate)">OK</v-btn>
+                </v-date-picker>
+              </v-menu>
+            </v-col>
+          </v-row>
+          <v-row class="px-2">
+            <v-col cols="12">
+              <v-text-field v-model="titleInput" placeholder="announcement title" filled/>
+            </v-col>
+          </v-row>
+          <v-row class="px-2">
+            <v-col cols="12">
+              <v-text-field v-model="descInput" placeholder="announcement description" filled/>
+            </v-col>
+          </v-row>
+          <span class="pa-0 ma-0">
+            <v-card-actions justify="center" class="pa-2">
+              <v-row display="flex" justify="center" class="mx-2">
+                <v-col cols="6">
+                  <v-btn outlined color="primary" text @click="createAnnouncement">Create</v-btn>
+                </v-col>
+                <v-col cols="6">
+                  <v-btn outlined color="primary" text @click="addAnnouncement = false">Cancel</v-btn>
+                </v-col>
+              </v-row>
+            </v-card-actions>
+          </span>
+        </v-card>
+      </v-dialog>
+    </v-row>
+
+
   </v-container>
 </template>
 
 <script>
 /* eslint-disable */
+import { db } from "../main";
 import AnnouncementCard from "@/components/AnnouncementCard.vue";
 export default {
   name: "Announcements",
-  components: {
-    AnnouncementCard
-  },
+  
   computed: {
     userIsCreator: function() {
-      return this.announcements[this.selected].creator === this.user;
+      return true;
     }
   },
   methods: {
@@ -153,6 +251,10 @@ export default {
       this.dialog = true;
       this.selected = id;
       this.user = "Megan";
+    },
+    showAdd() {
+      console.log("show add");
+      this.addAnnouncement = true;
     },
     showEdit() {
       this.dialog = false;
@@ -169,6 +271,19 @@ export default {
     doADelete() {
       this.del = false;
       console.log("do something with firebase to delete");
+      db.collection("Announcements").delete(selected);
+    }, 
+    createAnnouncement() {
+      console.log("create an announcement");
+      db.collection("Announcements").doc().set( {
+        createDate: "Nov. 8th",
+        startDate: this.startDate,
+        endDate: this.endDate,
+        creator: this.user,
+        desc: this.descInput,
+        title: this.titleInput
+      });
+      this.addAnnouncement = false;
     }
   },
   data() {
@@ -177,27 +292,30 @@ export default {
       edit: false,
       del: false,
       selected: null,
-      user: "Megan",
-      today: "",
-      announcements: [
-        {
-          id: "123",
-          date: "Oct. 30th, 2019",
-          day: "Today",
-          title: "title",
-          subtitle: "Megatron has been overthrown",
-          creator: "Megan"
-        },
-        {
-          id: "345",
-          date: "Oct. 30th, 2019",
-          day: "Tomorrow",
-          title: "title",
-          subtitle: "Tyrus reigns",
-          creator: "Tyrus"
-        }
-      ]
+      addAnnouncement: false,
+      titleInput: "titleInput",
+      descInput: "descInput",
+      startDate: false,
+      endDate: false,
+      menu: false,
+      date: false,
+      today: "Nov. 8th",
+      user: "RLZ7m6MTuoAmZfuMHA7W",
+      dateCreated: "",
+      desc: "",
+      title: "",
+      menuStart: false,
+      menuEnd: false,
+      announcements: []
     };
+  },
+  firestore() {
+    return {
+      announcements: db.collection("Announcements")
+    };
+  },
+  components: {
+    AnnouncementCard
   }
 };
 </script>

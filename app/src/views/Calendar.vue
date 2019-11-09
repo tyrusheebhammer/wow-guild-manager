@@ -15,6 +15,7 @@
       </v-col>
     </v-row>
 
+    <!-- Selected Dialog -->
     <v-row justify="center">
       <v-dialog v-model="dialog" v-if="selected!==null" persistent max-width="400">
         <v-card>
@@ -27,7 +28,7 @@
                 <v-col>
                   <v-btn
                     outlined
-                    v-if="events[selected].creator===user"
+                    
                     color="primary"
                     text
                     @click="showEdit"
@@ -36,7 +37,7 @@
                 <v-col>
                   <v-btn
                     outlined
-                    v-if="events[selected].creator===user"
+                    
                     color="primary"
                     text
                     @click="showDelete"
@@ -45,7 +46,7 @@
                 <v-col>
                   <v-btn
                     outlined
-                    v-if="events[selected].creator===user | events[selected].creator!==user"
+                    
                     color="primary"
                     text
                     @click="dialog = false"
@@ -58,6 +59,7 @@
       </v-dialog>
     </v-row>
 
+    <!-- Edit -->
     <v-row justify="center">
       <v-dialog id="edit" v-model="edit" v-if="selected!==null" persistent max-width="290">
         <v-card>
@@ -113,6 +115,7 @@
       </v-dialog>
     </v-row>
 
+    <!-- Delete Dialog -->
     <v-row justify="center">
       <v-dialog id="delete" v-model="del" v-if="selected!==null" persistent max-width="290">
         <v-card>
@@ -125,14 +128,14 @@
                 <v-col>
                   <v-btn
                     outlined
-                    v-if="events[selected].creator===user"
+                    
                     color="primary"
                     text
                     @click="doADelete"
                   >Delete</v-btn>
                   <v-btn
                     outlined
-                    v-if="events[selected].creator===user"
+                    
                     color="primary"
                     text
                     @click="del = false"
@@ -145,6 +148,7 @@
       </v-dialog>
     </v-row>
 
+    <!-- Fab -->
     <div id="fab" data-toggle="modal" @click="showAdd">
       <v-img
         src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/AddButton.svg?alt=media&token=d47c8227-8ff4-4e5e-8c3b-5e170f64dfb3"
@@ -152,12 +156,13 @@
       ></v-img>
     </div>
 
+    <!-- Add -->
     <v-row justify="center">
       <v-dialog v-model="addEvent" persistent max-width="400">
         <v-card>
           <v-card-title class="headline justify-center primary--text">New Event</v-card-title>
           <v-divider class="primary"></v-divider>
-          <v-row space-between>
+          <v-row justify="center">
             <v-col cols="2" class="px-4">
               <v-img
                 src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
@@ -168,8 +173,8 @@
 
             <v-col cols="3" sm="3" md="3" class="px-0">
               <v-menu
-                ref="menu"
-                v-model="menu"
+                ref="menuStart"
+                v-model="menuStart"
                 :close-on-content-click="false"
                 :return-value.sync="date"
                 transition="scale-transition"
@@ -178,12 +183,12 @@
                 
               >
                 <template v-slot:activator="{ on }">
-                  <v-text-field v-model="startDate" label="Start Date" readonly v-on="on"></v-text-field>
+                  <v-text-field v-model="startDate" label="Start Date" v-on="on"></v-text-field>
                 </template>
                 <v-date-picker v-model="startDate" no-title scrollable>
                   <v-spacer></v-spacer>
-                  <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
-                  <v-btn text color="primary" @click="$refs.menu.save(startDate)">OK</v-btn>
+                  <v-btn text color="primary" @click="menuStart = false">Cancel</v-btn>
+                  <v-btn text color="primary" @click="$refs.menuStart.save(startDate)">OK</v-btn>
                 </v-date-picker>
               </v-menu>
             </v-col>
@@ -199,8 +204,8 @@
 
             <v-col cols="3" sm="3" md="3" class="px-0">
               <v-menu
-                ref="menu"
-                v-model="menu"
+                ref="menuEnd"
+                v-model="menuEnd"
                 :close-on-content-click="false"
                 :return-value.sync="date"
                 transition="scale-transition"
@@ -209,12 +214,12 @@
                 
               >
                 <template v-slot:activator="{ on }">
-                  <v-text-field v-model="endDate" label="End Date" readonly v-on="on"></v-text-field>
+                  <v-text-field v-model="endDate" label="End Date" v-on="on"></v-text-field>
                 </template>
                 <v-date-picker v-model="endDate" no-title scrollable>
                   <v-spacer></v-spacer>
-                  <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
-                  <v-btn text color="primary" @click="$refs.menu.save(endDate)">OK</v-btn>
+                  <v-btn text color="primary" @click="menuEnd = false">Cancel</v-btn>
+                  <v-btn text color="primary" @click="$refs.menuEnd.save(endDate)">OK</v-btn>
                 </v-date-picker>
               </v-menu>
             </v-col>
@@ -231,9 +236,11 @@
           </v-row>
           <span class="pa-0 ma-0">
             <v-card-actions justify="center" class="pa-2">
-              <v-row space-between class="mx-2">
+              <v-row justify="center" class="mx-2">
                 <v-col>
                   <v-btn outlined color="primary" text @click="createEvent">Create</v-btn>
+                </v-col>
+              <v-col>
                   <v-btn outlined color="primary" text @click="addEvent = false">Cancel</v-btn>
                 </v-col>
               </v-row>
@@ -279,23 +286,28 @@ export default {
     },
     doADelete() {
       this.del = false;
-      console.log("do something with firebase to delete");
+      console.log(this.selected);
+      // db.collection("CalendarEvents").doc("yWW1SR7MCe2y6bffJW9c").delete();;
     },
     showAdd() {
       this.addEvent = true;
       console.log("show add dialog");
+
     },
     createEvent() {
-      
-      db.collection("CalendarEvents").add({
+      // db.collection("CalendarEvents").onSnapshot((snap) => {
+      //   console.log("snap length", snap.size);
+        db.collection("CalendarEvents").doc().set({
         createDate: "Nov. 8th",
-        creator: "megan",
-        desc: "descInput",
-        endDate: "endDate",
-        startDate: "startDate",
-        title: "titleInput"
+        startDate: this.startDate,
+        endDate: this.endDate,
+        creator: this.user,
+        desc: this.descInput,
+        title: this.titleInput
       });
       this.addEvent = false;
+      
+      
     }
   },
   data() {
@@ -307,8 +319,12 @@ export default {
       addEvent: false,
       titleInput: "titleInput",
       descInput: "descInput",
-      startDate: false,
-      endDate: false,
+      startDate: "",
+      endDate: "",
+      menu: false,
+      date: false,
+      menuEnd: false,
+      menuStart: false,
       selected: null,
       user: "RLZ7m6MTuoAmZfuMHA7W",
       events: []
