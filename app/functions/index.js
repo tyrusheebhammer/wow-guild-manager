@@ -1,33 +1,40 @@
 const functions = require('firebase-functions')
-const Promise = require("bluebird");
-const cors = require('cors')({origin: true});
-// const request = require("request");
-// const rp = require("request-promise");
-// const R = require("ramda");
-// const tmp = require("tmp");
-// const fs = require("fs");
+const Promise = require("bluebird")
+const cors = require('cors')({origin: true})
+const crypto = require('crypto')
+const request = require("request")
+// const rp = require("request-promise")
+const axios = require('axios')
 
-// functions.config().blizzard = {
-//     oauth: {
-//         client: {}
-//     }
-// }
-
-// functions.config().blizzard.oauth.client.id = "fdbc9b3583da40c8ae9b81c9c39a8b52"
-// functions.config().blizzard.oauth.client.secret = "DJ7FO8q8t1o3AAzP1Dqx146p4iiwSYUz"
+const test = true
 
 const credentials = {
     client: {
-      id: functions.config().blizzard.oauth.client.id,
-      secret: functions.config().blizzard.oauth.client.secret
+      id: 'fdbc9b3583da40c8ae9b81c9c39a8b52',
+      secret: 'DJ7FO8q8t1o3AAzP1Dqx146p4iiwSYUz'
     },
     auth: {
       tokenHost: "https://us.battle.net"
     }
-};
+}
 
-const oauth2 = require("simple-oauth2").create(credentials);
-let token = null;
+const oauth2 = require("simple-oauth2").create(credentials)
+
+let token = null
+
+const params = {
+  redirect_uri: !test ? 
+    'https://us-central1-wow-guild-manager.cloudfunctions.net/auth'
+    :
+    'http://localhost:5000/wow-guild-manager/us-central1/auth',
+  get blob() {
+    return crypto.randomBytes(20).toString('hex')
+  }
+}
+
+const getProfileNameSpace = (region) => {
+  return '?namespace=profile-' + this.region
+}
 
 const getToken = () => {
     if (token === null || token.expired()) {
@@ -35,24 +42,48 @@ const getToken = () => {
         .getToken()
         .then(oauth2.accessToken.create)
         .then(t => {
-          token = t;
-          return t.token.access_token;
-        });
+          token = t
+          return t.token.access_token
+        })
     } else {
-      return Promise.resolve(token.token.access_token);
+      return Promise.resolve(token.token.access_token)
     }
-};
+}
 
-exports.oauthToken = functions.https.onRequest((_, response) => {
-  return cors(_, response, () => {
+exports.oauthToken = functions.https.onRequest((_, res) => {
+  return cors(_, res, () => {
     getToken().then(token => {
-        response.send(`${token}`)
+        res.send(`${token}`)
     })
   })
-});
+})
 
-exports.clientId = functions.https.onRequest((_, response) => {
-  return cors(_, response, () => {
-    response.send(credentials.client.id);
+exports.auth = functions.https.onRequest(async (req, res) => {
+  console.log(req.query.code)
+  axios.post('https://us.battle.net/oauth/token' 
+    + '?grant_type=authorization_code'
+    + `&code=${req.query.code}`
+    + `&client_id=${credentials.client.id}`
+    + `&redirect_uri=${params.redirect_uri}`
+    + `&client_secret=${credentials.client.secret}`
+  ).then(response => {
+    return cors(req, res, () => {
+      res.send(response.data)
+    })
+  }).catch((error) => {
+    return cors(req, res, () => {
+      res.send({error})
+    })
   })
-});
+})
+
+
+exports.client = functions.https.onRequest((_, res) => {
+  return cors(_, res, () => {
+    res.send({
+      clientId: credentials.client.id,
+      blob: params.blob,
+      test
+    })
+  })
+})
