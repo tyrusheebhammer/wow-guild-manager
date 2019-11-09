@@ -66,28 +66,16 @@
           <v-card-title class="headline justify-center primary--text">Edit</v-card-title>
           <v-divider class="primary"></v-divider>
           <v-card-text>
-            <v-row space-between class="mx-2">
-              <v-col>
-                <v-text-field
-                  id="titleEntry"
-                  label="Solo"
-                  placeholder="Title"
-                  v-model="events[selected].title"
-                  solo
-                ></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" sm="6" md="3">
-                <v-text-field
-                  id="messageEntry"
-                  label="Solo"
-                  placeholder="Message"
-                  v-model="events[selected].subtitle"
-                  solo
-                ></v-text-field>
-              </v-col>
-            </v-row>
+            <v-row class="px-2">
+            <v-col cols="12">
+              <v-text-field v-model="titleInputEdit" placeholder="event title" filled/>
+            </v-col>
+          </v-row>
+          <v-row class="px-2">
+            <v-col cols="12">
+              <v-text-field v-model="descInputEdit" placeholder="event description" filled/>
+            </v-col>
+          </v-row>
           </v-card-text>
           <span v-if="userIsCreator" class="pa-0 ma-0">
             <v-card-actions class="pa-2">
@@ -95,14 +83,16 @@
                 <v-col>
                   <v-btn
                     outlined
-                    v-if="events[selected].creator===user"
+                    
                     color="primary"
                     text
                     @click="saveChanges"
                   >Save</v-btn>
+                  </v-col>
+                  <v-col>
                   <v-btn
                     outlined
-                    v-if="events[selected].creator===user"
+                    
                     color="primary"
                     text
                     @click="edit = false"
@@ -283,6 +273,13 @@ export default {
     saveChanges() {
       this.edit = false;
       console.log("do something with firebase to save changes");
+      db.collection("CalendarEvents").doc(this.events[this.selected].id.toString()).set({
+        startDate: this.startDate,
+        endDate: this.endDate,
+        creator: this.user,
+        desc: this.descInputEdit,
+        title: this.titleInputEdit
+      });
     },
     doADelete() {
       this.del = false;
@@ -318,6 +315,8 @@ export default {
       addEvent: false,
       titleInput: "titleInput",
       descInput: "descInput",
+      titleInputEdit: "",
+      descInputEdit: "",
       startDate: "",
       endDate: "",
       menu: false,

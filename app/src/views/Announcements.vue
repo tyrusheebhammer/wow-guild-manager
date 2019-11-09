@@ -62,29 +62,17 @@
         <v-card>
           <v-card-title class="headline justify-center primary--text">Edit</v-card-title>
           <v-divider class="primary"></v-divider>
-          <v-card-text>
-            <v-row>
-              <v-col cols="12">
-                <v-text-field
-                  id="titleEntry"
-                  label="Solo"
-                  placeholder="Title"
-                  v-model="announcements[selected].title"
-                  solo
-                ></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12">
-                <v-text-field
-                  id="messageEntry"
-                  label="Solo"
-                  placeholder="Message"
-                  v-model="announcements[selected].desc"
-                  solo
-                ></v-text-field>
-              </v-col>
-            </v-row>
+          <v-card-text class="px-2 mx-0">
+            <v-row class="px-2" justify="center">
+            <v-col cols="12">
+              <v-text-field v-model="titleInputEdit" placeholder="announcement title" filled/>
+            </v-col>
+          </v-row>
+          <v-row class="px-2" justify="center">
+            <v-col cols="12">
+              <v-text-field v-model="descInputEdit" placeholder="announcement description" filled/>
+            </v-col>
+          </v-row>
           </v-card-text>
           <span v-if="userIsCreator" class="pa-0 ma-0">
             <v-card-actions class="pa-2">
@@ -267,6 +255,13 @@ export default {
     saveChanges() {
       this.edit = false;
       console.log("do something with firebase to save changes");
+      db.collection("Announcements").doc(this.announcements[this.selected].id.toString()).set( {
+        startDate: this.startDate,
+        endDate: this.endDate,
+        creator: this.user,
+        desc: this.descInputEdit,
+        title: this.titleInputEdit
+      });
     },
     doADelete() {
       this.del = false;
@@ -295,6 +290,8 @@ export default {
       addAnnouncement: false,
       titleInput: "titleInput",
       descInput: "descInput",
+      titleInputEdit: "",
+      descInputEdit: "",
       startDate: "",
       endDate: "",
       menu: false,
