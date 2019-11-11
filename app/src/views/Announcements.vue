@@ -1,6 +1,5 @@
 <template>
   <v-container fluid>
-    <span>{{ today }}</span>
     <v-row dense>
       <v-col
         cols="12"
@@ -16,6 +15,8 @@
           :desc="announcement.desc"
           :title="announcement.title"
           :creator="announcement.creator"
+          :startDate="announcement.startDate"
+          :endDate="announcement.endDate"
         ></announcement-card>
       </v-col>
     </v-row>
@@ -35,7 +36,7 @@
           >{{ announcements[selected].title }}</v-card-title>
           <v-divider class="primary"></v-divider>
           <v-card-text>{{ announcements[selected].desc }}</v-card-text>
-          <span  class="pa-0 ma-0">
+          <span class="pa-0 ma-0">
             <v-card-actions class="pa-2">
               <v-row space-between class="mx-2">
                 <v-col>
@@ -57,22 +58,84 @@
         v-model="edit"
         v-if="selected!==null && userIsCreator"
         persistent
-        max-width="290"
+        max-width="400"
       >
         <v-card>
           <v-card-title class="headline justify-center primary--text">Edit</v-card-title>
           <v-divider class="primary"></v-divider>
           <v-card-text class="px-2 mx-0">
+            <v-row justify="center">
+              <v-col cols="2" class="px-4">
+                <v-img
+                  src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
+                  lazy-src="@/assets/calendar-alt-regular.svg"
+                ></v-img>
+              </v-col>
+
+              <v-col cols="3" sm="3" md="3" class="px-0">
+                <v-menu
+                  ref="menuStart"
+                  v-model="menuStart"
+                  :close-on-content-click="false"
+                  :return-value.sync="date"
+                  transition="scale-transition"
+                  offset-y
+                  min-width="290px"
+                >
+                  <template v-slot:activator="{ on }">
+                    <v-text-field v-model="startDate" label="Start Date" readonly v-on="on"></v-text-field>
+                  </template>
+                  <v-date-picker v-model="startDate" no-title scrollable>
+                    <v-spacer></v-spacer>
+                    <v-btn text color="primary" outlined @click="menuStart = false">Cancel</v-btn>
+                    <v-btn text color="primary" outlined @click="$refs.menuStart.save(startDate)">OK</v-btn>
+                  </v-date-picker>
+                </v-menu>
+              </v-col>
+
+              <v-col cols="2" class="px-4">
+                <v-img
+                  src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
+                  lazy-src="@/assets/calendar-alt-regular.svg"
+                ></v-img>
+              </v-col>
+
+              <v-col cols="3" sm="3" md="3" class="px-0">
+                <v-menu
+                  ref="menuEnd"
+                  v-model="menuEnd"
+                  :close-on-content-click="false"
+                  :return-value.sync="date"
+                  transition="scale-transition"
+                  offset-y
+                  min-width="290px"
+                >
+                  <template v-slot:activator="{ on }">
+                    <v-text-field v-model="endDate" label="End Date" readonly v-on="on"></v-text-field>
+                  </template>
+                  <v-date-picker v-model="endDate" no-title scrollable>
+                    <v-spacer></v-spacer>
+                    <v-btn text color="primary" outlined @click="menuEnd = false">Cancel</v-btn>
+                    <v-btn text color="primary" outlined @click="$refs.menuEnd.save(endDate)">OK</v-btn>
+                  </v-date-picker>
+                </v-menu>
+              </v-col>
+            </v-row>
             <v-row class="px-2" justify="center">
-            <v-col cols="12">
-              <v-text-field v-model="titleInputEdit" placeholder="announcement title" filled/>
-            </v-col>
-          </v-row>
-          <v-row class="px-2" justify="center">
-            <v-col cols="12">
-              <v-text-field v-model="descInputEdit" placeholder="announcement description" filled/>
-            </v-col>
-          </v-row>
+              <v-col cols="12">
+                <v-text-field v-model="titleInputEdit" placeholder="announcement title" filled />
+              </v-col>
+            </v-row>
+
+            <v-row class="px-2" justify="center">
+              <v-col cols="12">
+                <v-text-field
+                  v-model="descInputEdit"
+                  placeholder="announcement description"
+                  filled
+                />
+              </v-col>
+            </v-row>
           </v-card-text>
           <span v-if="userIsCreator" class="pa-0 ma-0">
             <v-card-actions class="pa-2">
@@ -123,8 +186,8 @@
       ></v-img>
     </div>
 
-<!-- Add -->
-<v-row justify="center">
+    <!-- Add -->
+    <v-row justify="center">
       <v-dialog v-model="addAnnouncement" persistent max-width="400">
         <v-card>
           <v-card-title class="headline justify-center primary--text">New Announcement</v-card-title>
@@ -134,7 +197,6 @@
               <v-img
                 src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
                 lazy-src="@/assets/calendar-alt-regular.svg"
-                
               ></v-img>
             </v-col>
 
@@ -147,7 +209,6 @@
                 transition="scale-transition"
                 offset-y
                 min-width="290px"
-                
               >
                 <template v-slot:activator="{ on }">
                   <v-text-field v-model="startDate" label="Start Date" readonly v-on="on"></v-text-field>
@@ -160,12 +221,10 @@
               </v-menu>
             </v-col>
 
-
             <v-col cols="2" class="px-4">
               <v-img
                 src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
                 lazy-src="@/assets/calendar-alt-regular.svg"
-                
               ></v-img>
             </v-col>
 
@@ -178,7 +237,6 @@
                 transition="scale-transition"
                 offset-y
                 min-width="290px"
-                
               >
                 <template v-slot:activator="{ on }">
                   <v-text-field v-model="endDate" label="End Date" readonly v-on="on"></v-text-field>
@@ -193,12 +251,12 @@
           </v-row>
           <v-row class="px-2">
             <v-col cols="12">
-              <v-text-field v-model="titleInput" placeholder="announcement title" filled/>
+              <v-text-field v-model="titleInput" placeholder="announcement title" filled />
             </v-col>
           </v-row>
           <v-row class="px-2">
             <v-col cols="12">
-              <v-text-field v-model="descInput" placeholder="announcement description" filled/>
+              <v-text-field v-model="descInput" placeholder="announcement description" filled />
             </v-col>
           </v-row>
           <span class="pa-0 ma-0">
@@ -216,8 +274,6 @@
         </v-card>
       </v-dialog>
     </v-row>
-
-
   </v-container>
 </template>
 
@@ -227,7 +283,7 @@ import { db } from "../main";
 import AnnouncementCard from "@/components/AnnouncementCard.vue";
 export default {
   name: "Announcements",
-  
+
   computed: {
     userIsCreator: function() {
       return true;
@@ -255,29 +311,35 @@ export default {
     saveChanges() {
       this.edit = false;
       console.log("do something with firebase to save changes");
-      db.collection("Announcements").doc(this.announcements[this.selected].id.toString()).set( {
-        startDate: this.startDate,
-        endDate: this.endDate,
-        creator: this.user,
-        desc: this.descInputEdit,
-        title: this.titleInputEdit
-      });
+      db.collection("Announcements")
+        .doc(this.announcements[this.selected].id.toString())
+        .set({
+          startDate: this.startDate,
+          endDate: this.endDate,
+          creator: this.user,
+          desc: this.descInputEdit,
+          title: this.titleInputEdit
+        });
     },
     doADelete() {
       this.del = false;
       console.log("do something with firebase to delete");
-      db.collection("Announcements").doc(this.announcements[this.selected].id.toString()).delete();
-    }, 
+      db.collection("Announcements")
+        .doc(this.announcements[this.selected].id.toString())
+        .delete();
+    },
     createAnnouncement() {
       console.log("create an announcement");
-      db.collection("Announcements").doc().set( {
-        createDate: "Nov. 8th",
-        startDate: this.startDate,
-        endDate: this.endDate,
-        creator: this.user,
-        desc: this.descInput,
-        title: this.titleInput
-      });
+      db.collection("Announcements")
+        .doc()
+        .set({
+          createDate: "Nov. 8th",
+          startDate: this.startDate,
+          endDate: this.endDate,
+          creator: this.user,
+          desc: this.descInput,
+          title: this.titleInput
+        });
       this.addAnnouncement = false;
     }
   },
@@ -296,7 +358,6 @@ export default {
       endDate: "",
       menu: false,
       date: false,
-      today: "Nov. 8th",
       user: "RLZ7m6MTuoAmZfuMHA7W",
       dateCreated: "",
       desc: "",
