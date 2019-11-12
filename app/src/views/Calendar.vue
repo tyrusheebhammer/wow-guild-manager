@@ -22,14 +22,26 @@
           <v-card-title class="headline justify-center primary--text">{{ events[selected].title }}</v-card-title>
           <v-divider class="primary"></v-divider>
           <v-card-text class="py-3">{{ events[selected].desc }}</v-card-text>
-          <span v-if="userIsCreator" class="pa-0 ma-0">
+          <span class="pa-0 ma-0">
             <v-card-actions class="pa-2">
               <v-row space-between class="mx-2">
                 <v-col>
-                  <v-btn outlined color="primary" text @click="showEdit">Edit</v-btn>
+                  <v-btn
+                    v-if="this.userIsCreator"
+                    outlined
+                    color="primary"
+                    text
+                    @click="showEdit"
+                  >Edit</v-btn>
                 </v-col>
                 <v-col>
-                  <v-btn outlined color="primary" text @click="showDelete">Delete</v-btn>
+                  <v-btn
+                    v-if="this.userIsCreator"
+                    outlined
+                    color="primary"
+                    text
+                    @click="showDelete"
+                  >Delete</v-btn>
                 </v-col>
                 <v-col>
                   <v-btn outlined color="primary" text @click="dialog = false">Close</v-btn>
@@ -49,62 +61,62 @@
           <v-divider class="primary"></v-divider>
           <v-card-text>
             <v-row justify="center">
-                <v-col cols="2" class="px-4">
-                  <v-img
-                    src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
-                    lazy-src="@/assets/calendar-alt-regular.svg"
-                  ></v-img>
-                </v-col>
+              <v-col cols="2" class="px-4">
+                <v-img
+                  src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
+                  lazy-src="@/assets/calendar-alt-regular.svg"
+                ></v-img>
+              </v-col>
 
-                <v-col cols="3" sm="3" md="3" class="px-0">
-                  <v-menu
-                    ref="menuStart"
-                    v-model="menuStart"
-                    :close-on-content-click="false"
-                    :return-value.sync="date"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="290px"
-                  >
-                    <template v-slot:activator="{ on }">
-                      <v-text-field v-model="startDate" label="Start Date" v-on="on"></v-text-field>
-                    </template>
-                    <v-date-picker v-model="startDate" no-title scrollable>
-                      <v-spacer></v-spacer>
-                      <v-btn text color="primary" @click="menuStart = false">Cancel</v-btn>
-                      <v-btn text color="primary" @click="$refs.menuStart.save(startDate)">OK</v-btn>
-                    </v-date-picker>
-                  </v-menu>
-                </v-col>
+              <v-col cols="3" sm="3" md="3" class="px-0">
+                <v-menu
+                  ref="menuStart"
+                  v-model="menuStart"
+                  :close-on-content-click="false"
+                  :return-value.sync="date"
+                  transition="scale-transition"
+                  offset-y
+                  min-width="290px"
+                >
+                  <template v-slot:activator="{ on }">
+                    <v-text-field v-model="startDate" label="Start Date" v-on="on"></v-text-field>
+                  </template>
+                  <v-date-picker v-model="startDate" no-title scrollable>
+                    <v-spacer></v-spacer>
+                    <v-btn text color="primary" @click="menuStart = false">Cancel</v-btn>
+                    <v-btn text color="primary" @click="$refs.menuStart.save(startDate)">OK</v-btn>
+                  </v-date-picker>
+                </v-menu>
+              </v-col>
 
-                <v-col cols="2" class="px-4">
-                  <v-img
-                    src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
-                    lazy-src="@/assets/calendar-alt-regular.svg"
-                  ></v-img>
-                </v-col>
+              <v-col cols="2" class="px-4">
+                <v-img
+                  src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
+                  lazy-src="@/assets/calendar-alt-regular.svg"
+                ></v-img>
+              </v-col>
 
-                <v-col cols="3" sm="3" md="3" class="px-0">
-                  <v-menu
-                    ref="menuEnd"
-                    v-model="menuEnd"
-                    :close-on-content-click="false"
-                    :return-value.sync="date"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="290px"
-                  >
-                    <template v-slot:activator="{ on }">
-                      <v-text-field v-model="endDate" label="End Date" v-on="on"></v-text-field>
-                    </template>
-                    <v-date-picker v-model="endDate" no-title scrollable>
-                      <v-spacer></v-spacer>
-                      <v-btn text color="primary" @click="menuEnd = false">Cancel</v-btn>
-                      <v-btn text color="primary" @click="$refs.menuEnd.save(endDate)">OK</v-btn>
-                    </v-date-picker>
-                  </v-menu>
-                </v-col>
-              </v-row>
+              <v-col cols="3" sm="3" md="3" class="px-0">
+                <v-menu
+                  ref="menuEnd"
+                  v-model="menuEnd"
+                  :close-on-content-click="false"
+                  :return-value.sync="date"
+                  transition="scale-transition"
+                  offset-y
+                  min-width="290px"
+                >
+                  <template v-slot:activator="{ on }">
+                    <v-text-field v-model="endDate" label="End Date" v-on="on"></v-text-field>
+                  </template>
+                  <v-date-picker v-model="endDate" no-title scrollable>
+                    <v-spacer></v-spacer>
+                    <v-btn text color="primary" @click="menuEnd = false">Cancel</v-btn>
+                    <v-btn text color="primary" @click="$refs.menuEnd.save(endDate)">OK</v-btn>
+                  </v-date-picker>
+                </v-menu>
+              </v-col>
+            </v-row>
             <v-row class="px-2">
               <v-col cols="12">
                 <v-text-field v-model="titleInputEdit" placeholder="event title" filled />
@@ -260,7 +272,7 @@ export default {
   name: "Calendar",
   computed: {
     userIsCreator: function() {
-      return true;
+      return this.$store.state.clientId === this.events[this.selected].creator;
     }
   },
   methods: {
@@ -304,15 +316,13 @@ export default {
       console.log("show add dialog");
     },
     createEvent() {
-      // db.collection("CalendarEvents").onSnapshot((snap) => {
-      //   console.log("snap length", snap.size);
       db.collection("CalendarEvents")
         .doc()
         .set({
           createDate: "Nov. 8th",
           startDate: this.startDate,
           endDate: this.endDate,
-          creator: this.user,
+          creator: this.$store.state.clientId,
           desc: this.descInput,
           title: this.titleInput
         });

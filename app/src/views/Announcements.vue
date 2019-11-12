@@ -40,8 +40,12 @@
             <v-card-actions class="pa-2">
               <v-row space-between class="mx-2">
                 <v-col>
-                  <v-btn color="primary" outlined text @click="showEdit">Edit</v-btn>
-                  <v-btn color="primary" outlined text @click="showDelete">Delete</v-btn>
+                  <v-btn 
+                  v-if="this.userIsCreator"
+                  color="primary" outlined text @click="showEdit">Edit</v-btn>
+                  <v-btn 
+                  v-if="this.userIsCreator"
+                  color="primary" outlined text @click="showDelete">Delete</v-btn>
                   <v-btn color="primary" outlined text @click="dialog = false">Close</v-btn>
                 </v-col>
               </v-row>
@@ -286,7 +290,7 @@ export default {
 
   computed: {
     userIsCreator: function() {
-      return true;
+      return this.$store.state.clientId === this.announcements[this.selected].creator;
     }
   },
   methods: {
@@ -305,8 +309,10 @@ export default {
       this.edit = true;
     },
     showDelete() {
-      this.dialog = false;
-      this.del = true;
+      if (this.userIsCreator) {
+        this.dialog = false;
+        this.del = true;
+      }
     },
     saveChanges() {
       this.edit = false;
@@ -338,7 +344,8 @@ export default {
           endDate: this.endDate,
           creator: this.user,
           desc: this.descInput,
-          title: this.titleInput
+          title: this.titleInput,
+          creator: this.$store.state.clientId
         });
       this.addAnnouncement = false;
     }
