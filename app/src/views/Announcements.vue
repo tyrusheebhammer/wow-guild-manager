@@ -287,7 +287,9 @@ import { db } from "../main";
 import AnnouncementCard from "@/components/AnnouncementCard.vue";
 export default {
   name: "Announcements",
-
+  created: function () {
+    this.$store.state.pageName = "Announcements";
+  },
   computed: {
     userIsCreator: function() {
       return this.$store.state.clientId === this.announcements[this.selected].creator;
@@ -349,6 +351,10 @@ export default {
         });
       this.addAnnouncement = false;
     }
+    // changePageName() {
+    //   console.log("here");
+    //   this.$store.state.pageName = "Announcements";
+    // },
   },
   data() {
     return {
@@ -371,7 +377,8 @@ export default {
       title: "",
       menuStart: false,
       menuEnd: false,
-      announcements: []
+      announcements: [],
+      
     };
   },
   firestore() {
@@ -382,6 +389,7 @@ export default {
   components: {
     AnnouncementCard
   }
+  
 };
 </script>
 

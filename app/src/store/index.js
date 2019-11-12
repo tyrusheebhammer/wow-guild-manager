@@ -10,6 +10,7 @@ export default new Vuex.Store({
     imageSrc: {
       bnet: 'https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/battle-net-icon-9.jpg?alt=media&token=e89197eb-15a0-4e75-baf8-37794e91d4d5'
     },
+    pageName: 'pageName',
     clientId: 'clientId',
     functions: {
       host: 'https://us-central1-wow-guild-manager.cloudfunctions.net',
@@ -71,7 +72,6 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    
   },
   modules: {
   }

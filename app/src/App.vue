@@ -22,7 +22,7 @@
           <v-row dense justify="space-between" class="mx-0 caption">
             <v-col cols="4" class="py-0 my-0">
               <span class="lightgray--text text-left">
-                Home Page
+                {{ this.$store.state.pageName }}
               </span>
             </v-col>
             <v-col cols="4" class="text-right py-0 my-0">

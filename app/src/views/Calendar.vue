@@ -270,6 +270,9 @@ import { db } from "../main";
 import CalendarCard from "@/components/CalendarCard.vue";
 export default {
   name: "Calendar",
+  created: function () {
+    this.$store.state.pageName = "Calendar";
+  },
   computed: {
     userIsCreator: function() {
       return this.$store.state.clientId === this.events[this.selected].creator;
