@@ -40,12 +40,20 @@
             <v-card-actions class="pa-2">
               <v-row space-between class="mx-2">
                 <v-col>
-                  <v-btn 
-                  v-if="this.userIsCreator"
-                  color="primary" outlined text @click="showEdit">Edit</v-btn>
-                  <v-btn 
-                  v-if="this.userIsCreator"
-                  color="primary" outlined text @click="showDelete">Delete</v-btn>
+                  <v-btn
+                    v-if="this.userIsCreator"
+                    color="primary"
+                    outlined
+                    text
+                    @click="showEdit"
+                  >Edit</v-btn>
+                  <v-btn
+                    v-if="this.userIsCreator"
+                    color="primary"
+                    outlined
+                    text
+                    @click="showDelete"
+                  >Delete</v-btn>
                   <v-btn color="primary" outlined text @click="dialog = false">Close</v-btn>
                 </v-col>
               </v-row>
@@ -287,12 +295,14 @@ import { db } from "../main";
 import AnnouncementCard from "@/components/AnnouncementCard.vue";
 export default {
   name: "Announcements",
-  created: function () {
+  created: function() {
     this.$store.state.pageName = "Announcements";
   },
   computed: {
     userIsCreator: function() {
-      return this.$store.state.clientId === this.announcements[this.selected].creator;
+      return (
+        this.$store.state.clientId === this.announcements[this.selected].creator
+      );
     }
   },
   methods: {
@@ -303,7 +313,6 @@ export default {
       this.user = "Megan";
     },
     showAdd() {
-      console.log("show add");
       this.addAnnouncement = true;
     },
     showEdit() {
@@ -311,14 +320,11 @@ export default {
       this.edit = true;
     },
     showDelete() {
-      if (this.userIsCreator) {
-        this.dialog = false;
-        this.del = true;
-      }
+      this.dialog = false;
+      this.del = true;
     },
     saveChanges() {
       this.edit = false;
-      console.log("do something with firebase to save changes");
       db.collection("Announcements")
         .doc(this.announcements[this.selected].id.toString())
         .set({
@@ -331,13 +337,11 @@ export default {
     },
     doADelete() {
       this.del = false;
-      console.log("do something with firebase to delete");
       db.collection("Announcements")
         .doc(this.announcements[this.selected].id.toString())
         .delete();
     },
     createAnnouncement() {
-      console.log("create an announcement");
       db.collection("Announcements")
         .doc()
         .set({
@@ -351,10 +355,6 @@ export default {
         });
       this.addAnnouncement = false;
     }
-    // changePageName() {
-    //   console.log("here");
-    //   this.$store.state.pageName = "Announcements";
-    // },
   },
   data() {
     return {
@@ -363,8 +363,8 @@ export default {
       del: false,
       selected: null,
       addAnnouncement: false,
-      titleInput: "titleInput",
-      descInput: "descInput",
+      titleInput: "",
+      descInput: "",
       titleInputEdit: "",
       descInputEdit: "",
       startDate: "",
@@ -377,8 +377,7 @@ export default {
       title: "",
       menuStart: false,
       menuEnd: false,
-      announcements: [],
-      
+      announcements: []
     };
   },
   firestore() {
@@ -389,7 +388,6 @@ export default {
   components: {
     AnnouncementCard
   }
-  
 };
 </script>
 
