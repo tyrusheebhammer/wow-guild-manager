@@ -267,11 +267,12 @@
 <script>
 /* eslint-disable */
 import { db } from "../main";
+import { mapState } from 'vuex';
 import CalendarCard from "@/components/CalendarCard.vue";
 export default {
   name: "Calendar",
   created: function () {
-    this.$store.state.pageName = "Calendar";
+        this.$store.commit('updatePageName', "Calendar")
   },
   computed: {
     userIsCreator: function() {
@@ -325,7 +326,7 @@ export default {
           createDate: "Nov. 8th",
           startDate: this.startDate,
           endDate: this.endDate,
-          creator: this.$store.state.clientId,
+          creator: userId,
           desc: this.descInput,
           title: this.titleInput
         });

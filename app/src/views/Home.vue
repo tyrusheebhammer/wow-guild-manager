@@ -56,6 +56,7 @@ export default {
     };
   },
   created() {
+    this.$store.commit('updatePageName', "Home")
     if (this.$store.state.firebase.user === undefined) {
       this.$router.push("/login");
     } else if (this.$store.state.firebase.selectedGuild === undefined) {

@@ -6,7 +6,10 @@
 
 <script>
 export default {
-  name: 'Member'
+  name: 'Member',
+  created: function() {
+    this.$store.commit('updatePageName', "Member")
+  },
 }
 </script>
 

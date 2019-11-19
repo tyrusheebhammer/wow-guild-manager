@@ -20,7 +20,7 @@
           </v-row>
           <v-row dense justify="space-between" class="mx-0 caption">
             <v-col cols="4" class="py-0 my-0">
-              <span class="lightgray--text text-left">{{ this.$store.getters.pageName }}</span>
+              <span class="lightgray--text text-left">{{ pageName }}</span>
             </v-col>
             <v-col cols="4" class="text-right py-0 my-0">
               <span class="primary--text"> 

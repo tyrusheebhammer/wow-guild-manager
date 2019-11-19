@@ -32,6 +32,9 @@
 import { mapState } from 'vuex';
 export default {
   name: 'GuildSelect',
+  created: function() {
+    this.$store.commit('updatePageName', "Guild Select")
+  },
   computed: mapState(['guilds']),
 }
 </script>
