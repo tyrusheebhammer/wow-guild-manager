@@ -29,7 +29,9 @@
 
 <script>
 /* eslint no-console: 0 */  // --> OFF
+
 export default {
+  
   name: 'Login',
   methods: {
     login() {
@@ -44,7 +46,24 @@ export default {
     clientId() {
       return this.$store.state.clientId
     }
-  }, 
+  },
+  created() {
+    if(this.$store.getters.userId) this.$router.push('/guildSelect')
+    let query = this.$route.query
+    if(
+      query.access_token && 
+      query.token_type && 
+      query.expires_in
+    ) {
+      console.log('just got back from auth yo')
+      this.$store.commit('saveToken', {
+        access_token: query.access_token,
+        token_type: query.token_type,
+        expires_in: query.expires_in
+      })
+      this.$router.push({name: 'LoggingIn'})
+    }
+  }
 }
 </script>
 

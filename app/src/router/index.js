@@ -9,36 +9,37 @@ import Polls from '@/views/Polls.vue'
 import Members from '@/views/Members.vue'
 import Calendar from '@/views/Calendar.vue'
 import Member from '@/views/Member.vue'
+import LoggingIn from '@/views/LoggingIn.vue'
+
 
 Vue.use(Router)
 
 
 export default new Router({
-  routes: [
+  routes: [{
+      path: '/loggingIn',
+      name: 'LoggingIn',
+      component: LoggingIn
+    },
     {
       path: '/helloworld',
       name: 'HelloWorld',
       component: HelloWorld
     },
     {
-      path: '/home',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/login',
+      path: '',
       name: 'Login',
       component: Login
     },
     {
-      path: '/guildselect',
+      path: '/guildSelect',
       name: 'GuildSelect',
       component: GuildSelect
     },
     {
-      path: '/',
-      name: 'Login',
-      component: Login
+      path: '/home',
+      name: 'Home',
+      component: Home
     },
     {
       path: '/polls',
@@ -68,5 +69,3 @@ export default new Router({
   ],
   mode: 'history'
 })
-
-

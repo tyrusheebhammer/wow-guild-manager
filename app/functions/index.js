@@ -1,3 +1,5 @@
+/* eslint no-console: 0 */  // --> OFF
+/* eslint no-unused-vars: 0 */  // --> OFF
 const functions = require('firebase-functions')
 const Promise = require("bluebird")
 const cors = require('cors')({origin: true})
@@ -27,6 +29,10 @@ const params = {
     'https://us-central1-wow-guild-manager.cloudfunctions.net/auth'
     :
     'http://localhost:5000/wow-guild-manager/us-central1/auth',
+  host: !test ? 
+    'https://wow-guild-manager.web.app'
+    : 
+    'http://localhost:8080',
   get blob() {
     return crypto.randomBytes(20).toString('hex')
   }
@@ -67,12 +73,20 @@ exports.auth = functions.https.onRequest(async (req, res) => {
     + `&redirect_uri=${params.redirect_uri}`
     + `&client_secret=${credentials.client.secret}`
   ).then(response => {
-    return cors(req, res, () => {
-      res.send(response.data)
-    })
+    console.log('got data')
+    const Location = 
+      `${params.host}/`
+      + `?access_token=${response.data.access_token}`
+      + `&token_type=${response.data.token_type}`
+      + `&expires_in=${response.data.expires_in}` 
+      console.log('got dat data boi')
+      res.writeHead(302, {Location: Location})
+      res.end()
   }).catch((error) => {
     return cors(req, res, () => {
-      res.send({error})
+      console.log('error')
+      res.writeHead(400, {Location: params.host})
+      res.end()
     })
   })
 })

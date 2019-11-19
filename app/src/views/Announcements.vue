@@ -285,14 +285,16 @@
 /* eslint-disable */
 import { db } from "../main";
 import AnnouncementCard from "@/components/AnnouncementCard.vue";
+import { mapState } from 'vuex';
 export default {
   name: "Announcements",
   created: function () {
     this.$store.state.pageName = "Announcements";
   },
   computed: {
+    ...mapState(['userId']),
     userIsCreator: function() {
-      return this.$store.state.clientId === this.announcements[this.selected].creator;
+      return this.userId === this.announcements[this.selected].creator;
     }
   },
   methods: {

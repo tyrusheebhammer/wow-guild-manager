@@ -2,13 +2,12 @@
   <v-app>
     <v-app-bar app class="black">
       <v-row>
-        <v-col cols="2" >
+        <v-col cols="2">
           <v-row class="mt-2">
             <router-link to="/" class="no-underline">
               <v-img
                 src="@/assets/Frame.svg"
                 lazy-src="https://picsum.photos/id/11/10/6"
-
                 width="60"
                 height="35"
               ></v-img>
@@ -21,13 +20,11 @@
           </v-row>
           <v-row dense justify="space-between" class="mx-0 caption">
             <v-col cols="4" class="py-0 my-0">
-              <span class="lightgray--text text-left">
-                {{ this.$store.state.pageName }}
-              </span>
+              <span class="lightgray--text text-left">{{ this.$store.getters.pageName }}</span>
             </v-col>
             <v-col cols="4" class="text-right py-0 my-0">
-              <span class="primary--text">
-                <router-link to="/helloworld" class="no-underline">Endocry</router-link>
+              <span class="primary--text"> 
+                {{loggedInUser}}
               </span>
             </v-col>
           </v-row>
@@ -41,11 +38,22 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
+  /* eslint no-console: 0 */ // --> OFF
+  /* eslint no-unused-vars: 0 */ // --> OFF
   name: "App",
   data: () => ({
     //
-  })
+  }),
+  computed: {
+    ...mapState(['user', 'pageName']),
+    loggedInUser() {
+      if(this.user) return this.user.battletag
+      return 'Log in'
+    }
+  },
+  methods: {},
 };
 </script>
 
