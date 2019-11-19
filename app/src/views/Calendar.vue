@@ -339,8 +339,8 @@ export default {
       edit: false,
       del: false,
       addEvent: false,
-      titleInput: "titleInput",
-      descInput: "descInput",
+      titleInput: "",
+      descInput: "",
       titleInputEdit: "",
       descInputEdit: "",
       startDate: "",
@@ -350,6 +350,7 @@ export default {
       menuEnd: false,
       menuStart: false,
       selected: null,
+      title: "",
       user: "RLZ7m6MTuoAmZfuMHA7W",
       events: []
     };
