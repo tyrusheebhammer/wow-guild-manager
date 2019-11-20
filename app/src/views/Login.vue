@@ -47,6 +47,7 @@ export default {
     }
   },
   created() {
+    this.$store.commit('updatePageName', "Login")
     if(this.$store.getters.userId) this.$router.push('/guildSelect')
     let query = this.$route.query
     if(

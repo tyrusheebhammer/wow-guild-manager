@@ -141,6 +141,10 @@ export default new Vuex.Store({
     updateGuilds(state, guilds) {
       state.guilds = guilds
     },
+    updatePageName(state, pageName) {
+      console.log(pageName);
+      state.pageName = pageName
+    },
     setUser(state, user) {
       state.user = Object.assign({}, state.user, user)
     },

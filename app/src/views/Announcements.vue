@@ -297,13 +297,13 @@ import { mapState } from 'vuex';
 export default {
   name: "Announcements",
   created: function() {
-    this.$store.state.pageName = "Announcements";
+    this.$store.commit('updatePageName', "Announcements")
   },
   computed: {
     ...mapState(['userId']),
     userIsCreator: function() {
       return (
-        this.$store.state.clientId === this.announcements[this.selected].creator
+        userId === this.announcements[this.selected].creator
       );
     }
   },
@@ -352,7 +352,8 @@ export default {
           creator: this.user,
           desc: this.descInput,
           title: this.titleInput,
-          creator: this.$store.state.clientId
+          creator: userId
+
         });
       this.addAnnouncement = false;
     }

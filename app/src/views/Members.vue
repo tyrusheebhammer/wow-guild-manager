@@ -29,6 +29,9 @@ import { db } from '../main'
 import MemberCard from '@/components/MemberCard.vue';
 export default {
   name: 'Members',
+  created: function() {
+    this.$store.commit('updatePageName', "Members")
+  },
   data() {
     return {
       members: []
