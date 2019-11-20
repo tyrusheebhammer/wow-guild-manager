@@ -309,7 +309,6 @@ export default {
   },
   methods: {
     showModal(id, user) {
-      console.log("id is ", id);
       this.dialog = true;
       this.selected = id;
       this.user = "Megan";

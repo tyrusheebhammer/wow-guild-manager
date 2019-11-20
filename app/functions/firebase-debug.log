@@ -1,585 +1,141 @@
-[debug] [2019-11-19T03:02:29.107Z] ----------------------------------------------------------------------
-[debug] [2019-11-19T03:02:29.109Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only functions
-[debug] [2019-11-19T03:02:29.109Z] CLI Version:   7.6.2
-[debug] [2019-11-19T03:02:29.109Z] Platform:      darwin
-[debug] [2019-11-19T03:02:29.109Z] Node Version:  v10.15.1
-[debug] [2019-11-19T03:02:29.110Z] Time:          Mon Nov 18 2019 22:02:29 GMT-0500 (Eastern Standard Time)
-[debug] [2019-11-19T03:02:29.110Z] ----------------------------------------------------------------------
-[debug] [2019-11-19T03:02:29.110Z] 
-[debug] [2019-11-19T03:02:29.116Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2019-11-19T03:02:29.117Z] > authorizing via signed-in user
-[debug] [2019-11-19T03:02:29.117Z] [iam] checking project wow-guild-manager for permissions ["firebase.projects.get"]
-[debug] [2019-11-19T03:02:29.118Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/wow-guild-manager:testIamPermissions  
+[debug] [2019-11-20T01:42:38.151Z] ----------------------------------------------------------------------
+[debug] [2019-11-20T01:42:38.153Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2019-11-20T01:42:38.153Z] CLI Version:   7.6.2
+[debug] [2019-11-20T01:42:38.153Z] Platform:      darwin
+[debug] [2019-11-20T01:42:38.153Z] Node Version:  v10.15.1
+[debug] [2019-11-20T01:42:38.154Z] Time:          Tue Nov 19 2019 20:42:38 GMT-0500 (Eastern Standard Time)
+[debug] [2019-11-20T01:42:38.154Z] ----------------------------------------------------------------------
+[debug] [2019-11-20T01:42:38.154Z] 
+[debug] [2019-11-20T01:42:38.166Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-11-20T01:42:38.166Z] > authorizing via signed-in user
+[debug] [2019-11-20T01:42:38.166Z] [iam] checking project wow-guild-manager for permissions ["firebase.projects.get"]
+[debug] [2019-11-20T01:42:38.168Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/wow-guild-manager:testIamPermissions  
 
-[debug] [2019-11-19T03:02:29.429Z] <<< HTTP RESPONSE 200
-[debug] [2019-11-19T03:02:29.431Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/wow-guild-manager  
+[debug] [2019-11-20T01:42:38.467Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-20T01:42:38.468Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/wow-guild-manager  
  
-[debug] [2019-11-19T03:02:29.722Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-20T01:42:38.713Z] <<< HTTP RESPONSE 200
 [info] ✔  functions: Using node@10 from host.
 [info] ✔  functions: Emulator started at http://localhost:5000
 [info] i  functions: Watching "/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions" for Cloud Functions...
-[debug] [2019-11-19T03:02:30.000Z] [worker-~diagnostic~-260a9cfe-6843-4bc2-95e3-597fc6497a0b]: BUSY
-[debug] [2019-11-19T03:02:30.238Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
-[debug] [2019-11-19T03:02:30.240Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
-[debug] [2019-11-19T03:02:30.244Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
-[debug] [2019-11-19T03:02:30.245Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:02:30.246Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T01:42:39.005Z] [worker-~diagnostic~-f06ed5c8-0295-44e3-bcc7-2caa0eb16733]: BUSY
+[debug] [2019-11-20T01:42:39.424Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
+[debug] [2019-11-20T01:42:39.429Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-11-20T01:42:39.430Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-11-20T01:42:39.431Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T01:42:39.432Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
 [info] ✔  functions[oauthToken]: http function initialized (http://localhost:5000/wow-guild-manager/us-central1/oauthToken).
 [info] ✔  functions[auth]: http function initialized (http://localhost:5000/wow-guild-manager/us-central1/auth).
 [info] ✔  functions[client]: http function initialized (http://localhost:5000/wow-guild-manager/us-central1/client).
-[debug] [2019-11-19T03:02:30.571Z] [worker-~diagnostic~-260a9cfe-6843-4bc2-95e3-597fc6497a0b]: exited
-[debug] [2019-11-19T03:02:30.571Z] [worker-~diagnostic~-260a9cfe-6843-4bc2-95e3-597fc6497a0b]: FINISHED
-[debug] [2019-11-19T03:03:21.427Z] File /Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/index.js changed, reloading triggers
-[debug] [2019-11-19T03:03:22.434Z] [worker-~diagnostic~-b99bc55e-35bd-444d-9421-ff3b4ea9fd7b]: BUSY
-[debug] [2019-11-19T03:03:22.708Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
-[debug] [2019-11-19T03:03:22.712Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
-[debug] [2019-11-19T03:03:22.714Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
-[debug] [2019-11-19T03:03:22.715Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:03:22.715Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:03:22.982Z] [worker-~diagnostic~-b99bc55e-35bd-444d-9421-ff3b4ea9fd7b]: exited
-[debug] [2019-11-19T03:03:22.982Z] [worker-~diagnostic~-b99bc55e-35bd-444d-9421-ff3b4ea9fd7b]: FINISHED
-[debug] [2019-11-19T03:03:53.932Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=US1IPN5TSBFX8Z8JBUFFRTCWYEJ9PWKTQI&state=f4797776acee71dcb324ef9382453272ec953499 --> auth
-[debug] [2019-11-19T03:03:53.936Z] [worker-auth-1b8a6a3c-576f-4de5-85d7-728ae24cf319]: BUSY
-[debug] [2019-11-19T03:03:54.177Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
-[debug] [2019-11-19T03:03:54.179Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
-[debug] [2019-11-19T03:03:54.181Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
-[debug] [2019-11-19T03:03:54.181Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:03:54.182Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:03:54.498Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
+[info] ✔  functions[blizzardApiGet]: http function initialized (http://localhost:5000/wow-guild-manager/us-central1/blizzardApiGet).
+[debug] [2019-11-20T01:42:40.136Z] [worker-~diagnostic~-f06ed5c8-0295-44e3-bcc7-2caa0eb16733]: exited
+[debug] [2019-11-20T01:42:40.136Z] [worker-~diagnostic~-f06ed5c8-0295-44e3-bcc7-2caa0eb16733]: FINISHED
+[debug] [2019-11-20T01:43:30.556Z] Accepted request GET /wow-guild-manager/us-central1/auth/client --> auth
+[debug] [2019-11-20T01:43:30.563Z] [worker-auth-d3ba5f13-4bcd-4e09-a131-aa84e108f5bd]: BUSY
+[debug] [2019-11-20T01:43:31.047Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
+[debug] [2019-11-20T01:43:31.049Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-11-20T01:43:31.053Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-11-20T01:43:31.054Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T01:43:31.055Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T01:43:32.559Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
 [info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T03:03:54.499Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T03:03:54.499Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T03:03:54.507Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_6933.sock"}
-[debug] [2019-11-19T03:03:54.509Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_6933.sock"}
-[debug] [2019-11-19T03:03:54.519Z] [runtime-status] Ephemeral server used! {}
-[info] >  US1IPN5TSBFX8Z8JBUFFRTCWYEJ9PWKTQI
-[debug] [2019-11-19T03:03:54.550Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-11-20T01:43:32.560Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
+[debug] [2019-11-20T01:43:32.560Z] [runtime-status] Running auth in mode HTTPS {}
+[debug] [2019-11-20T01:43:32.616Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_16428.sock"}
+[debug] [2019-11-20T01:43:32.620Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_16428.sock"}
+[debug] [2019-11-20T01:43:32.630Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-20T01:43:32.729Z] [runtime-status] Ephemeral server survived. {}
+[info] >  error
+[info] i  functions: Finished "auth" in ~1s
+[debug] [2019-11-20T01:43:34.161Z] [worker-auth-d3ba5f13-4bcd-4e09-a131-aa84e108f5bd]: IDLE
+[debug] [2019-11-20T01:46:37.073Z] File /Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/index.js changed, reloading triggers
+[debug] [2019-11-20T01:46:38.076Z] [worker-pool]: Shutting down IDLE worker (auth)
+[debug] [2019-11-20T01:46:38.081Z] [worker-~diagnostic~-f940c456-6382-4e56-8887-8717c8c970a2]: BUSY
+[debug] [2019-11-20T01:46:38.084Z] [worker-auth-d3ba5f13-4bcd-4e09-a131-aa84e108f5bd]: exited
+[debug] [2019-11-20T01:46:38.084Z] [worker-auth-d3ba5f13-4bcd-4e09-a131-aa84e108f5bd]: FINISHED
+[debug] [2019-11-20T01:46:38.414Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
+[debug] [2019-11-20T01:46:38.415Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-11-20T01:46:38.417Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-11-20T01:46:38.418Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T01:46:38.420Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T01:46:38.775Z] [worker-~diagnostic~-f940c456-6382-4e56-8887-8717c8c970a2]: exited
+[debug] [2019-11-20T01:46:38.775Z] [worker-~diagnostic~-f940c456-6382-4e56-8887-8717c8c970a2]: FINISHED
+[debug] [2019-11-20T01:47:55.035Z] Accepted request GET /wow-guild-manager/us-central1/client --> client
+[debug] [2019-11-20T01:47:55.040Z] [worker-client-e95aab4a-67e4-426b-aa59-00282da2e313]: BUSY
+[debug] [2019-11-20T01:47:55.566Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
+[debug] [2019-11-20T01:47:55.568Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-11-20T01:47:55.571Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-11-20T01:47:55.572Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T01:47:55.575Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T01:47:56.328Z] [runtime-status] Trigger "client" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "client"
+[debug] [2019-11-20T01:47:56.329Z] [runtime-status]  {"httpsTrigger":{},"name":"client","entryPoint":"client"}
+[debug] [2019-11-20T01:47:56.329Z] [runtime-status] Running client in mode HTTPS {}
+[debug] [2019-11-20T01:47:56.347Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_16492.sock"}
+[debug] [2019-11-20T01:47:56.348Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_16492.sock"}
+[debug] [2019-11-20T01:47:56.367Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-20T01:47:56.404Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "client" in ~1s
+[debug] [2019-11-20T01:47:56.411Z] [worker-client-e95aab4a-67e4-426b-aa59-00282da2e313]: IDLE
+[debug] [2019-11-20T01:47:59.164Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USD4JB85DCZY80LKPCZO1QHMWRVD47N1N3&state=6c4270d15f71634c59e6c516918464fa7fd18177 --> auth
+[debug] [2019-11-20T01:47:59.168Z] [worker-auth-ad586071-06d9-470c-913c-2dc7437feafb]: BUSY
+[debug] [2019-11-20T01:47:59.425Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
+[debug] [2019-11-20T01:47:59.427Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-11-20T01:47:59.429Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-11-20T01:47:59.430Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T01:47:59.431Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T01:47:59.723Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "auth"
+[debug] [2019-11-20T01:47:59.724Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
+[debug] [2019-11-20T01:47:59.724Z] [runtime-status] Running auth in mode HTTPS {}
+[debug] [2019-11-20T01:47:59.736Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_16494.sock"}
+[debug] [2019-11-20T01:47:59.737Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_16494.sock"}
+[debug] [2019-11-20T01:47:59.752Z] [runtime-status] Ephemeral server used! {}
+[info] >  USD4JB85DCZY80LKPCZO1QHMWRVD47N1N3
+[debug] [2019-11-20T01:47:59.784Z] [runtime-status] Ephemeral server survived. {}
 [info] >  got data
 [info] >  got dat data boi
 [info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T03:03:54.974Z] [worker-auth-1b8a6a3c-576f-4de5-85d7-728ae24cf319]: IDLE
-[debug] [2019-11-19T03:35:23.261Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USPYYSREKB8IFTVVANMMOTCF3XPKPMOYZW&state=255828799d2ebe915e1f902c67e4a8d0eafbdb3d --> auth
-[debug] [2019-11-19T03:35:23.261Z] [worker-auth-1b8a6a3c-576f-4de5-85d7-728ae24cf319]: BUSY
-[debug] [2019-11-19T03:35:23.261Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T03:35:23.262Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T03:35:23.262Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T03:35:23.263Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_6933.sock"}
-[debug] [2019-11-19T03:35:23.265Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_6933.sock"}
-[debug] [2019-11-19T03:35:23.270Z] [runtime-status] Ephemeral server used! {}
-[info] >  USPYYSREKB8IFTVVANMMOTCF3XPKPMOYZW
-[debug] [2019-11-19T03:35:23.274Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T03:35:23.727Z] [worker-auth-1b8a6a3c-576f-4de5-85d7-728ae24cf319]: IDLE
-[debug] [2019-11-19T03:41:31.310Z] File /Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/index.js changed, reloading triggers
-[debug] [2019-11-19T03:41:32.313Z] [worker-pool]: Shutting down IDLE worker (auth)
-[debug] [2019-11-19T03:41:32.319Z] [worker-~diagnostic~-e3abff63-ab7b-40ab-bea1-109efd5e83c0]: BUSY
-[debug] [2019-11-19T03:41:32.321Z] [worker-auth-1b8a6a3c-576f-4de5-85d7-728ae24cf319]: exited
-[debug] [2019-11-19T03:41:32.321Z] [worker-auth-1b8a6a3c-576f-4de5-85d7-728ae24cf319]: FINISHED
-[debug] [2019-11-19T03:41:32.576Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
-[debug] [2019-11-19T03:41:32.577Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
-[debug] [2019-11-19T03:41:32.579Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
-[debug] [2019-11-19T03:41:32.580Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:41:32.580Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:41:32.839Z] [worker-~diagnostic~-e3abff63-ab7b-40ab-bea1-109efd5e83c0]: exited
-[debug] [2019-11-19T03:41:32.839Z] [worker-~diagnostic~-e3abff63-ab7b-40ab-bea1-109efd5e83c0]: FINISHED
-[debug] [2019-11-19T03:41:52.541Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USW952GSCORSZLLFZOPDYC5RVU2QNS1KLU&state=899f75b51a40fa8a0a164fd6159cb9b4a647d224 --> auth
-[debug] [2019-11-19T03:41:52.545Z] [worker-auth-08d7c205-8087-4cc5-9476-ba38e03066cf]: BUSY
-[debug] [2019-11-19T03:41:52.798Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
-[debug] [2019-11-19T03:41:52.800Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
-[debug] [2019-11-19T03:41:52.802Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
-[debug] [2019-11-19T03:41:52.803Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:41:52.803Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:41:53.072Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T03:41:53.073Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T03:41:53.073Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T03:41:53.080Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7296.sock"}
-[debug] [2019-11-19T03:41:53.080Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7296.sock"}
-[debug] [2019-11-19T03:41:53.088Z] [runtime-status] Ephemeral server used! {}
-[info] >  USW952GSCORSZLLFZOPDYC5RVU2QNS1KLU
-[debug] [2019-11-19T03:41:53.116Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T03:41:53.628Z] [worker-auth-08d7c205-8087-4cc5-9476-ba38e03066cf]: IDLE
-[debug] [2019-11-19T03:43:39.109Z] File /Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/index.js changed, reloading triggers
-[debug] [2019-11-19T03:43:40.113Z] [worker-pool]: Shutting down IDLE worker (auth)
-[debug] [2019-11-19T03:43:40.119Z] [worker-~diagnostic~-40b775d4-731d-4587-b5cd-d92423a0729f]: BUSY
-[debug] [2019-11-19T03:43:40.121Z] [worker-auth-08d7c205-8087-4cc5-9476-ba38e03066cf]: exited
-[debug] [2019-11-19T03:43:40.121Z] [worker-auth-08d7c205-8087-4cc5-9476-ba38e03066cf]: FINISHED
-[debug] [2019-11-19T03:43:40.374Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
-[debug] [2019-11-19T03:43:40.375Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
-[debug] [2019-11-19T03:43:40.377Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
-[debug] [2019-11-19T03:43:40.378Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:43:40.379Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:43:40.644Z] [worker-~diagnostic~-40b775d4-731d-4587-b5cd-d92423a0729f]: exited
-[debug] [2019-11-19T03:43:40.644Z] [worker-~diagnostic~-40b775d4-731d-4587-b5cd-d92423a0729f]: FINISHED
-[debug] [2019-11-19T03:48:32.140Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USVKJ37EUW0VBGSUIWSXJVFACSIFRKFPZY&state=627e13d0907d03bbdaac6b2c5e2a01d1ba31649d --> auth
-[debug] [2019-11-19T03:48:32.144Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T03:48:32.381Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
-[debug] [2019-11-19T03:48:32.383Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
-[debug] [2019-11-19T03:48:32.384Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
-[debug] [2019-11-19T03:48:32.385Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:48:32.386Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T03:48:32.650Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T03:48:32.651Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T03:48:32.651Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T03:48:32.657Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T03:48:32.657Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T03:48:32.666Z] [runtime-status] Ephemeral server used! {}
-[info] >  USVKJ37EUW0VBGSUIWSXJVFACSIFRKFPZY
-[debug] [2019-11-19T03:48:32.699Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T03:48:33.683Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T03:50:06.704Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USFBEA3YVLPBX1FR3YA7TSDEQOUK0QMFDG&state=4a7eeda5bf7d7b62ff07c6db433c595cf01724d3 --> auth
-[debug] [2019-11-19T03:50:06.704Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T03:50:06.704Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T03:50:06.705Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T03:50:06.705Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T03:50:06.706Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T03:50:06.706Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T03:50:06.711Z] [runtime-status] Ephemeral server used! {}
-[info] >  USFBEA3YVLPBX1FR3YA7TSDEQOUK0QMFDG
-[debug] [2019-11-19T03:50:06.714Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T03:50:07.110Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T04:38:43.961Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=US6CNUXTPMJ9OOY3OXHLODARAJNUV8HF2O&state=89193e013cc502e6779c5a97b9d7977697adea21 --> auth
-[debug] [2019-11-19T04:38:43.968Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T04:38:43.977Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T04:38:43.980Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T04:38:43.980Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T04:38:43.987Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T04:38:43.993Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T04:38:44.014Z] [runtime-status] Ephemeral server used! {}
-[info] >  US6CNUXTPMJ9OOY3OXHLODARAJNUV8HF2O
-[debug] [2019-11-19T04:38:44.018Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T04:38:44.450Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T04:43:19.168Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USYNLFRRCPEWW82HMFZV35LSOWXZ8RJJEV&state=8fa07fc3885b4a5e144e3b457791a9828398625b --> auth
-[debug] [2019-11-19T04:43:19.169Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T04:43:19.170Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T04:43:19.170Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T04:43:19.171Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T04:43:19.171Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T04:43:19.172Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T04:43:19.177Z] [runtime-status] Ephemeral server used! {}
-[info] >  USYNLFRRCPEWW82HMFZV35LSOWXZ8RJJEV
-[debug] [2019-11-19T04:43:19.177Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T04:43:19.639Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T05:58:07.204Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USPNAXBYOIGDDFXYUKNFRCLCOTMFHF4UFX&state=399279db026bd9b39b0cc3e326b0bcc431b03749 --> auth
-[debug] [2019-11-19T05:58:07.204Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T05:58:07.205Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T05:58:07.205Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T05:58:07.205Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T05:58:07.205Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T05:58:07.206Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T05:58:07.211Z] [runtime-status] Ephemeral server used! {}
-[info] >  USPNAXBYOIGDDFXYUKNFRCLCOTMFHF4UFX
-[debug] [2019-11-19T05:58:07.213Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T05:58:07.690Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T06:02:02.943Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USHLZ2QMD8SVX0YWKU7YYHANIDMXGXI1ZO&state=b015624bbc6041273126732e642b1a1c41c514e1 --> auth
-[debug] [2019-11-19T06:02:02.943Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T06:02:02.944Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T06:02:02.944Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T06:02:02.944Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T06:02:02.946Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:02:02.946Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:02:02.949Z] [runtime-status] Ephemeral server used! {}
-[info] >  USHLZ2QMD8SVX0YWKU7YYHANIDMXGXI1ZO
-[debug] [2019-11-19T06:02:02.950Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T06:02:03.369Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T06:02:21.725Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USSV74DJADJFTWFI49Y3QVSA1F3UCOAYDK&state=6a78f998fd89915e6322b3a2a2f0b40a9a8bd621 --> auth
-[debug] [2019-11-19T06:02:21.725Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T06:02:21.726Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T06:02:21.726Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T06:02:21.726Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T06:02:21.729Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:02:21.729Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:02:21.734Z] [runtime-status] Ephemeral server used! {}
-[info] >  USSV74DJADJFTWFI49Y3QVSA1F3UCOAYDK
-[debug] [2019-11-19T06:02:21.736Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T06:02:22.040Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T06:03:55.117Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USJAGFV1QM9TRRDUW4GWTOY38JZRAAY55L&state=31d68c37cc6225d72b890bac6dfb289c8302c06c --> auth
-[debug] [2019-11-19T06:03:55.117Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T06:03:55.118Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T06:03:55.118Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T06:03:55.118Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T06:03:55.118Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:03:55.119Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:03:55.122Z] [runtime-status] Ephemeral server used! {}
-[info] >  USJAGFV1QM9TRRDUW4GWTOY38JZRAAY55L
-[debug] [2019-11-19T06:03:55.123Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T06:03:55.518Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T06:07:07.631Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USSXQ59IHQ76R34T3URO8X7TUGNCRGE4SN&state=45d8890d256d6c1e028b5a5a5c05fe907758d6b3 --> auth
-[debug] [2019-11-19T06:07:07.632Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T06:07:07.632Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T06:07:07.632Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T06:07:07.632Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T06:07:07.633Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:07:07.633Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:07:07.636Z] [runtime-status] Ephemeral server used! {}
-[info] >  USSXQ59IHQ76R34T3URO8X7TUGNCRGE4SN
-[debug] [2019-11-19T06:07:07.637Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T06:07:08.059Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T06:08:13.115Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USLU1VC33FLWMMQGSINHO6UNWISXVJ2EPD&state=07c75ce3f4194fdd2ac8c8f66c6b1792a682da16 --> auth
-[debug] [2019-11-19T06:08:13.115Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T06:08:13.116Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T06:08:13.116Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T06:08:13.116Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T06:08:13.117Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:08:13.117Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:08:13.119Z] [runtime-status] Ephemeral server used! {}
-[info] >  USLU1VC33FLWMMQGSINHO6UNWISXVJ2EPD
-[debug] [2019-11-19T06:08:13.120Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T06:08:13.599Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T06:10:59.642Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USU9QRMXTUEELFURBWSMCX96GKTJFQK3K8&state=b83af545de7927eef6c106cc50cfe5f4d9e524f9 --> auth
-[debug] [2019-11-19T06:10:59.642Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T06:10:59.643Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T06:10:59.643Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T06:10:59.643Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T06:10:59.643Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:10:59.644Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:10:59.648Z] [runtime-status] Ephemeral server used! {}
-[info] >  USU9QRMXTUEELFURBWSMCX96GKTJFQK3K8
-[debug] [2019-11-19T06:10:59.649Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T06:11:00.112Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T06:12:25.872Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USPTHCBTA3F7UAFBHF0FPSRMZKCECSZZCL&state=edad03cb491e557ad07f17315fdf160faa17ebe9 --> auth
-[debug] [2019-11-19T06:12:25.873Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T06:12:25.873Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T06:12:25.873Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T06:12:25.873Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T06:12:25.874Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:12:25.874Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:12:25.878Z] [runtime-status] Ephemeral server used! {}
-[info] >  USPTHCBTA3F7UAFBHF0FPSRMZKCECSZZCL
-[debug] [2019-11-19T06:12:25.884Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T06:12:26.280Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T06:13:59.006Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USNE2ZRPX8TWZ1MUEFRRJ3LA207ELN7YGK&state=204eee870884ec5dfe72e1c12a070c08bd756aff --> auth
-[debug] [2019-11-19T06:13:59.006Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: BUSY
-[debug] [2019-11-19T06:13:59.007Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T06:13:59.007Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T06:13:59.007Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T06:13:59.008Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:13:59.008Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_7361.sock"}
-[debug] [2019-11-19T06:13:59.011Z] [runtime-status] Ephemeral server used! {}
-[info] >  USNE2ZRPX8TWZ1MUEFRRJ3LA207ELN7YGK
-[debug] [2019-11-19T06:13:59.013Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T06:13:59.432Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: IDLE
-[debug] [2019-11-19T06:31:37.079Z] File /Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/index.js changed, reloading triggers
-[debug] [2019-11-19T06:31:38.084Z] [worker-pool]: Shutting down IDLE worker (auth)
-[debug] [2019-11-19T06:31:38.092Z] [worker-~diagnostic~-391c68b1-ae07-4029-aa81-84fd55aefa71]: BUSY
-[debug] [2019-11-19T06:31:38.094Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: exited
-[debug] [2019-11-19T06:31:38.094Z] [worker-auth-2c2f614f-1406-40a7-b7ab-67f345fbb0bb]: FINISHED
-[debug] [2019-11-19T06:31:38.589Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
-[debug] [2019-11-19T06:31:38.592Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
-[debug] [2019-11-19T06:31:38.593Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
-[debug] [2019-11-19T06:31:38.593Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T06:31:38.594Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T06:31:39.033Z] [worker-~diagnostic~-391c68b1-ae07-4029-aa81-84fd55aefa71]: exited
-[debug] [2019-11-19T06:31:39.033Z] [worker-~diagnostic~-391c68b1-ae07-4029-aa81-84fd55aefa71]: FINISHED
-[debug] [2019-11-19T06:32:05.469Z] File /Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/index.js changed, reloading triggers
-[debug] [2019-11-19T06:32:06.476Z] [worker-~diagnostic~-4cefd9af-1154-4ee9-b958-9160132566e6]: BUSY
-[debug] [2019-11-19T06:32:06.718Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
-[debug] [2019-11-19T06:32:06.720Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
-[debug] [2019-11-19T06:32:06.722Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
-[debug] [2019-11-19T06:32:06.723Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T06:32:06.724Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T06:32:06.996Z] [worker-~diagnostic~-4cefd9af-1154-4ee9-b958-9160132566e6]: exited
-[debug] [2019-11-19T06:32:06.996Z] [worker-~diagnostic~-4cefd9af-1154-4ee9-b958-9160132566e6]: FINISHED
-[debug] [2019-11-19T07:19:12.874Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USNGGNSP5KA6HZHINH0J8X3E3IDCJC5ZFS&state=76f14091396997641c283813c7115ba3c1eb5008 --> auth
-[debug] [2019-11-19T07:19:12.877Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T07:19:13.097Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
-[debug] [2019-11-19T07:19:13.098Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
-[debug] [2019-11-19T07:19:13.100Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
-[debug] [2019-11-19T07:19:13.101Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T07:19:13.102Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-11-19T07:19:13.357Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T07:19:13.357Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T07:19:13.357Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T07:19:13.364Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T07:19:13.365Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T07:19:13.372Z] [runtime-status] Ephemeral server used! {}
-[info] >  USNGGNSP5KA6HZHINH0J8X3E3IDCJC5ZFS
-[debug] [2019-11-19T07:19:13.396Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T07:19:13.829Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T09:24:05.513Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USRKD61L1B0RFHW55B1GMBMEF7HPC7WJR6&state=fec49ea482a0ba3431d78b6b3de017d0a125e9b5 --> auth
-[debug] [2019-11-19T09:24:05.514Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T09:24:05.519Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T09:24:05.520Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T09:24:05.520Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T09:24:05.525Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T09:24:05.528Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T09:24:05.542Z] [runtime-status] Ephemeral server used! {}
-[info] >  USRKD61L1B0RFHW55B1GMBMEF7HPC7WJR6
-[debug] [2019-11-19T09:24:05.550Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T09:24:06.003Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T09:25:17.431Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USKCCFF90G4ZUKORHWINUHZCRE0Y3APYCJ&state=781f2c37bde7c546f294e7dcf3c33260f7647e40 --> auth
-[debug] [2019-11-19T09:25:17.431Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T09:25:17.433Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T09:25:17.433Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T09:25:17.433Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T09:25:17.434Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T09:25:17.435Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T09:25:17.437Z] [runtime-status] Ephemeral server used! {}
-[info] >  USKCCFF90G4ZUKORHWINUHZCRE0Y3APYCJ
-[debug] [2019-11-19T09:25:17.438Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T09:25:17.835Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T09:29:51.200Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USOYEELLJKBPKKNRUWNLRXIDE1OF9ZOKMR&state=6fb8c0b514201b020ecc5042671bb507f282994f --> auth
-[debug] [2019-11-19T09:29:51.200Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T09:29:51.201Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T09:29:51.201Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T09:29:51.201Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T09:29:51.202Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T09:29:51.203Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T09:29:51.206Z] [runtime-status] Ephemeral server used! {}
-[info] >  USOYEELLJKBPKKNRUWNLRXIDE1OF9ZOKMR
-[debug] [2019-11-19T09:29:51.207Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T09:29:51.631Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T09:30:40.857Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USLLRTGOT4MQESUBCRDBPQKYVWYMZ4EODI&state=fcdaa7e9c191cd10046aa9ca100eb1d79db2639e --> auth
-[debug] [2019-11-19T09:30:40.857Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T09:30:40.860Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T09:30:40.860Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T09:30:40.861Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T09:30:40.862Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T09:30:40.865Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T09:30:40.869Z] [runtime-status] Ephemeral server used! {}
-[info] >  USLLRTGOT4MQESUBCRDBPQKYVWYMZ4EODI
-[debug] [2019-11-19T09:30:40.870Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T09:30:41.259Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T09:31:19.433Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USGLZ4ID1BNYBT4NOLK5JI58LA1HOFB6SN&state=425e1d94ffa79e964e479b6bc5ed6e9bb08fd9d0 --> auth
-[debug] [2019-11-19T09:31:19.434Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T09:31:19.434Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T09:31:19.434Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T09:31:19.434Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T09:31:19.436Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T09:31:19.437Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T09:31:19.439Z] [runtime-status] Ephemeral server used! {}
-[info] >  USGLZ4ID1BNYBT4NOLK5JI58LA1HOFB6SN
-[debug] [2019-11-19T09:31:19.441Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T09:31:19.839Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T10:09:58.518Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USZR1OETHJAX8EPU3BXLGNOZ7IJFNITRRN&state=eceedd06eca0bac4f8e317c2a8b99cd9bd96d45f --> auth
-[debug] [2019-11-19T10:09:58.518Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T10:09:58.519Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T10:09:58.520Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T10:09:58.520Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T10:09:58.521Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T10:09:58.522Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T10:09:58.524Z] [runtime-status] Ephemeral server used! {}
-[info] >  USZR1OETHJAX8EPU3BXLGNOZ7IJFNITRRN
-[debug] [2019-11-19T10:09:58.526Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T10:09:59.022Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T11:33:22.693Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USUVTKGOWXTSH8YLJYMXZ9E897HFYUEORC&state=a036087abb63f739e97ef44998b0e900b8fe034e --> auth
-[debug] [2019-11-19T11:33:22.695Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T11:33:22.699Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T11:33:22.707Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T11:33:22.707Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T11:33:22.711Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T11:33:22.716Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T11:33:22.723Z] [runtime-status] Ephemeral server used! {}
-[info] >  USUVTKGOWXTSH8YLJYMXZ9E897HFYUEORC
-[debug] [2019-11-19T11:33:22.736Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T11:33:24.069Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T11:49:08.245Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USBI6THQTIWHIVPQBHJ7GJMDN58L5WJSPF&state=503bd1d505eb29889aeee5a2a61bcd859479d170 --> auth
-[debug] [2019-11-19T11:49:08.245Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T11:49:08.246Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T11:49:08.246Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T11:49:08.247Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T11:49:08.247Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T11:49:08.249Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T11:49:08.254Z] [runtime-status] Ephemeral server used! {}
-[info] >  USBI6THQTIWHIVPQBHJ7GJMDN58L5WJSPF
-[debug] [2019-11-19T11:49:08.255Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T11:49:08.697Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T11:52:17.009Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USUBGMK5ZVCKD63OR6WRG6S5Z09MPJAP3F&state=3a1000a03227be7657d3e306810ab82d89695c98 --> auth
-[debug] [2019-11-19T11:52:17.009Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T11:52:17.011Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T11:52:17.013Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T11:52:17.013Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T11:52:17.013Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T11:52:17.014Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T11:52:17.016Z] [runtime-status] Ephemeral server used! {}
-[info] >  USUBGMK5ZVCKD63OR6WRG6S5Z09MPJAP3F
-[debug] [2019-11-19T11:52:17.019Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T11:52:17.449Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T12:01:45.143Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USYAZOUG0PKNBF0KE40NWZI2R8EF5VRXC4&state=0bc1f4e9dad480af6c542245fef9f14424d970f3 --> auth
-[debug] [2019-11-19T12:01:45.143Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T12:01:45.144Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T12:01:45.147Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T12:01:45.147Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T12:01:45.147Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T12:01:45.148Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T12:01:45.150Z] [runtime-status] Ephemeral server used! {}
-[info] >  USYAZOUG0PKNBF0KE40NWZI2R8EF5VRXC4
-[debug] [2019-11-19T12:01:45.152Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T12:01:45.681Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T12:23:04.401Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=USDA49EDDCGLLAA7DURMHO39K8GIF9F6HI&state=e797bdf9e9e0bcb01c775377ea7d8f89d2778976 --> auth
-[debug] [2019-11-19T12:23:04.401Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T12:23:04.401Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T12:23:04.404Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T12:23:04.404Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T12:23:04.405Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T12:23:04.405Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T12:23:04.407Z] [runtime-status] Ephemeral server used! {}
-[info] >  USDA49EDDCGLLAA7DURMHO39K8GIF9F6HI
-[debug] [2019-11-19T12:23:04.425Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T12:23:04.902Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T12:29:07.546Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=US5BIQ1HRTYH6SDTGKTTRZMXXQMIEM0ZVR&state=2d7e48f1bdac48d83dc5267819dfff5e4b15849d --> auth
-[debug] [2019-11-19T12:29:07.546Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T12:29:07.548Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T12:29:07.551Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T12:29:07.551Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T12:29:07.551Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T12:29:07.551Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T12:29:07.553Z] [runtime-status] Ephemeral server used! {}
-[info] >  US5BIQ1HRTYH6SDTGKTTRZMXXQMIEM0ZVR
-[debug] [2019-11-19T12:29:07.555Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T12:29:07.985Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T12:35:10.562Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=US1MQTNFE5TYBALTODNBPC5N6ADPJLMIGP&state=3dbee829d3901669768d3c8659f27e2b0a1fd4a1 --> auth
-[debug] [2019-11-19T12:35:10.563Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T12:35:10.563Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T12:35:10.565Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T12:35:10.566Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T12:35:10.566Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T12:35:10.567Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T12:35:10.571Z] [runtime-status] Ephemeral server used! {}
-[info] >  US1MQTNFE5TYBALTODNBPC5N6ADPJLMIGP
-[debug] [2019-11-19T12:35:10.574Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T12:35:11.002Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T12:42:32.904Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=US32304ZOEHB30UMQW6UUY3HGWO4DMEOIB&state=3b92ac67f1f046723bfc693986cc26babbae00e4 --> auth
-[debug] [2019-11-19T12:42:32.904Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T12:42:32.904Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T12:42:32.905Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T12:42:32.905Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T12:42:32.908Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T12:42:32.908Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T12:42:32.910Z] [runtime-status] Ephemeral server used! {}
-[info] >  US32304ZOEHB30UMQW6UUY3HGWO4DMEOIB
-[debug] [2019-11-19T12:42:32.912Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T12:42:33.354Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
-[debug] [2019-11-19T12:45:45.121Z] Accepted request GET /wow-guild-manager/us-central1/auth?code=US9BLVWSMUCX18ZOVWR31AEJISXEIMGFA2&state=3b6102004114788f3611f60ceb489afbfb94525d --> auth
-[debug] [2019-11-19T12:45:45.121Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: BUSY
-[debug] [2019-11-19T12:45:45.122Z] [runtime-status] Trigger "auth" has been found, beginning invocation! {}
-[info] i  functions: Beginning execution of "auth"
-[debug] [2019-11-19T12:45:45.122Z] [runtime-status]  {"httpsTrigger":{},"name":"auth","entryPoint":"auth"}
-[debug] [2019-11-19T12:45:45.122Z] [runtime-status] Running auth in mode HTTPS {}
-[debug] [2019-11-19T12:45:45.123Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T12:45:45.123Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_8618.sock"}
-[debug] [2019-11-19T12:45:45.125Z] [runtime-status] Ephemeral server used! {}
-[info] >  US9BLVWSMUCX18ZOVWR31AEJISXEIMGFA2
-[debug] [2019-11-19T12:45:45.127Z] [runtime-status] Ephemeral server survived. {}
-[info] >  got data
-[info] >  got dat data boi
-[info] i  functions: Finished "auth" in ~1s
-[debug] [2019-11-19T12:45:46.547Z] [worker-auth-80d9f0e6-9627-4754-9322-f80cd60e58da]: IDLE
+[debug] [2019-11-20T01:48:00.196Z] [worker-auth-ad586071-06d9-470c-913c-2dc7437feafb]: IDLE
+[debug] [2019-11-20T01:48:01.849Z] Accepted request GET /wow-guild-manager/us-central1/client --> client
+[debug] [2019-11-20T01:48:01.850Z] [worker-client-e95aab4a-67e4-426b-aa59-00282da2e313]: BUSY
+[debug] [2019-11-20T01:48:01.851Z] [runtime-status] Trigger "client" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "client"
+[debug] [2019-11-20T01:48:01.852Z] [runtime-status]  {"httpsTrigger":{},"name":"client","entryPoint":"client"}
+[debug] [2019-11-20T01:48:01.852Z] [runtime-status] Running client in mode HTTPS {}
+[debug] [2019-11-20T01:48:01.853Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_16492.sock"}
+[debug] [2019-11-20T01:48:01.854Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_16492.sock"}
+[debug] [2019-11-20T01:48:01.856Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-20T01:48:01.857Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "client" in ~1s
+[debug] [2019-11-20T01:48:01.858Z] [worker-client-e95aab4a-67e4-426b-aa59-00282da2e313]: IDLE
+[debug] [2019-11-20T01:49:01.564Z] Accepted request GET /wow-guild-manager/us-central1/blizzardApiGet?action=roster&host=https://us.api.blizzard.com&guildendpoint=/data/wow/guild&characterendpoint=/wow/character&realmslug=stormrage&guildslug=key-breakers-anonymous&namespace=profile-us&locale=en_US&access_token=USm9ijdKIdAs3xgwS4Y4xv6qWDVyyVj9HS --> blizzardApiGet
+[debug] [2019-11-20T01:49:01.577Z] [worker-blizzardApiGet-c094b5de-903a-4c58-9fb2-15fc5eec7e8e]: BUSY
+[debug] [2019-11-20T01:49:01.853Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
+[debug] [2019-11-20T01:49:01.856Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-11-20T01:49:01.859Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-11-20T01:49:01.860Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T01:49:01.861Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T01:49:02.172Z] [runtime-status] Trigger "blizzardApiGet" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "blizzardApiGet"
+[debug] [2019-11-20T01:49:02.173Z] [runtime-status]  {"httpsTrigger":{},"name":"blizzardApiGet","entryPoint":"blizzardApiGet"}
+[debug] [2019-11-20T01:49:02.173Z] [runtime-status] Running blizzardApiGet in mode HTTPS {}
+[debug] [2019-11-20T01:49:02.179Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_16510.sock"}
+[debug] [2019-11-20T01:49:02.180Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_16510.sock"}
+[debug] [2019-11-20T01:49:02.186Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-20T01:49:02.214Z] [runtime-status] Ephemeral server survived. {}
+[info] >  { status: 'nok', reason: 'Character not found.' }
+[info] i  functions: Finished "blizzardApiGet" in ~2s
+[debug] [2019-11-20T01:49:04.721Z] [worker-blizzardApiGet-c094b5de-903a-4c58-9fb2-15fc5eec7e8e]: IDLE
+[debug] [2019-11-20T01:50:24.976Z] Accepted request GET /wow-guild-manager/us-central1/client --> client
+[debug] [2019-11-20T01:50:24.976Z] [worker-client-e95aab4a-67e4-426b-aa59-00282da2e313]: BUSY
+[debug] [2019-11-20T01:50:24.977Z] [runtime-status] Trigger "client" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "client"
+[debug] [2019-11-20T01:50:24.977Z] [runtime-status]  {"httpsTrigger":{},"name":"client","entryPoint":"client"}
+[debug] [2019-11-20T01:50:24.977Z] [runtime-status] Running client in mode HTTPS {}
+[debug] [2019-11-20T01:50:24.978Z] {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_16492.sock"}
+[debug] [2019-11-20T01:50:24.978Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/ld/c8p6qpl14fg9crv5rdgspcq80000gn/T/firebase_emulator_invocation_16492.sock"}
+[debug] [2019-11-20T01:50:24.981Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-20T01:50:24.982Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "client" in ~1s
+[debug] [2019-11-20T01:50:24.983Z] [worker-client-e95aab4a-67e4-426b-aa59-00282da2e313]: IDLE

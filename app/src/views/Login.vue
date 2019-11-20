@@ -35,7 +35,6 @@ export default {
   name: 'Login',
   methods: {
     login() {
-      console.log(this.$store.state.playerAuthRequestUri)
       window.location.href = '//' + this.$store.state.playerAuthRequestUri, true;
     }
   },
@@ -55,7 +54,6 @@ export default {
       query.token_type && 
       query.expires_in
     ) {
-      console.log('just got back from auth yo')
       this.$store.commit('saveToken', {
         access_token: query.access_token,
         token_type: query.token_type,

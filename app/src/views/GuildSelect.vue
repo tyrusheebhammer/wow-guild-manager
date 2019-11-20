@@ -8,6 +8,7 @@
         <v-card
           class="mx-auto darkgray py-0"
           max-width="344"
+          @click="guildWasSelected(guild)"
         >
           <v-card-text class="mx-2 py-2">
             <v-row>
@@ -29,10 +30,20 @@
 </template>
 
 <script>
+  /* eslint no-console: 0 */ // --> OFF
+  /* eslint no-unused-vars: 0 */ // --> OFF
 import { mapState } from 'vuex';
 export default {
   name: 'GuildSelect',
   computed: mapState(['guilds']),
+  methods: {
+    guildWasSelected(guild) {
+      this.$store.commit('updateSelectedGuild', {guild})
+      this.$router.push('/home')
+    }
+  },
+  created() {
+  }
 }
 </script>
 

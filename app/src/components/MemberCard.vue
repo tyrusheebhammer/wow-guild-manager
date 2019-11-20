@@ -3,7 +3,7 @@
       <v-card min-height="100" max-width="400" class="darkgray">
         <v-row>
             <v-col class="ml-2 my-0" cols="3">
-                <v-img src="https://render-us.worldofwarcraft.com/character/stormrage/231/204308711-avatar.jpg" lazy-src="@/assets/logo.svg">
+                <v-img :src="src" lazy-src="@/assets/logo.svg">
 
                 </v-img>
             </v-col>
@@ -55,6 +55,8 @@
 
 <script>
 export default {
+    /* eslint no-console: 0 */  // --> OFF
+/* eslint vue/no-unused-components: 0 */  // --> OFF
     name: 'MemberCard',
     props: {
         name: String,
@@ -64,12 +66,21 @@ export default {
         level: Number,
         ilevel: Number,
         charClass: String,
+        thumbnail: String,
         rank: Number //optional for now
+    },
+    computed: {
+        src() {
+            return 'https://render-us.worldofwarcraft.com/character/' + this.thumbnail
+        }
     },
     methods: {
         formatCharClass(str) {
-            return str.toLowerCase() + '--text'
-        }
+            return ((str && str.toLowerCase()) || 'primary') + '--text'
+        },
+        
+    },
+    created() {
     }
 }
 </script>

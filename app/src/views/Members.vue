@@ -2,16 +2,17 @@
 <template>
   <v-container>
     <v-row>
-      <v-col class="my-0 py-0" cols="12" v-for="member in members" :key="member.id">
+      <v-col class="my-0 py-0" cols="12" v-for="member in guildMembers" :key="member.character.id">
         <member-card 
-          :name="member.name"
-          :raiderIOScore="member.raiderIOScore"
-          :role="member.role"
-          :simDps="member.simDps"
-          :rank="1"
-          :level="120"
-          :ilevel="430"
-          :charClass="'Rogue'"
+          :name="member.character.name"
+          :raiderIOScore="0"
+          :role="'-'"
+          :simDps="0"
+          :rank="member.rank"
+          :level="member.character.level"
+          :ilevel="0"
+          :charClass="'-'"
+          :thumbnail="member.character.thumbnail"
         >
 
         </member-card>
@@ -21,6 +22,8 @@
 </template>
 
 <script>
+/* eslint no-console: 0 */  // --> OFF
+/* eslint vue/no-unused-components: 0 */  // --> OFF
 
 import { db } from '../main'
 import MemberCard from '@/components/MemberCard.vue';
@@ -35,6 +38,19 @@ export default {
     return {
       members: db.collection('Members')
     }
+  },
+  computed: {
+    guildMembers() {
+      return this.$store.state.selectedGuild.guildMembers
+    }
+  },
+  created() {
+    this.$store.subscribe((mutation) => {
+        if(mutation.type === 'updateMembersAndCharactersForGuild') {
+          this.members = this.$store.getters.guildMembers
+        }
+    })
+    this.$store.dispatch('generateRosterForSelectedGuild')
   },
   components: {
     MemberCard

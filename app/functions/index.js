@@ -101,3 +101,69 @@ exports.client = functions.https.onRequest((_, res) => {
     })
   })
 })
+
+const blizzardApiGetActions = {
+  'roster': roster
+}
+
+async function roster(req, res){
+  let query = req.query
+  let uri = 
+    query.host +
+    query.guildendpoint +
+    `/${query.realmslug}` +
+    `/${query.guildslug}` +
+    `/roster` + 
+    `?namespace=${query.namespace}` +
+    `&locale=${query.locale}` +
+    `&access_token=${query.access_token}`
+
+  let members = (await axios.get(uri)).data.members
+  uri = 
+    query.host +
+    query.characterendpoint +
+    `/${query.realmslug}`
+  // res.send(characters.data.members)
+  let requests = []
+
+  members.forEach(member => {
+    let memberUri = 
+      uri +
+      `/${member.character.name}` + 
+      `?locale=${query.locale}` +
+      `&access_token=${query.access_token}`
+    requests.push(axios.get(memberUri))
+  })
+
+  let count = members.length
+  let completed = 0
+  const characters = []
+  requests.forEach(request => {
+    request
+      .then(response => {
+        completed++;
+        characters.push(response.data)
+        response
+      })
+      .catch(error => {
+        console.log(error.response.data)
+        count--;
+      }).finally(() => {
+        if(count === completed) {
+          res.send({members, characters})
+        }
+      })
+  })
+  // }).catch(error => {
+  //   console.log(error.response)
+  // })
+}
+
+exports.blizzardApiGet = functions.https.onRequest((req, res) => {
+  const action = req.query.action
+  return cors(req,res, () => { 
+    blizzardApiGetActions[action](req, res)
+  })
+})
+
+

@@ -280,7 +280,6 @@ export default {
   },
   methods: {
     showModal(id, user) {
-      console.log("id is ", id);
       this.dialog = true;
       this.selected = id;
       this.user = "Megan";
@@ -293,11 +292,9 @@ export default {
     showDelete() {
       this.dialog = false;
       this.del = true;
-      console.log("try to show deletee");
     },
     saveChanges() {
       this.edit = false;
-      console.log("do something with firebase to save changes");
       db.collection("CalendarEvents")
         .doc(this.events[this.selected].id.toString())
         .set({
@@ -316,7 +313,6 @@ export default {
     },
     showAdd() {
       this.addEvent = true;
-      console.log("show add dialog");
     },
     createEvent() {
       db.collection("CalendarEvents")

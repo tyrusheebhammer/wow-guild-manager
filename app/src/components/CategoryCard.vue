@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="href" class="no-underline">
+    <router-link :to="to" class="no-underline">
         <v-card
             outlined
             class="mx-auto darkgray pink-outline"
@@ -33,7 +33,13 @@ export default {
     src: String,
     title: String,
     subtitle: String,
-    href: String
+    href: String,
+    disabled: Boolean,
+  },
+  computed: {
+      to() {
+          return !this.disabled ? this.href : '/home' 
+      }
   }
 };
 </script>

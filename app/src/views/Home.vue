@@ -8,6 +8,8 @@
           :title="category.title"
           :subtitle="category.subtitle"
           :href="category.href"
+          :disabled="category.disabled"
+          :dispatch="category.dispatch"
         ></category-card>
       </v-col>
     </v-row>
@@ -16,6 +18,8 @@
 
 <script>
 import CategoryCard from "@/components/CategoryCard.vue";
+import { mapState } from 'vuex';
+import { isUndefined } from 'util';
 export default {
   name: "Home",
   components: {
@@ -29,7 +33,8 @@ export default {
             "https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/Sword.svg?alt=media&token=15a90937-c0e5-488a-b828-506650d7b798",
           title: "Members",
           subtitle: "List of guild members",
-          href: "/members/"
+          href: "/members/",
+          dispatch: 'generateRosterForSelectedGuild'
         },
         {
           image:
@@ -50,16 +55,20 @@ export default {
             "https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/Polls.svg?alt=media&token=0f9ce1c0-3061-48bf-af20-5d080e5896c9",
           title: "Polls",
           subtitle: "Create polls and view results",
-          href: "/polls/"
+          href: "/polls/",
+          disabled: true
         }
       ]
     };
   },
+  computed: {
+    ...mapState(['user', 'selectedGuild'])
+  },
   created() {
-    if (this.$store.state.firebase.user === undefined) {
-      this.$router.push("/login");
-    } else if (this.$store.state.firebase.selectedGuild === undefined) {
-      this.$router.push("/guildSelect");
+    if (isUndefined(this.user)) {
+      this.$router.push('');
+    } else if (isUndefined(this.selectedGuild) ) {
+      this.$router.push('/guildSelect');
     }
   }
 };
