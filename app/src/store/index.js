@@ -9,7 +9,7 @@ import {
   isUndefined
 } from 'util'
 
-let test = true
+let test = false
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
@@ -88,7 +88,6 @@ export default new Vuex.Store({
           state.clientId = res.data.clientId
           state.blob = res.data.blob
           test = res.data.test
-          console.log(state.clientId, state.blob);
         })
     },
     saveToken(state, token) {
@@ -107,7 +106,6 @@ export default new Vuex.Store({
       axios
         .get(endpoint)
         .then(res => {
-          console.log(res.data)
           state.playerAuth.userInfo = res.data
           let email = `${res.data.battletag}@${state.host}`
           let password = res.data.sub
@@ -125,7 +123,6 @@ export default new Vuex.Store({
           return axios.get(endpoint)
         }).then(
           res => {
-            console.log(res)
             state.characters = res.data.characters
             let uniqueGuilds = getUniqueGuilds(state.characters)
             state.guilds = uniqueGuilds
@@ -142,7 +139,6 @@ export default new Vuex.Store({
       state.guilds = guilds
     },
     updatePageName(state, pageName) {
-      console.log(pageName);
       state.pageName = pageName
     },
     setUser(state, user) {
@@ -175,7 +171,6 @@ export default new Vuex.Store({
       axios
         .get(endpoint)
         .then(res => {
-          console.log(res.data)
           commit('updateUserInfo', res.data)
 
           let email = `${res.data.battletag}@${this.state.host}`
@@ -194,7 +189,6 @@ export default new Vuex.Store({
           return axios.get(endpoint)
         }).then(
           res => {
-            console.log(res)
             commit('updateCharacters', res.data.characters)
             let uniqueGuilds = getUniqueGuilds(this.state.characters)
             commit('updateGuilds', uniqueGuilds)
@@ -229,7 +223,6 @@ export default new Vuex.Store({
           members.forEach((member, index) => {
             let character = characters.find(character => member.character.name === character.name)
             if (isUndefined(character)) {
-              console.log('character too low level')
               return
             }
             let fullCharacter = Object.assign({}, member.character, character)
@@ -239,7 +232,6 @@ export default new Vuex.Store({
             guildMembers.push(guildMember)
           })
 
-          console.log(guildMembers)
 
           commit('updateMembersAndCharactersForGuild', {
             guildMembers
@@ -260,7 +252,6 @@ export default new Vuex.Store({
     user: state => state.user,
     token: state => {
       let token = state.playerAuth._token ? state.playerAuth._token.access_token : localStorage.getItem('access_token')
-      console.log(token);
       return token
     },
     guilds: state => state.guilds,
@@ -308,6 +299,5 @@ function getUniqueGuilds(characters) {
       guilds[guildIndex].characters.push(character);
     }
   });
-  console.log(guilds)
   return guilds
 }

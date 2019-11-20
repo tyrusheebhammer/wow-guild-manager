@@ -424,3 +424,35 @@
 [info] >  { status: 'nok', reason: 'Character not found.' }
 [info] i  functions: Finished "blizzardApiGet" in ~1s
 [debug] [2019-11-20T03:15:23.815Z] [worker-blizzardApiGet-c94817cb-f118-4f30-9cea-f4a119ae9c29]: IDLE
+[debug] [2019-11-20T03:25:45.916Z] File /Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/index.js changed, reloading triggers
+[debug] [2019-11-20T03:25:46.921Z] [worker-pool]: Shutting down IDLE worker (client)
+[debug] [2019-11-20T03:25:46.922Z] [worker-pool]: Shutting down IDLE worker (auth)
+[debug] [2019-11-20T03:25:46.922Z] [worker-pool]: Shutting down IDLE worker (blizzardApiGet)
+[debug] [2019-11-20T03:25:46.927Z] [worker-~diagnostic~-7e730dc5-72c4-47ba-90b1-d4c179a124d5]: BUSY
+[debug] [2019-11-20T03:25:46.929Z] [worker-client-5d536fdd-3ecc-4e80-94ea-3ae82356a96b]: exited
+[debug] [2019-11-20T03:25:46.929Z] [worker-client-5d536fdd-3ecc-4e80-94ea-3ae82356a96b]: FINISHED
+[debug] [2019-11-20T03:25:46.929Z] [worker-auth-7e371c82-eb0a-4c61-8ed0-56c295ff997a]: exited
+[debug] [2019-11-20T03:25:46.929Z] [worker-auth-7e371c82-eb0a-4c61-8ed0-56c295ff997a]: FINISHED
+[debug] [2019-11-20T03:25:46.929Z] [worker-blizzardApiGet-c94817cb-f118-4f30-9cea-f4a119ae9c29]: exited
+[debug] [2019-11-20T03:25:46.929Z] [worker-blizzardApiGet-c94817cb-f118-4f30-9cea-f4a119ae9c29]: FINISHED
+[debug] [2019-11-20T03:25:47.263Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions","node_version":"10.15.1"}
+[debug] [2019-11-20T03:25:47.265Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-11-20T03:25:47.267Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-11-20T03:25:47.268Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-20T03:25:47.269Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  ReferenceError: credentials is not defined
+    at Object.<anonymous> (/Users/tyrus.b/Desktop/dev/wow-guild-manager/app/functions/index.js:13:48)
+    at Module._compile (internal/modules/cjs/loader.js:689:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+    at Module.load (internal/modules/cjs/loader.js:599:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:530:3)
+    at Module.require (internal/modules/cjs/loader.js:637:17)
+    at require (internal/modules/cjs/helpers.js:22:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:709:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-11-20T03:25:47.565Z] [worker-~diagnostic~-7e730dc5-72c4-47ba-90b1-d4c179a124d5]: exited
+[debug] [2019-11-20T03:25:47.565Z] [worker-~diagnostic~-7e730dc5-72c4-47ba-90b1-d4c179a124d5]: FINISHED

@@ -8,17 +8,7 @@ const request = require("request")
 // const rp = require("request-promise")
 const axios = require('axios')
 
-const test = true
-
-const credentials = {
-    client: {
-      id: 'fdbc9b3583da40c8ae9b81c9c39a8b52',
-      secret: 'DJ7FO8q8t1o3AAzP1Dqx146p4iiwSYUz'
-    },
-    auth: {
-      tokenHost: "https://us.battle.net"
-    }
-}
+const test = false
 
 const oauth2 = require("simple-oauth2").create(credentials)
 
