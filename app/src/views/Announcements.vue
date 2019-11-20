@@ -294,11 +294,12 @@
 import { db } from "../main";
 import AnnouncementCard from "@/components/AnnouncementCard.vue";
 import { mapState } from 'vuex';
+import { isUndefined } from 'util';
 export default {
   name: "Announcements",
   created: function() {
     this.$store.commit('updatePageName', "Announcements")
-    if(isUndefined(this.user)) this.$router.push('/')
+    if(isUndefined(this.$store.getters.user)) this.$router.push('/')
   },
   computed: {
     ...mapState(['userId']),

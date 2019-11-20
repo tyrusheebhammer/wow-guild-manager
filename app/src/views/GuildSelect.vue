@@ -36,7 +36,9 @@ import { mapState } from 'vuex';
 import { isUndefined } from 'util';
 export default {
   name: 'GuildSelect',
+  
   created: function() {
+    if(isUndefined(this.$store.getters.user)) this.$router.push('/')
     this.$store.commit('updatePageName', "Guild Select")
   },
   computed: mapState(['guilds']),

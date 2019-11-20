@@ -47,7 +47,7 @@ export default {
     }
   },
   created() {
-    if(isUndefined(this.user)) this.$router.push('/')
+    if(isUndefined(this.$store.getters.user)) this.$router.push('/')
     this.$store.subscribe((mutation) => {
         if(mutation.type === 'updateMembersAndCharactersForGuild') {
           this.members = this.$store.getters.guildMembers

@@ -273,7 +273,7 @@ import { isUndefined } from 'util';
 export default {
   name: "Calendar",
   created: function () {
-    if(isUndefined(this.user)) this.$router.push('/')
+    if(isUndefined(this.$store.getters.user)) this.$router.push('/')
     this.$store.commit('updatePageName', "Calendar")
   },
   computed: {
@@ -357,7 +357,7 @@ export default {
   },
   firestore() {
     return {
-      events: db.collection("CalendarEvents")
+      events: db.collection("CalendarEvents").where('guild', '==', this.$store.getters.selectedGuild.compound)
     };
   },
   components: {
