@@ -10,6 +10,16 @@ const axios = require('axios')
 
 const test = false
 
+const credentials = {
+    client: {
+      id: functions.config().blizzard.oauth.client.id,
+      secret: functions.config().blizzard.oauth.client.secret
+    },
+    auth: {
+      tokenHost: "https://us.battle.net"
+    }
+}
+
 const oauth2 = require("simple-oauth2").create(credentials)
 
 let token = null
