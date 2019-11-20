@@ -11,12 +11,10 @@
         <announcement-card
           @click="showModal"
           :id="index"
-          :dateCreated="announcement.dateCreated"
+          :createDate="announcement.createDate"
           :desc="announcement.desc"
           :title="announcement.title"
           :creator="announcement.creator"
-          :startDate="announcement.startDate"
-          :endDate="announcement.endDate"
         ></announcement-card>
       </v-col>
     </v-row>
@@ -76,74 +74,17 @@
           <v-card-title class="headline justify-center primary--text">Edit</v-card-title>
           <v-divider class="primary"></v-divider>
           <v-card-text class="px-2 mx-0">
-            <v-row justify="center">
-              <v-col cols="2" class="px-4">
-                <v-img
-                  src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
-                  lazy-src="@/assets/calendar-alt-regular.svg"
-                ></v-img>
-              </v-col>
-
-              <v-col cols="3" sm="3" md="3" class="px-0">
-                <v-menu
-                  ref="menuStart"
-                  v-model="menuStart"
-                  :close-on-content-click="false"
-                  :return-value.sync="date"
-                  transition="scale-transition"
-                  offset-y
-                  min-width="290px"
-                >
-                  <template v-slot:activator="{ on }">
-                    <v-text-field v-model="startDate" label="Start Date" readonly v-on="on"></v-text-field>
-                  </template>
-                  <v-date-picker v-model="startDate" no-title scrollable>
-                    <v-spacer></v-spacer>
-                    <v-btn text color="primary" outlined @click="menuStart = false">Cancel</v-btn>
-                    <v-btn text color="primary" outlined @click="$refs.menuStart.save(startDate)">OK</v-btn>
-                  </v-date-picker>
-                </v-menu>
-              </v-col>
-
-              <v-col cols="2" class="px-4">
-                <v-img
-                  src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
-                  lazy-src="@/assets/calendar-alt-regular.svg"
-                ></v-img>
-              </v-col>
-
-              <v-col cols="3" sm="3" md="3" class="px-0">
-                <v-menu
-                  ref="menuEnd"
-                  v-model="menuEnd"
-                  :close-on-content-click="false"
-                  :return-value.sync="date"
-                  transition="scale-transition"
-                  offset-y
-                  min-width="290px"
-                >
-                  <template v-slot:activator="{ on }">
-                    <v-text-field v-model="endDate" label="End Date" readonly v-on="on"></v-text-field>
-                  </template>
-                  <v-date-picker v-model="endDate" no-title scrollable>
-                    <v-spacer></v-spacer>
-                    <v-btn text color="primary" outlined @click="menuEnd = false">Cancel</v-btn>
-                    <v-btn text color="primary" outlined @click="$refs.menuEnd.save(endDate)">OK</v-btn>
-                  </v-date-picker>
-                </v-menu>
-              </v-col>
-            </v-row>
             <v-row class="px-2" justify="center">
               <v-col cols="12">
-                <v-text-field v-model="titleInputEdit" placeholder="announcement title" filled />
+                <v-text-field v-model="titleInputEdit" title="announcement title" filled />
               </v-col>
             </v-row>
 
             <v-row class="px-2" justify="center">
               <v-col cols="12">
-                <v-text-field
+                <v-textarea
                   v-model="descInputEdit"
-                  placeholder="announcement description"
+                  title="announcement description"
                   filled
                 />
               </v-col>
@@ -205,14 +146,14 @@
           <v-card-title class="headline justify-center primary--text">New Announcement</v-card-title>
           <v-divider class="primary"></v-divider>
           <v-row justify="center">
-            <v-col cols="2" class="px-4">
+            <!-- <v-col cols="2" class="px-4">
               <v-img
                 src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
                 lazy-src="@/assets/calendar-alt-regular.svg"
               ></v-img>
-            </v-col>
+            </v-col> -->
 
-            <v-col cols="3" sm="3" md="3" class="px-0">
+            <!-- <v-col cols="3" sm="3" md="3" class="px-0">
               <v-menu
                 ref="menuStart"
                 v-model="menuStart"
@@ -238,9 +179,9 @@
                 src="https://firebasestorage.googleapis.com/v0/b/wow-guild-manager.appspot.com/o/calendar-alt-regular.svg?alt=media&token=2820b5c3-6f95-4bb0-bb59-525a472e0a51"
                 lazy-src="@/assets/calendar-alt-regular.svg"
               ></v-img>
-            </v-col>
+            </v-col> -->
 
-            <v-col cols="3" sm="3" md="3" class="px-0">
+            <!-- <v-col cols="3" sm="3" md="3" class="px-0">
               <v-menu
                 ref="menuEnd"
                 v-model="menuEnd"
@@ -259,16 +200,16 @@
                   <v-btn text color="primary" outlined @click="$refs.menuEnd.save(endDate)">OK</v-btn>
                 </v-date-picker>
               </v-menu>
+            </v-col> -->
+          </v-row>
+          <v-row class="px-2">
+            <v-col cols="12">
+              <v-text-field v-model="titleInput" label="announcement title" filled />
             </v-col>
           </v-row>
           <v-row class="px-2">
             <v-col cols="12">
-              <v-text-field v-model="titleInput" placeholder="announcement title" filled />
-            </v-col>
-          </v-row>
-          <v-row class="px-2">
-            <v-col cols="12">
-              <v-text-field v-model="descInput" placeholder="announcement description" filled />
+              <v-textarea v-model="descInput" label="announcement description" filled></v-textarea>
             </v-col>
           </v-row>
           <span class="pa-0 ma-0">
@@ -305,7 +246,7 @@ export default {
     ...mapState(['userId']),
     userIsCreator: function() {
       return (
-        userId === this.announcements[this.selected].creator
+        this.$store.getters.user.battletag === this.announcements[this.selected].creator
       );
     }
   },
@@ -313,7 +254,6 @@ export default {
     showModal(id, user) {
       this.dialog = true;
       this.selected = id;
-      this.user = "Megan";
     },
     showAdd() {
       this.addAnnouncement = true;
@@ -331,8 +271,6 @@ export default {
       db.collection("Announcements")
         .doc(this.announcements[this.selected].id.toString())
         .set({
-          startDate: this.startDate,
-          endDate: this.endDate,
           creator: this.$store.getters.user.battletag,
           desc: this.descInputEdit,
           title: this.titleInputEdit,
@@ -349,14 +287,11 @@ export default {
       db.collection("Announcements")
         .doc()
         .set({
-          createDate: "Nov. 8th",
-          startDate: this.startDate,
-          endDate: this.endDate,
+          createDate: new Date().toDateString(),
           creator: this.$store.getters.user.battletag,
           desc: this.descInput,
           title: this.titleInput,
           guild: this.$store.getters.selectedGuild.compound
-
         });
       this.addAnnouncement = false;
     }
@@ -377,7 +312,7 @@ export default {
       menu: false,
       date: false,
       user: "RLZ7m6MTuoAmZfuMHA7W",
-      dateCreated: "",
+      createDate: "",
       desc: "",
       title: "",
       menuStart: false,
@@ -387,7 +322,7 @@ export default {
   },
   firestore() {
     return {
-      announcements: db.collection("Announcements")
+      announcements: db.collection("Announcements").where('guild', '==', this.$store.getters.selectedGuild.compound)
     };
   },
   components: {

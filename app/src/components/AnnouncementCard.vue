@@ -5,7 +5,7 @@
         <v-card max-height="100" class="mx-auto py-1 ma-1 darkgray">
           <v-row>
             <v-col cols="5" class="center py-0" align-center>
-              <div class="mx-2 primary--text center">{{ startDate }}</div>
+              <div class="mx-2 primary--text center">{{ createDate }}</div>
             </v-col>
             <v-divider vertical class="primary"></v-divider>
             <v-col class="py-0" cols="6">
@@ -24,8 +24,6 @@ export default {
   props: {
     id: Number,
     createDate: String,
-    endDate: String,
-    startDate: String,
     title: String,
     desc: String,
     creator: String

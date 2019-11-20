@@ -278,7 +278,7 @@ export default {
   },
   computed: {
     userIsCreator: function() {
-      return this.$store.state.clientId === this.events[this.selected].creator;
+      return this.$store.getters.user.battletag === this.events[this.selected].creator;
     },
     ...mapGetters['user', 'selectedGuild']
   },
