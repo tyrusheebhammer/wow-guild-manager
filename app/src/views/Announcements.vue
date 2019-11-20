@@ -298,6 +298,7 @@ export default {
   name: "Announcements",
   created: function() {
     this.$store.commit('updatePageName', "Announcements")
+    if(isUndefined(this.user)) this.$router.push('/')
   },
   computed: {
     ...mapState(['userId']),
@@ -331,9 +332,10 @@ export default {
         .set({
           startDate: this.startDate,
           endDate: this.endDate,
-          creator: this.user,
+          creator: this.$store.getters.user.battletag,
           desc: this.descInputEdit,
-          title: this.titleInputEdit
+          title: this.titleInputEdit,
+          guild: this.$store.getters.selectedGuild.compound
         });
     },
     doADelete() {
@@ -349,10 +351,10 @@ export default {
           createDate: "Nov. 8th",
           startDate: this.startDate,
           endDate: this.endDate,
-          creator: this.user,
+          creator: this.$store.getters.user.battletag,
           desc: this.descInput,
           title: this.titleInput,
-          creator: userId
+          guild: this.$store.getters.selectedGuild.compound
 
         });
       this.addAnnouncement = false;

@@ -66,7 +66,7 @@ export default {
   },
   created() {
     if (isUndefined(this.user)) {
-      this.$router.push('');
+      this.$router.push('/');
     } else if (isUndefined(this.selectedGuild) ) {
       this.$router.push('/guildSelect');
     this.$store.commit('updatePageName', "Home")

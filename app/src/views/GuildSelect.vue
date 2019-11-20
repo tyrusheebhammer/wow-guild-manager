@@ -33,6 +33,7 @@
   /* eslint no-console: 0 */ // --> OFF
   /* eslint no-unused-vars: 0 */ // --> OFF
 import { mapState } from 'vuex';
+import { isUndefined } from 'util';
 export default {
   name: 'GuildSelect',
   created: function() {
@@ -45,8 +46,6 @@ export default {
       this.$router.push('/home')
     }
   },
-  created() {
-  }
 }
 </script>
 

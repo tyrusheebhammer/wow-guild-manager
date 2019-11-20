@@ -19,7 +19,7 @@
     <v-row justify="center">
       <v-dialog v-model="dialog" v-if="selected!==null" persistent max-width="400">
         <v-card>
-          <v-card-title class="headline justify-center primary--text">{{ events[selected].title }}</v-card-title>
+          <v-card-title class="headline justify-center primary--text">{{ events[selected].title }} -- {{ events[selected].creator }} </v-card-title>
           <v-divider class="primary"></v-divider>
           <v-card-text class="py-3">{{ events[selected].desc }}</v-card-text>
           <span class="pa-0 ma-0">
@@ -267,23 +267,25 @@
 <script>
 /* eslint-disable */
 import { db } from "../main";
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import CalendarCard from "@/components/CalendarCard.vue";
+import { isUndefined } from 'util';
 export default {
   name: "Calendar",
   created: function () {
-        this.$store.commit('updatePageName', "Calendar")
+    if(isUndefined(this.user)) this.$router.push('/')
+    this.$store.commit('updatePageName', "Calendar")
   },
   computed: {
     userIsCreator: function() {
       return this.$store.state.clientId === this.events[this.selected].creator;
-    }
+    },
+    ...mapGetters['user', 'selectedGuild']
   },
   methods: {
     showModal(id, user) {
       this.dialog = true;
       this.selected = id;
-      this.user = "Megan";
     },
 
     showEdit() {
@@ -301,9 +303,10 @@ export default {
         .set({
           startDate: this.startDate,
           endDate: this.endDate,
-          creator: this.user,
+          creator: this.$store.getters.user.battletag,
           desc: this.descInputEdit,
-          title: this.titleInputEdit
+          title: this.titleInputEdit,
+          guild: this.$store.getters.selectedGuild.compound
         });
     },
     doADelete() {
@@ -319,12 +322,13 @@ export default {
       db.collection("CalendarEvents")
         .doc()
         .set({
-          createDate: "Nov. 8th",
+          createDate: new Date().toDateString(),
           startDate: this.startDate,
           endDate: this.endDate,
-          creator: userId,
+          creator: this.$store.getters.user.battletag,
           desc: this.descInput,
-          title: this.titleInput
+          title: this.titleInput,
+          guild: this.$store.getters.selectedGuild.compound
         });
       this.addEvent = false;
     }
@@ -348,7 +352,6 @@ export default {
       menuStart: false,
       selected: null,
       title: "",
-      user: "RLZ7m6MTuoAmZfuMHA7W",
       events: []
     };
   },

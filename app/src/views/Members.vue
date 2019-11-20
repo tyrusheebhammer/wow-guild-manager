@@ -27,11 +27,10 @@
 
 import { db } from '../main'
 import MemberCard from '@/components/MemberCard.vue';
+import { isUndefined } from 'util';
+
 export default {
   name: 'Members',
-  created: function() {
-    this.$store.commit('updatePageName', "Members")
-  },
   data() {
     return {
       members: []
@@ -48,12 +47,14 @@ export default {
     }
   },
   created() {
+    if(isUndefined(this.user)) this.$router.push('/')
     this.$store.subscribe((mutation) => {
         if(mutation.type === 'updateMembersAndCharactersForGuild') {
           this.members = this.$store.getters.guildMembers
         }
     })
     this.$store.dispatch('generateRosterForSelectedGuild')
+    this.$store.commit('updatePageName', "Members")
   },
   components: {
     MemberCard
