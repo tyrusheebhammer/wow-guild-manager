@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context=".GuildSelectionActivity"
+    tools:context=".guildselection.GuildSelectionActivity"
     android:layout_margin="4dp"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="10dp"
