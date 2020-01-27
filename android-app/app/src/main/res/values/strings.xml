@@ -6,4 +6,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="announcement_title_hint">Title</string>
     <string name="announcement_description_hint">Description</string>
+    <string name="new_poll_url_hint">Poll URL</string>
 </resources>
