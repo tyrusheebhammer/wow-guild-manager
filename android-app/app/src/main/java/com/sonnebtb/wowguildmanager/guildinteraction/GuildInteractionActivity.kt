@@ -1,18 +1,9 @@
-package com.sonnebtb.wowguildmanager
+package com.sonnebtb.wowguildmanager.guildinteraction
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import androidx.appcompat.app.AlertDialog
+import com.sonnebtb.wowguildmanager.R
 import kotlinx.android.synthetic.main.activity_guild_interaction.*
 
 class GuildInteractionActivity : AppCompatActivity() {

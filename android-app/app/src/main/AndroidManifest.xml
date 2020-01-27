@@ -12,7 +12,7 @@
         <activity android:name=".GuildSelectionActivity">
 
         </activity>
-        <activity android:name=".GuildInteractionActivity">
+        <activity android:name=".guildinteraction.GuildInteractionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
