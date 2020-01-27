@@ -1,10 +1,9 @@
-package com.sonnebtb.wowguildmanager
+package com.sonnebtb.wowguildmanager.guildselection
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sonnebtb.wowguildmanager.R
 import kotlinx.android.synthetic.main.activity_guild_selection.*
 
 class GuildSelectionActivity : AppCompatActivity() {
