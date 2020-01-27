@@ -10,7 +10,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.sonnebtb.wowguildmanager.Constants
 import com.sonnebtb.wowguildmanager.R
 
-class AnnouncementsFragment: Fragment() {
+class AnnouncementsFragment(var listener: AnnouncementClickListener): Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -21,8 +21,12 @@ class AnnouncementsFragment: Fragment() {
         val announcements_fab = view?.findViewById<FloatingActionButton>(R.id.fab)
         announcements_fab?.setOnClickListener {
             Log.d(Constants.TAG, "announcements fab clicked")
-            //adapter.showAddDialog()
+            listener.announcementFabClicked()
         }
         return view
     }
+}
+
+interface AnnouncementClickListener {
+    fun announcementFabClicked()
 }

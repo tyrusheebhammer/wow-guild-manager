@@ -10,7 +10,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.sonnebtb.wowguildmanager.Constants
 import com.sonnebtb.wowguildmanager.R
 
-class CalendarFragment: Fragment() {
+class CalendarFragment(var listener: CalenderEventClickListener): Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -20,8 +20,12 @@ class CalendarFragment: Fragment() {
         val calendar_fab = view?.findViewById<FloatingActionButton>(R.id.fab)
         calendar_fab?.setOnClickListener {
             Log.d(Constants.TAG, "calendar fab clicked")
-            //adapter.showAddDialog()
+            listener.calendarFabClicked()
         }
         return view
     }
+}
+
+interface CalenderEventClickListener {
+    fun calendarFabClicked()
 }
