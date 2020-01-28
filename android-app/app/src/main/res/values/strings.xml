@@ -9,4 +9,7 @@
     <string name="character_default_level">Level: XXX</string>
     <string name="character_default_rank">Rank: X</string>
     <string name="character_default_name">CharName</string>
+    <string name="announcement_title_hint">Title</string>
+    <string name="announcement_description_hint">Description</string>
+    <string name="new_poll_url_hint">Poll URL</string>
 </resources>
