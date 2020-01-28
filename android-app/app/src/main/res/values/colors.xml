@@ -5,4 +5,19 @@
     <color name="colorAccent">#F57CFF</color>
     <color name="colorCardBackground">#2B2B2B</color>
     <color name="colorTextDescription">#999999</color>
+
+    <color name="colorDK">#C41F3B</color>
+
+    <color name="colorDH">#A330C9</color>
+    <color name="colorDr">#FF7D0A</color>
+    <color name="ColorHu">#A9D271</color>
+    <color name="ColorMa">#40C7EB</color>
+    <color name="ColorMo">#00FF96</color>
+    <color name="ColorPa">#F58CBA</color>
+    <color name="ColorPr">#FFFFFF</color>
+    <color name="ColorRo">#FFF569</color>
+    <color name="ColorSh">#0070DE</color>
+    <color name="ColorWarlock">#8787ED</color>
+    <color name="ColorWarrior">#C79C6E</color>
+
 </resources>
