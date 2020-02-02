@@ -4,6 +4,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="character_default_raider_io">Raider.io Score: XXXX</string>
+    <string name="character_default_ilevel">iLevel: XXX</string>
+    <string name="character_default_level">Level: XXX</string>
+    <string name="character_default_rank">Rank: X</string>
+    <string name="character_default_name">CharName</string>
     <string name="announcement_title_hint">Title</string>
     <string name="announcement_description_hint">Description</string>
     <string name="new_poll_url_hint">Poll URL</string>
