@@ -60,7 +60,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
     }
 
     fun showAddPollDialog() {
-        val builder = AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
         //Set options
         builder.setTitle("New Guild Poll")
 
@@ -75,7 +75,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
     }
 
     fun showAddEventDialog() {
-        val builder = AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
         //Set options
         builder.setTitle("New Event")
 
@@ -90,7 +90,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
     }
 
     fun showAddAnnouncementDialog() {
-        val builder = AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
         //Set options
         builder.setTitle("New Announcement")
 
