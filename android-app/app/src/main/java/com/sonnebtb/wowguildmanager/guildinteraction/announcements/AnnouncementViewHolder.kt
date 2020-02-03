@@ -12,8 +12,8 @@ class AnnouncementViewHolder(itemView: View, var adapter: AnnouncementsAdapter):
 
     fun bind(announcement: Announcement) {
         title.text = announcement.title
-        description.text = announcement.description
+        description.text = announcement.desc
         var formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy")
-        date.text = announcement.date.format(formatter)
+        date.text = announcement.createDate.format(formatter)
     }
 }

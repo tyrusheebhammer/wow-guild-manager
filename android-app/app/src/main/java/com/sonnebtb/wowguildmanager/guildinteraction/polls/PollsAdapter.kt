@@ -1,0 +1,3 @@
+package com.sonnebtb.wowguildmanager.guildinteraction.polls
+
+class PollsAdapter

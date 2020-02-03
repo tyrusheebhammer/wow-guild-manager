@@ -12,7 +12,7 @@ class CalendarViewHolder(itemView: View, var adapter: CalendarAdapter): Recycler
 
     fun bind(calendarEvent: CalendarEvent) {
         eventTitle.text = calendarEvent.title
-        eventDescription.text = calendarEvent.description
+        eventDescription.text = calendarEvent.desc
         var formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy")
         eventDate.text = calendarEvent.date.format(formatter)
     }
