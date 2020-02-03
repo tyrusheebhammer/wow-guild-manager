@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.sonnebtb.wowguildmanager.Constants
 import com.sonnebtb.wowguildmanager.R
+import kotlinx.android.synthetic.main.fragment_calendar.view.*
 
 class CalendarFragment(var listener: CalenderEventClickListener): Fragment() {
     override fun onCreateView(
@@ -18,10 +19,9 @@ class CalendarFragment(var listener: CalenderEventClickListener): Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_calendar, container, false) as RecyclerView
-        val adapter = CalendarAdapter(context)
-        view.adapter = adapter
-        view.layoutManager = LinearLayoutManager(context)
+        val view = inflater.inflate(R.layout.fragment_calendar, container, false)
+        view.events.adapter = CalendarAdapter(context)
+        view.events.layoutManager = LinearLayoutManager(context)
         buildFab(view, listener)
         return view
     }

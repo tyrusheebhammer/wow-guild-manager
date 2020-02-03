@@ -10,6 +10,7 @@ class CalendarViewHolder(itemView: View, var adapter: CalendarAdapter): Recycler
     var eventTitle = itemView.event_date
     var eventDescription = itemView.event_description
     var eventDate = itemView.event_date
+
     fun bind(calendarEvent: CalendarEvent) {
         eventTitle.text = calendarEvent.title
         eventDescription.text = calendarEvent.description
