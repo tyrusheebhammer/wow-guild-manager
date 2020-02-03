@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.sonnebtb.wowguildmanager.Constants
 import com.sonnebtb.wowguildmanager.R
+import com.sonnebtb.wowguildmanager.buildFab
+import kotlinx.android.synthetic.main.fragment_announcements.view.*
+import kotlinx.android.synthetic.main.fragment_calendar.view.*
 
 class AnnouncementsFragment(var listener: AnnouncementClickListener): Fragment() {
     override fun onCreateView(
@@ -18,11 +22,9 @@ class AnnouncementsFragment(var listener: AnnouncementClickListener): Fragment()
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_announcements, container, false)
-        val announcements_fab = view?.findViewById<FloatingActionButton>(R.id.fab)
-        announcements_fab?.setOnClickListener {
-            Log.d(Constants.TAG, "announcements fab clicked")
-            listener.announcementFabClicked()
-        }
+        buildFab(view) {listener.announcementFabClicked()}
+        view.announcements.adapter = AnnouncementsAdapter(context)
+        view.announcements.layoutManager = LinearLayoutManager(context)
         return view
     }
 }
