@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sonnebtb.wowguildmanager.R
-import com.sonnebtb.wowguildmanager.guildinteraction.members.MemberViewHolder
-import com.sonnebtb.wowguildmanager.guildinteraction.members.generateRandomMember
 
-class AnnouncementsAdapter(var context: Context?) : RecyclerView.Adapter<MemberViewHolder>() {
+class AnnouncementsAdapter(var context: Context?) : RecyclerView.Adapter<AnnouncementViewHolder>() {
     var announcements: ArrayList<Announcement> = ArrayList()
     init {
         //Generating random members for testing purposes
@@ -16,16 +14,16 @@ class AnnouncementsAdapter(var context: Context?) : RecyclerView.Adapter<MemberV
 //            announcements.add()
         }
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout., parent, false)
-        return MemberViewHolder(view, this)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnnouncementViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.card_event, parent, false)
+        return AnnouncementViewHolder(view, this)
     }
 
-    override fun getItemCount(): Int = members.size
+    override fun getItemCount(): Int = announcements.size
 
 
-    override fun onBindViewHolder(holder: MemberViewHolder, position: Int) {
-        holder.bind(members[position])
+    override fun onBindViewHolder(holder: AnnouncementViewHolder, position: Int) {
+        holder.bind(announcements[position])
     }
 
 }

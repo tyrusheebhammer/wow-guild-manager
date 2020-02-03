@@ -2,8 +2,7 @@ package com.sonnebtb.wowguildmanager.guildinteraction.calendar
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.card_calendar_event.view.*
-import java.time.LocalDate
+import kotlinx.android.synthetic.main.card_event.view.*
 import java.time.format.DateTimeFormatter
 
 class CalendarViewHolder(itemView: View, var adapter: CalendarAdapter): RecyclerView.ViewHolder(itemView) {

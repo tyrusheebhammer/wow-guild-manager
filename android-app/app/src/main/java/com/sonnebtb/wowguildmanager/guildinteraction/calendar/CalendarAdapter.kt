@@ -5,9 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sonnebtb.wowguildmanager.R
-import com.sonnebtb.wowguildmanager.guildinteraction.members.GuildMember
-import com.sonnebtb.wowguildmanager.guildinteraction.members.MemberViewHolder
-import com.sonnebtb.wowguildmanager.guildinteraction.members.generateRandomMember
 
 class CalendarAdapter(var context: Context?) : RecyclerView.Adapter<CalendarViewHolder> (){
     var calendarEvents: ArrayList<CalendarEvent> = ArrayList()
@@ -17,7 +14,7 @@ class CalendarAdapter(var context: Context?) : RecyclerView.Adapter<CalendarView
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.card_calendar_event, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.card_event, parent, false)
         return CalendarViewHolder(view, this)
     }
 
