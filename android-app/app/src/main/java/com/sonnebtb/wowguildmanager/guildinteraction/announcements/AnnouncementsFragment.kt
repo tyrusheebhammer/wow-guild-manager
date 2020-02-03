@@ -18,6 +18,7 @@ class AnnouncementsFragment(var listener: AnnouncementClickListener): Fragment()
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_announcements, container, false)
+
         val announcements_fab = view?.findViewById<FloatingActionButton>(R.id.fab)
         announcements_fab?.setOnClickListener {
             Log.d(Constants.TAG, "announcements fab clicked")
