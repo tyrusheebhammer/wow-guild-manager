@@ -5,4 +5,4 @@ import kotlinx.android.parcel.Parcelize
 import java.time.LocalDateTime
 
 @Parcelize
-data class Announcement(var title: String, var description: String, var date: LocalDateTime) : Parcelable
+data class Announcement(var title: String = "ANNOUNCEMENT TITLE", var description: String = "Announcement String", var date: LocalDateTime = LocalDateTime.now()) : Parcelable
