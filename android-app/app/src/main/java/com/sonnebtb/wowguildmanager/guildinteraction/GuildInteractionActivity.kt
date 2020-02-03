@@ -56,7 +56,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
             launchFragment(switchTo)
             handled
         }
-
+        launchFragment(MembersFragment())
     }
 
     fun showAddPollDialog() {
