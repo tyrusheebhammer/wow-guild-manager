@@ -6,22 +6,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sonnebtb.wowguildmanager.R
 
-class CalendarAdapter(var context: Context?) : RecyclerView.Adapter<CalendarViewHolder> (){
+class CalendarAdapter(var context: Context?) : RecyclerView.Adapter<PollViewHolder> (){
     var calendarEvents: ArrayList<CalendarEvent> = ArrayList()
     init {
         for(i in 0..10) {
             calendarEvents.add(CalendarEvent())
         }
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PollViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.card_event, parent, false)
-        return CalendarViewHolder(view, this)
+        return PollViewHolder(view, this)
     }
 
     override fun getItemCount(): Int = calendarEvents.size
 
 
-    override fun onBindViewHolder(holder: CalendarViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PollViewHolder, position: Int) {
         holder.bind(calendarEvents[position])
     }
 }

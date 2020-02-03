@@ -10,6 +10,7 @@ data class Poll(
     var createDate: LocalDateTime  = LocalDateTime.now(),
     var guild: String? = null,
     var desc: String = "Description",
+    var link: String? = null,
     var title: String = "Title",
-    var link: String? = null
+    var validDate: LocalDateTime? = LocalDateTime.MAX
 ): Parcelable
