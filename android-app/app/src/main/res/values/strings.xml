@@ -19,4 +19,7 @@
     <string name="title_poll">Poll Title</string>
     <string name="date_poll">1/2/13 - 1/10/13</string>
     <string name="description_poll">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sagittis tortor elit, porta suscipit ante hendrerit vel. Morbi dolor elit, egestas quis magna bibendum, sollicitudin aliquet orci. Cras blandit dui eget leo posuere, sed molestie urna condimentum. Quisque</string>
+    <string name="log_in_prompt">Log in with Battle.net</string>
+    <string name="guild_name_text">Key Breakers Anonymous</string>
+    <string name="guild_realm_text">Stormrage-US</string>
 </resources>
