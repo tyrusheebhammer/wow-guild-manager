@@ -14,6 +14,7 @@ class GuildSelectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guild_selection)
         adapter = GuildAdapter(this)
+        adapter.createDemoGuilds() //TODO: remove to be compatible with actual data
         guild_selection_recycler_view.layoutManager = LinearLayoutManager(this)
         //recycler_view.layoutManager = GridLayoutManager(this, 2)
         guild_selection_recycler_view.setHasFixedSize(true)

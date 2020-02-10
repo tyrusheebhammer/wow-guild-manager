@@ -1,9 +1,11 @@
 package com.sonnebtb.wowguildmanager.guildselection
 
 import android.content.Context
+import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sonnebtb.wowguildmanager.guildselection.GuildAdapter
 import kotlinx.android.synthetic.main.guild_card.view.*
@@ -17,11 +19,12 @@ class GuildViewHolder: RecyclerView.ViewHolder {
     constructor(itemView: View, adapter: GuildAdapter, context: Context): super(itemView) {
         this.context = context
         itemView.setOnClickListener{
-            //adapter.showAddDialog(adapterPosition)
+            adapter.selectGuild(adapterPosition)
         }
-        itemView.setOnLongClickListener{
-            //adapter.selectMovieQuote(adapterPosition)
-            true
-        }
+    }
+
+    fun bind(guild: Guild) {
+        guildNameTextView.text = guild.guildName
+        guildRealmTextView.text = guild.guildRealm
     }
 }
