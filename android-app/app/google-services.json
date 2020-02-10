@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "529044982271",
+    "firebase_url": "https://wow-guild-manager.firebaseio.com",
+    "project_id": "wow-guild-manager",
+    "storage_bucket": "wow-guild-manager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529044982271:android:be7d0bf2261aad3414ffca",
+        "android_client_info": {
+          "package_name": "com.sonnebtb.wowguildmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529044982271-pi3bmeidepdmmfoube30g19lieotqtra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjG_guJ_gYtostjt7_tOKV9ebQIXv4t9g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529044982271-pi3bmeidepdmmfoube30g19lieotqtra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

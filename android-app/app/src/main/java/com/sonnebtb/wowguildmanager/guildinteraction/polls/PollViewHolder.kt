@@ -6,14 +6,20 @@ import com.sonnebtb.wowguildmanager.guildinteraction.calendar.CalendarAdapter
 import com.sonnebtb.wowguildmanager.guildinteraction.calendar.CalendarEvent
 import com.sonnebtb.wowguildmanager.guildselection.GuildAdapter
 import kotlinx.android.synthetic.main.card_event.view.*
+import kotlinx.android.synthetic.main.card_poll.view.*
+import kotlinx.android.synthetic.main.dialog_new_guild_poll.view.*
 import java.time.format.DateTimeFormatter
 
 class PollViewHolder(itemView: View, var adapter: PollsAdapter): RecyclerView.ViewHolder(itemView) {
-//    var eventTitle = itemView.event_date
-//    var eventDescription = itemView.event_description
-//    var eventDate = itemView.event_date
+
+        val dateRange = itemView.date_range
+        val desc = itemView.description
+        val title = itemView.title
 
     fun bind(poll: Poll) {
+        desc.text = poll.desc
+        title.text = poll.title
+        dateRange.text = "${poll.createDate} - ${poll.validDate}"
 //        eventTitle.text = calendarEvent.title
 //        eventDescription.text = calendarEvent.desc
 //        var formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy")
