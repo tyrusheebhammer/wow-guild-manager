@@ -5,8 +5,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.card_event.view.*
 import java.time.format.DateTimeFormatter
 
-class PollViewHolder(itemView: View, var adapter: CalendarAdapter): RecyclerView.ViewHolder(itemView) {
-    var eventTitle = itemView.event_date
+class CalendarViewHolder(itemView: View, var adapter: CalendarAdapter): RecyclerView.ViewHolder(itemView) {
+    var eventTitle = itemView.event_title
     var eventDescription = itemView.event_description
     var eventDate = itemView.event_date
 
