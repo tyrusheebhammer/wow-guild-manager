@@ -27,16 +27,6 @@ class CalendarAdapter(var context: Context?, var ref: CollectionReference) : Rec
             }
             notifyDataSetChanged()
         }
-//            .get()
-//            .addOnSuccessListener {snapshot: QuerySnapshot ->
-//                for (doc in snapshot) {
-//                    Log.d(Constants.TAG, "doc")
-//                    val calendarEvent = doc.toObject(CalendarEvent::class.java)
-//                    calendarEvents.add(calendarEvent)
-//                }
-//                this.notifyDataSetChanged()
-//            }
-
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.card_event, parent, false)

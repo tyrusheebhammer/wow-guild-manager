@@ -1,16 +1,24 @@
 package com.sonnebtb.wowguildmanager.guildinteraction.polls
 
 import android.os.Parcelable
+import com.google.firebase.firestore.DocumentSnapshot
 import kotlinx.android.parcel.Parcelize
-import java.time.LocalDateTime
+
 
 @Parcelize
 data class Poll(
     var creator: String = "Creator",
-    var createDate: LocalDateTime  = LocalDateTime.now(),
+    var createDate: String? = null,
     var guild: String? = null,
     var desc: String = "Description",
     var link: String? = null,
     var title: String = "Title",
-    var validDate: LocalDateTime? = LocalDateTime.MAX
-): Parcelable
+    var validDate: String? = null
+): Parcelable {
+    companion object {
+        fun fromSnapshot(snapshot: DocumentSnapshot) : Poll {
+            val poll = snapshot.toObject(Poll::class.java)!!
+            return poll
+        }
+    }
+}

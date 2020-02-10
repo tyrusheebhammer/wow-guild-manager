@@ -1,34 +1,35 @@
 package com.sonnebtb.wowguildmanager.guildinteraction
 
 import android.app.DatePickerDialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.DatePicker
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.sonnebtb.wowguildmanager.Constants
-import com.sonnebtb.wowguildmanager.MainActivity
 import com.sonnebtb.wowguildmanager.R
+import com.sonnebtb.wowguildmanager.guildinteraction.announcements.Announcement
 import com.sonnebtb.wowguildmanager.guildinteraction.announcements.AnnouncementClickListener
 import com.sonnebtb.wowguildmanager.guildinteraction.announcements.AnnouncementsFragment
 import com.sonnebtb.wowguildmanager.guildinteraction.calendar.CalendarEvent
 import com.sonnebtb.wowguildmanager.guildinteraction.calendar.CalendarFragment
 import com.sonnebtb.wowguildmanager.guildinteraction.calendar.CalenderEventClickListener
 import com.sonnebtb.wowguildmanager.guildinteraction.members.MembersFragment
+import com.sonnebtb.wowguildmanager.guildinteraction.polls.Poll
 import com.sonnebtb.wowguildmanager.guildinteraction.polls.PollsEventClickListener
 import com.sonnebtb.wowguildmanager.guildinteraction.polls.PollsFragment
 import kotlinx.android.synthetic.main.activity_guild_interaction.*
-import kotlinx.android.synthetic.main.card_poll.view.*
-import kotlinx.android.synthetic.main.dialog_new_event.*
+import kotlinx.android.synthetic.main.dialog_new_announcement.view.*
 import kotlinx.android.synthetic.main.dialog_new_event.view.*
+import kotlinx.android.synthetic.main.dialog_new_guild_poll.view.*
+import kotlinx.android.synthetic.main.fragment_polls.*
 import java.util.*
 
 class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, CalenderEventClickListener, AnnouncementClickListener {
@@ -68,7 +69,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
             var switchTo: Fragment? = null
             val handled = when(it.itemId) {
                 R.id.navigation_announcements -> {
-                    switchTo = AnnouncementsFragment(this)
+                    switchTo = AnnouncementsFragment(this, announcementRef)
                     true
                 }
                 R.id.navigation_members -> {
@@ -80,7 +81,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                     true
                 }
                 R.id.navigation_polls -> {
-                    switchTo = PollsFragment(this)
+                    switchTo = PollsFragment(this, pollsRef)
                     true
                 }
                 else -> false
@@ -114,9 +115,18 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
         builder.setTitle("New Guild Poll")
         // Content is message, view, or a list of items.
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_new_guild_poll, null, false)
+        connectDatePicker(view.new_poll_end_date)
         builder.setView(view)
         builder.setPositiveButton(android.R.string.ok){_, _ ->
-
+            pollsRef.add(
+                Poll(
+                    createDate = getToday(),
+                    desc = view.new_poll_description_edit_text.text.toString(),
+                    title = view.new_poll_title_edit_text.text.toString(),
+                    link = view.new_poll_url_edit_text.text.toString(),
+                    validDate = view.new_poll_end_date.text.toString()
+                )
+            )
         }
         builder.setNegativeButton(android.R.string.cancel, null)
         builder.create().show()
@@ -124,23 +134,16 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
 
 
     var dateSetListener: DatePickerDialog.OnDateSetListener? = null
-    fun showAddEventDialog() {
-        val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
-        //Set options
-        builder.setTitle("New Event")
 
-        val event = CalendarEvent()
-        // Content is message, view, or a list of items.
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_new_event, null, false)
-
+    fun connectDatePicker(dateTextView: TextView) {
         dateSetListener = DatePickerDialog.OnDateSetListener { view: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
             val date = "$month/$dayOfMonth/$year"
 
-            dialogView.new_event_date.text = date
+            dateTextView.text = date
             Log.d(Constants.TAG, date)
         }
 
-        dialogView.new_event_date.setOnClickListener {
+        dateTextView.setOnClickListener {
             val calendar = Calendar.getInstance()
             var year = calendar.get(Calendar.YEAR)
             var month = calendar.get(Calendar.MONTH)
@@ -153,20 +156,30 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                 dateSetListener,
                 year, month, day
             )
-
             dialog.show()
-
         }
+    }
 
-        builder.setView(dialogView)
+
+
+    fun showAddEventDialog() {
+        val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
+        //Set options
+        builder.setTitle("New Event")
+
+        // Content is message, view, or a list of items.
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_new_event, null, false)
+
+        connectDatePicker(view.new_event_date)
+
+        builder.setView(view)
         builder.setPositiveButton(android.R.string.ok){_, _ ->
-
             calendarRef.add(
                 CalendarEvent(
                     createDate=getToday(),
-                    endDate = dialogView.new_event_date.toString(),
-                    title = dialogView.new_event_title_edit_text.text.toString(),
-                    desc = dialogView.new_event_description_edit_text.text.toString())
+                    endDate = view.new_event_date.text.toString(),
+                    title = view.new_event_title_edit_text.text.toString(),
+                    desc = view.new_event_description_edit_text.text.toString())
             )
         }
         builder.setNegativeButton(android.R.string.cancel, null)
@@ -191,7 +204,13 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_new_announcement, null, false)
         builder.setView(view)
         builder.setPositiveButton(android.R.string.ok){_, _ ->
-
+            announcementRef.add(
+                Announcement(
+                    createDate = getToday(),
+                    desc = view.announcement_description_edit_text.text.toString(),
+                    title = view.announcement_title_edit_text.text.toString()
+                )
+            )
         }
         builder.setNegativeButton(android.R.string.cancel, null)
         builder.create().show()
