@@ -10,11 +10,18 @@ import kotlinx.android.synthetic.main.card_poll.view.*
 import kotlinx.android.synthetic.main.dialog_new_guild_poll.view.*
 import java.time.format.DateTimeFormatter
 
-class PollViewHolder(itemView: View, var adapter: PollsAdapter): RecyclerView.ViewHolder(itemView) {
+class PollViewHolder: RecyclerView.ViewHolder {
 
         val dateRange = itemView.date_range
         val desc = itemView.description
         val title = itemView.title
+
+    constructor(itemView: View, adapter: PollsAdapter): super(itemView){
+        itemView.setOnLongClickListener{
+            adapter.remove(adapterPosition)
+            true
+        }
+    }
 
     fun bind(poll: Poll) {
         desc.text = poll.desc
@@ -25,4 +32,5 @@ class PollViewHolder(itemView: View, var adapter: PollsAdapter): RecyclerView.Vi
 //        var formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy")
 //        eventDate.text = calendarEvent.date.format(formatter)
     }
+
 }
