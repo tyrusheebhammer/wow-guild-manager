@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.CollectionReference
 import com.sonnebtb.wowguildmanager.Constants
@@ -31,7 +33,6 @@ class PollsFragment(var listener: PollsEventClickListener, var ref: CollectionRe
         buildFab(view) {listener.pollFabClicked()}
         return view
     }
-
 }
 
 interface PollsEventClickListener {
