@@ -4,7 +4,9 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
-
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apiKeyProperties = new Properties()
+apiKeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -15,6 +17,14 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "clientId", apiKeyProperties['clientId'])
+        buildConfigField("String", "clientSecret", apiKeyProperties['clientSecret'])
+        buildConfigField("String", "redirectUrl", apiKeyProperties['redirectUrl'])
+
+    }
+    configurations {
+        implementation.exclude module:'guava' //This module was causing duplication issues
     }
     buildTypes {
         release {
@@ -44,6 +54,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:19.1.1'
     implementation 'com.google.firebase:firebase-functions:19.0.2'
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
+
+    //blizzard oauth
+    implementation 'com.github.dementhius:battlenet-oauth2:0.0.2'
+
+    
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
