@@ -46,15 +46,15 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
         .collection("Polls")
 
     override fun calendarFabClicked() {
-//        showAddEventDialog()
+        showAddEventDialog()
     }
 
     override fun announcementFabClicked() {
-//        showAddAnnouncementDialog()
+        showAddAnnouncementDialog()
     }
 
     override fun pollFabClicked() {
-//        showAddPollDialog()
+        showAddPollDialog()
     }
 
     private lateinit var auth: FirebaseAuth
@@ -127,6 +127,15 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                     validDate = view.new_poll_end_date.text.toString()
                 )
             )
+            if (view.create_announcement_checkbox.isChecked){
+                announcementRef.add(
+                    Announcement(
+                        createDate = getToday(),
+                        desc = view.new_poll_description_edit_text.text.toString(),
+                        title = view.new_poll_title_edit_text.text.toString()
+                    )
+                )
+            }
         }
         builder.setNegativeButton(android.R.string.cancel, null)
         builder.create().show()
@@ -137,7 +146,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
 
     fun connectDatePicker(dateTextView: TextView) {
         dateSetListener = DatePickerDialog.OnDateSetListener { view: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
-            val date = "$month/$dayOfMonth/$year"
+            val date = "${month+1}/$dayOfMonth/$year"
 
             dateTextView.text = date
             Log.d(Constants.TAG, date)
@@ -191,7 +200,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
         var year = calendar.get(Calendar.YEAR)
         var month = calendar.get(Calendar.MONTH)
         var day = calendar.get(Calendar.DAY_OF_MONTH)
-        val date = "$month/$day/$year"
+        val date = "${month+1}/$day/$year"
         return date
     }
 
