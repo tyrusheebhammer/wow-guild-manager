@@ -107,6 +107,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
             launchFragment(switchTo)
             handled
         }
+        launchFragment(MembersFragment(guildMembers?: ArrayList()))
     }
 
     private fun signInAnonymously() {

@@ -70,6 +70,13 @@ dependencies {
     implementation 'com.github.kittinunf.fuel:fuel-jackson:2.2.1'
     implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.10.+"
 
+    //picasso
+    implementation "com.squareup.picasso:picasso:2.4.0"
+
+    //okttp
+    implementation "com.squareup.okhttp:okhttp:2.7.5"
+    implementation "com.squareup.okhttp:okhttp-urlconnection:1.6.0"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

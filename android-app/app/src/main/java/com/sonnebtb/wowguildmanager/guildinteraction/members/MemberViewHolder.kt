@@ -1,8 +1,13 @@
 package com.sonnebtb.wowguildmanager.guildinteraction.members
 
+import android.util.Log
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.sonnebtb.wowguildmanager.Constants
+import com.sonnebtb.wowguildmanager.R
 import com.sonnebtb.wowguildmanager.responses.MemberCharacter
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_member.view.*
 
 class MemberViewHolder(itemView: View, var adapter: MembersAdapter): RecyclerView.ViewHolder(itemView) {
@@ -19,15 +24,21 @@ class MemberViewHolder(itemView: View, var adapter: MembersAdapter): RecyclerVie
         characterName.text = mc.member.character.name
 
         adapter.context?.let {
-//            val color = ContextCompat.getColor(it, member.characterClass.color)
+            val classId = mc.member.character.playable_class.id
+            val characterClass = CharacterClasses.idToClass(classId)
+            val color = ContextCompat.getColor(it, characterClass.color)
 //
-//            characterName.setTextColor(color)
+            characterName.setTextColor(color)
         }
-        mc.member.rank
+
 
         characterItemLevel.text= "iLevel: 0"
         characterLevel.text = "Level: ${ mc.member.character.level}"
         characterRank.text = "Rank: ${mc.member.rank}"
         characterRaiderIO.text = "raider.io score: 0"
+        Picasso.with(adapter.context)
+            .load("https://render-us.worldofwarcraft.com/character/" + mc.character.thumbnail)
+            .placeholder(R.drawable.battle_net_icon_9)
+            .into(itemView.character_image)
     }
 }
