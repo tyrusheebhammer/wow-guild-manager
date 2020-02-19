@@ -24,7 +24,7 @@ android {
 
     }
     configurations {
-        implementation.exclude module:'guava' //This module was causing duplication issues
+        all*.exclude group: 'com.google.guava', module:'guava-jdk5' //This module was causing duplication issues
     }
     buildTypes {
         release {
@@ -52,8 +52,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.2.0'
     implementation 'com.google.firebase:firebase-firestore:21.4.0'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
-//    implementation 'com.google.firebase:firebase-functions:19.0.2'
-//    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-functions:19.0.2'
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
 
     compile('com.google.apis:google-api-services-oauth2:v2-rev112-1.22.0') {
         exclude module: 'httpclient' //by artifact name
