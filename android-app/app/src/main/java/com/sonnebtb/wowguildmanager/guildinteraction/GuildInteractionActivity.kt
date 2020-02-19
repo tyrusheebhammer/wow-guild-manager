@@ -25,12 +25,16 @@ import com.sonnebtb.wowguildmanager.guildinteraction.members.MembersFragment
 import com.sonnebtb.wowguildmanager.guildinteraction.polls.Poll
 import com.sonnebtb.wowguildmanager.guildinteraction.polls.PollsEventClickListener
 import com.sonnebtb.wowguildmanager.guildinteraction.polls.PollsFragment
+import com.sonnebtb.wowguildmanager.responses.BlizzardEndpointHelper
+import com.sonnebtb.wowguildmanager.responses.Guild
+import com.sonnebtb.wowguildmanager.responses.MemberCharacter
 import kotlinx.android.synthetic.main.activity_guild_interaction.*
 import kotlinx.android.synthetic.main.dialog_new_announcement.view.*
 import kotlinx.android.synthetic.main.dialog_new_event.view.*
 import kotlinx.android.synthetic.main.dialog_new_guild_poll.view.*
 import kotlinx.android.synthetic.main.fragment_polls.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, CalenderEventClickListener, AnnouncementClickListener {
     private val guildID = "mlJ1AkLOg4id5jPFHKmb"
@@ -58,13 +62,27 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
     }
 
     private lateinit var auth: FirebaseAuth
-
+    private var guild: Guild? = null
+    private var guildMembers: MutableList<MemberCharacter>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        guild = intent?.getParcelableExtra(Guild.GUILD_PARCEL)
+        guild?.let {
+            BlizzardEndpointHelper.generateRosterForSelectedGuild(it) {result ->
+                Log.d(Constants.TAG, "Completed roster generation")
+                guildMembers = result
+                runOnUiThread {
+                    setNavBarListeners()
+                }
+            }
+        }
         auth = FirebaseAuth.getInstance()
         signInAnonymously()
 
         setContentView(R.layout.activity_guild_interaction)
+    }
+
+    private fun setNavBarListeners() {
         nav_view.setOnNavigationItemSelectedListener {
             var switchTo: Fragment? = null
             val handled = when(it.itemId) {
@@ -73,7 +91,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                     true
                 }
                 R.id.navigation_members -> {
-                    switchTo = MembersFragment()
+                    switchTo = MembersFragment(guildMembers?: ArrayList())
                     true
                 }
                 R.id.navigation_calendar -> {
@@ -89,7 +107,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
             launchFragment(switchTo)
             handled
         }
-        launchFragment(MembersFragment())
+        launchFragment(MembersFragment(guildMembers?: ArrayList()))
     }
 
     private fun signInAnonymously() {
