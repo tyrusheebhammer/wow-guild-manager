@@ -17,7 +17,11 @@ data class Character(
     var lastModified: Long = 0,
     var spec: Spec = Spec(),
     var guild: String = "",
-    var guildRealm: String = ""
+    var guildRealm: String = "",
+    var calcClass: String = "",
+    var faction: Int = 0,
+    var totalHonorableKills: Int = 0,
+    var id: Int = 0
 ) : Parcelable
 
 @Parcelize

@@ -44,3 +44,43 @@ object CharacterClasses {
     val WARRIOR = CharacterClass("Warrior", R.color.ColorWarrior)
     val ALL = arrayListOf(DEATH_KNIGHT, DEMON_HUNTER, DRUID, HUNTER, MAGE, MONK, PALADIN, PRIEST, ROGUE, SHAMAN, WARLOCK, WARRIOR)
 }
+
+@Parcelize
+data class ApiMember(
+    var character: ApiCharacter,
+    var rank: Int = 0
+):Parcelable
+
+@Parcelize
+data class ApiCharacter(
+    var name: String = "",
+    var id: Int = 0,
+    var realm: ApiRealm = ApiRealm(),
+    var level: Int = 0,
+    var playable_class: PlayableClass = PlayableClass(),
+    var playable_race: PlayableRace = PlayableRace()
+) :Parcelable
+
+@Parcelize
+data class ApiRealm(
+    var key: ApiKey = ApiKey(),
+    var id: Int = 0,
+    var slug: String = ""
+): Parcelable
+
+@Parcelize
+data class ApiKey(
+    var href: String = ""
+): Parcelable
+
+@Parcelize
+data class PlayableClass(
+    var key: ApiKey = ApiKey(),
+    var id: Int = 0
+): Parcelable
+
+@Parcelize
+data class PlayableRace(
+    var key: ApiKey = ApiKey(),
+    var id: Int = 0
+): Parcelable

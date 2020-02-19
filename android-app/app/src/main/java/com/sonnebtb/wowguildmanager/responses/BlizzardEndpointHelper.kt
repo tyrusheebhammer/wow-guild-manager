@@ -1,11 +1,15 @@
 package com.sonnebtb.wowguildmanager.responses
 
+import android.os.Parcelable
 import android.util.Log
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.result.Result
 import com.sonnebtb.wowguildmanager.Constants
+import com.sonnebtb.wowguildmanager.guildinteraction.members.ApiCharacter
+import com.sonnebtb.wowguildmanager.guildinteraction.members.ApiMember
+import kotlinx.android.parcel.Parcelize
 
 object BlizzardEndpointHelper {
     private val mapper = jacksonObjectMapper()
@@ -14,9 +18,12 @@ object BlizzardEndpointHelper {
     private const val API_GUILD = "/data/wow/guild"
     private const val API_CHARACTER = "/wow/character"
     private const val AUTH_USER_INFO = "/oauth/userinfo"
+    private const val FUNCTIONS_BLIZZARD_API_GET = "/blizzardApiGet"
 
     private const val HOST_AUTH = "https://us.battle.net"
     private const val HOST_API = "https://us.api.blizzard.com"
+    private const val HOST_FUNCTIONS = "https://us-central1-wow-guild-manager.cloudfunctions.net"
+
     private var token: String? = null
     private var tokenParam: String? = null
     fun setToken(token: String) {
@@ -88,28 +95,101 @@ object BlizzardEndpointHelper {
         return guilds.filter { it.compound !== "" }
     }
 
+    fun generateRosterForSelectedGuild(
+            guild: Guild,
+            callback: (guildMembers: ArrayList<MemberCharacter>) -> Unit
+    ) {
+        Log.d(Constants.TAG, "generating roster")
+        var guildNameSlug = generateSlug(guild.name)
+        var guildRealmSlug = generateSlug(guild.realm)
+
+        var functionsEndpoint =
+        HOST_FUNCTIONS +
+                FUNCTIONS_BLIZZARD_API_GET +
+                "?action=roster" +
+                "&host=${HOST_API}" +
+                "&guildendpoint=${API_GUILD}" +
+                "&characterendpoint=${API_CHARACTER}" +
+                "&realmslug=${guildRealmSlug}" +
+                "&guildslug=${guildNameSlug}" +
+                "&namespace=profile-us" +
+                "&locale=en_US" +
+                "&access_token=${token}"
+        Log.d(Constants.TAG, "endpoint: $functionsEndpoint")
+        functionsEndpoint.httpGet().responseString {request, response, result ->
+            when(result) {
+                is Result.Success -> {
+                    val resultStr = result.get().replace("\"class", "\"_class")
+                    val apiMembersCharacters : ApiMembersCharacters = mapper.readValue(resultStr)
+                    Log.d(Constants.TAG, "$apiMembersCharacters")
+
+                    callback(parseApiMembersCharacters(apiMembersCharacters))
+                }
+                is Result.Failure -> {Log.e(Constants.TAG, "failed members ${result.getException()}")}
+            }
+        }
+
+//        await axios
+//                .get(functionsEndpoint)
+//            .then(res => {
+//                let members = res.data.members
+//                        let characters = res.data.characters
+//                        let guildMembers = []
+//                members.forEach((member, index) => {
+//                let character = characters.find(character => member.character.name === character.name)
+//                if (isUndefined(character)) {
+//                    return
+//                }
+//                let fullCharacter = Object.assign({}, member.character, character)
+//                let guildMember = Object.assign({}, member, {
+//                    character: fullCharacter
+//            })
+//                guildMembers.push(guildMember)
+//            })
+//
+//
+//                commit('updateMembersAndCharactersForGuild', {
+//                    guildMembers
+//                })
+//            })
+    }
+
+    private fun parseApiMembersCharacters(apiMembersCharacters: ApiMembersCharacters): ArrayList<MemberCharacter> {
+        var guildMembers = ArrayList<MemberCharacter>()
+        for(m in apiMembersCharacters.members) {
+            var character = apiMembersCharacters.characters.find {
+                it.name == m.character.name
+            }
+
+            character?.let {
+                guildMembers.add(
+                    MemberCharacter(m, it)
+                )
+            }
+        }
+        Log.d(Constants.TAG, "$guildMembers")
+        return guildMembers
+    }
+
     private fun compoundCheck(guild: Guild, new: String): Boolean { return guild.compound == new }
+
+    fun generateSlug(value: String): String {
+        return value
+            .toLowerCase()
+            .replace("'", "")
+            .replace(" ", "-")
+
+    }
 }
 
+@Parcelize
+data class MemberCharacter(
+    var member: ApiMember,
+    var character: Character
+): Parcelable
 
-
-//fun getUniqueGuilds(characters): {
-//    let guilds = []
-//    characters.forEach(character => {
-//        let guildCompound = character.guild + character.guildRealm
-//        let testingFunction = guild => guild.compound === guildCompound
-//                if (!guilds.some(testingFunction)) {
-//                    if (!isString(guildCompound)) return
-//                    guilds.push({
-//                        compound: guildCompound,
-//                        name: character.guild,
-//                        realm: character.guildRealm,
-//                        characters: [character]
-//                    })
-//                } else {
-//                    let guildIndex = guilds.findIndex(testingFunction)
-//                    guilds[guildIndex].characters.push(character);
-//                }
-//    });
-//    return guilds
-//}
+@Parcelize
+data class ApiMembersCharacters(
+    var characters: MutableList<Character> = ArrayList(),
+    var members: MutableList<ApiMember> = ArrayList()
+): Parcelable

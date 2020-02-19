@@ -1,8 +1,8 @@
 package com.sonnebtb.wowguildmanager.guildinteraction.members
 
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.sonnebtb.wowguildmanager.responses.MemberCharacter
 import kotlinx.android.synthetic.main.card_member.view.*
 
 class MemberViewHolder(itemView: View, var adapter: MembersAdapter): RecyclerView.ViewHolder(itemView) {
@@ -15,18 +15,19 @@ class MemberViewHolder(itemView: View, var adapter: MembersAdapter): RecyclerVie
 
     }
 
-    fun bind(member: GuildMember) {
-        characterName.text = member.name
+    fun bind(mc: MemberCharacter) {
+        characterName.text = mc.member.character.name
 
         adapter.context?.let {
-            val color = ContextCompat.getColor(it, member.characterClass.color)
-
-            characterName.setTextColor(color)
+//            val color = ContextCompat.getColor(it, member.characterClass.color)
+//
+//            characterName.setTextColor(color)
         }
+        mc.member.rank
 
-        characterItemLevel.text= "iLevel: ${member.itemLevel}"
-        characterLevel.text = "Level: ${member.level}"
-        characterRank.text = "Rank: ${member.rank}"
-        characterRaiderIO.text = "raider.io score: ${member.raiderIOScore}"
+        characterItemLevel.text= "iLevel: 0"
+        characterLevel.text = "Level: ${ mc.member.character.level}"
+        characterRank.text = "Rank: ${mc.member.rank}"
+        characterRaiderIO.text = "raider.io score: 0"
     }
 }
