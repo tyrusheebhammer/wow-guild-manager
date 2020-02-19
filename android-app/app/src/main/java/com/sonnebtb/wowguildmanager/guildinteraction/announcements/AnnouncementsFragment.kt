@@ -15,7 +15,7 @@ import com.sonnebtb.wowguildmanager.buildFab
 import kotlinx.android.synthetic.main.fragment_announcements.view.*
 import kotlinx.android.synthetic.main.fragment_calendar.view.*
 
-class AnnouncementsFragment(var listener: AnnouncementClickListener, var ref: CollectionReference): Fragment() {
+class AnnouncementsFragment(var listener: AnnouncementClickListener, var ref: CollectionReference, var guildID: String): Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,7 +24,7 @@ class AnnouncementsFragment(var listener: AnnouncementClickListener, var ref: Co
 
         val view = inflater.inflate(R.layout.fragment_announcements, container, false)
         buildFab(view) {listener.announcementFabClicked()}
-        view.announcements.adapter = AnnouncementsAdapter(context, ref)
+        view.announcements.adapter = AnnouncementsAdapter(context, ref, guildID)
         view.announcements.layoutManager = LinearLayoutManager(context)
         return view
     }

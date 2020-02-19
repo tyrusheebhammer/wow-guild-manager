@@ -13,8 +13,9 @@ import com.sonnebtb.wowguildmanager.guildinteraction.calendar.CalendarAdapter
 import com.sonnebtb.wowguildmanager.guildinteraction.calendar.CalendarEvent
 import kotlinx.android.synthetic.main.fragment_calendar.view.*
 
-class AnnouncementsAdapter(var context: Context?, var ref: CollectionReference) : RecyclerView.Adapter<AnnouncementViewHolder>() {
+class AnnouncementsAdapter(var context: Context?, var ref: CollectionReference, var guildID: String) : RecyclerView.Adapter<AnnouncementViewHolder>() {
     var announcements: ArrayList<Announcement> = ArrayList()
+
     init {
         ref.orderBy(Announcement.CREATE_DATE_KEY, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->

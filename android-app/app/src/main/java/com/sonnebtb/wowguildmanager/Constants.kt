@@ -5,4 +5,5 @@ object Constants {
     const val FAB = "FAB"
     const val APP_NAME = "RoseGuildManager"
     const val ACCESS_TOKEN = "RoseGuildManager_access_token"
+    const val MAIN_COLLECTION_KEY = "Testing"
 }
