@@ -13,6 +13,7 @@
         <activity android:name=".guildselection.GuildSelectionActivity">
 
         </activity>
+        <activity android:name=".battlenet_oauth2.activities.BnOAuthAccessTokenActivity"></activity>
         <activity android:name=".guildinteraction.GuildInteractionActivity">
         </activity>
 

@@ -33,28 +33,28 @@ import kotlinx.android.synthetic.main.fragment_polls.*
 import java.util.*
 
 class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, CalenderEventClickListener, AnnouncementClickListener {
-    private val calendarRef = FirebaseFirestore
-        .getInstance()
-        .collection("CalendarEvents")
-
-    private val announcementRef = FirebaseFirestore
-        .getInstance()
-        .collection("Announcements")
-
+//    private val calendarRef = FirebaseFirestore
+//        .getInstance()
+//        .collection("CalendarEvents")
+//
+//    private val announcementRef = FirebaseFirestore
+//        .getInstance()
+//        .collection("Announcements")
+//
     private val pollsRef = FirebaseFirestore
         .getInstance()
-        .collection("Polls")
+//        .collection("Polls")
 
     override fun calendarFabClicked() {
-        showAddEventDialog()
+//        showAddEventDialog()
     }
 
     override fun announcementFabClicked() {
-        showAddAnnouncementDialog()
+//        showAddAnnouncementDialog()
     }
 
     override fun pollFabClicked() {
-        showAddPollDialog()
+//        showAddPollDialog()
     }
 
     private lateinit var auth: FirebaseAuth
@@ -65,31 +65,31 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
         signInAnonymously()
 
         setContentView(R.layout.activity_guild_interaction)
-        nav_view.setOnNavigationItemSelectedListener {
-            var switchTo: Fragment? = null
-            val handled = when(it.itemId) {
-                R.id.navigation_announcements -> {
-                    switchTo = AnnouncementsFragment(this, announcementRef)
-                    true
-                }
-                R.id.navigation_members -> {
-                    switchTo = MembersFragment()
-                    true
-                }
-                R.id.navigation_calendar -> {
-                    switchTo = CalendarFragment(this, calendarRef)
-                    true
-                }
-                R.id.navigation_polls -> {
-                    switchTo = PollsFragment(this, pollsRef)
-                    true
-                }
-                else -> false
-            }
-            launchFragment(switchTo)
-            handled
-        }
-        launchFragment(MembersFragment())
+//        nav_view.setOnNavigationItemSelectedListener {
+//            var switchTo: Fragment? = null
+//            val handled = when(it.itemId) {
+//                R.id.navigation_announcements -> {
+//                    switchTo = AnnouncementsFragment(this, announcementRef)
+//                    true
+//                }
+//                R.id.navigation_members -> {
+//                    switchTo = MembersFragment()
+//                    true
+//                }
+//                R.id.navigation_calendar -> {
+//                    switchTo = CalendarFragment(this, calendarRef)
+//                    true
+//                }
+//                R.id.navigation_polls -> {
+//                    switchTo = PollsFragment(this, pollsRef)
+//                    true
+//                }
+//                else -> false
+//            }
+//            launchFragment(switchTo)
+//            handled
+//        }
+//        launchFragment(MembersFragment())
     }
 
     private fun signInAnonymously() {
@@ -108,120 +108,120 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                 // ...
             }
     }
-
-    fun showAddPollDialog() {
-        val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
-        //Set options
-        builder.setTitle("New Guild Poll")
-        // Content is message, view, or a list of items.
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_new_guild_poll, null, false)
-        connectDatePicker(view.new_poll_end_date)
-        builder.setView(view)
-        builder.setPositiveButton(android.R.string.ok){_, _ ->
-            pollsRef.add(
-                Poll(
-                    createDate = getToday(),
-                    desc = view.new_poll_description_edit_text.text.toString(),
-                    title = view.new_poll_title_edit_text.text.toString(),
-                    link = view.new_poll_url_edit_text.text.toString(),
-                    validDate = view.new_poll_end_date.text.toString()
-                )
-            )
-        }
-        builder.setNegativeButton(android.R.string.cancel, null)
-        builder.create().show()
-    }
-
-
-    var dateSetListener: DatePickerDialog.OnDateSetListener? = null
-
-    fun connectDatePicker(dateTextView: TextView) {
-        dateSetListener = DatePickerDialog.OnDateSetListener { view: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
-            val date = "$month/$dayOfMonth/$year"
-
-            dateTextView.text = date
-            Log.d(Constants.TAG, date)
-        }
-
-        dateTextView.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            var year = calendar.get(Calendar.YEAR)
-            var month = calendar.get(Calendar.MONTH)
-            var day = calendar.get(Calendar.DAY_OF_MONTH)
-
-
-            var dialog: DatePickerDialog = DatePickerDialog(
-                this,
-                android.R.style.ThemeOverlay_Material_Dark,
-                dateSetListener,
-                year, month, day
-            )
-            dialog.show()
-        }
-    }
-
-
-
-    fun showAddEventDialog() {
-        val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
-        //Set options
-        builder.setTitle("New Event")
-
-        // Content is message, view, or a list of items.
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_new_event, null, false)
-
-        connectDatePicker(view.new_event_date)
-
-        builder.setView(view)
-        builder.setPositiveButton(android.R.string.ok){_, _ ->
-            calendarRef.add(
-                CalendarEvent(
-                    createDate=getToday(),
-                    endDate = view.new_event_date.text.toString(),
-                    title = view.new_event_title_edit_text.text.toString(),
-                    desc = view.new_event_description_edit_text.text.toString())
-            )
-        }
-        builder.setNegativeButton(android.R.string.cancel, null)
-        builder.create().show()
-    }
-
-    fun getToday(): String {
-        val calendar = Calendar.getInstance()
-        var year = calendar.get(Calendar.YEAR)
-        var month = calendar.get(Calendar.MONTH)
-        var day = calendar.get(Calendar.DAY_OF_MONTH)
-        val date = "$month/$day/$year"
-        return date
-    }
-
-    fun showAddAnnouncementDialog() {
-        val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
-        //Set options
-        builder.setTitle("New Announcement")
-
-        // Content is message, view, or a list of items.
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_new_announcement, null, false)
-        builder.setView(view)
-        builder.setPositiveButton(android.R.string.ok){_, _ ->
-            announcementRef.add(
-                Announcement(
-                    createDate = getToday(),
-                    desc = view.announcement_description_edit_text.text.toString(),
-                    title = view.announcement_title_edit_text.text.toString()
-                )
-            )
-        }
-        builder.setNegativeButton(android.R.string.cancel, null)
-        builder.create().show()
-    }
-
-    fun launchFragment(switchTo: Fragment?) {
-        if (switchTo != null ){
-            val ft = supportFragmentManager.beginTransaction()
-            ft.replace(R.id.fragment_container, switchTo)
-            ft.commit()
-        }
-    }
+//
+//    fun showAddPollDialog() {
+//        val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
+//        //Set options
+//        builder.setTitle("New Guild Poll")
+//        // Content is message, view, or a list of items.
+//        val view = LayoutInflater.from(this).inflate(R.layout.dialog_new_guild_poll, null, false)
+//        connectDatePicker(view.new_poll_end_date)
+//        builder.setView(view)
+//        builder.setPositiveButton(android.R.string.ok){_, _ ->
+//            pollsRef.add(
+//                Poll(
+//                    createDate = getToday(),
+//                    desc = view.new_poll_description_edit_text.text.toString(),
+//                    title = view.new_poll_title_edit_text.text.toString(),
+//                    link = view.new_poll_url_edit_text.text.toString(),
+//                    validDate = view.new_poll_end_date.text.toString()
+//                )
+//            )
+//        }
+//        builder.setNegativeButton(android.R.string.cancel, null)
+//        builder.create().show()
+//    }
+//
+//
+//    var dateSetListener: DatePickerDialog.OnDateSetListener? = null
+//
+//    fun connectDatePicker(dateTextView: TextView) {
+//        dateSetListener = DatePickerDialog.OnDateSetListener { view: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
+//            val date = "$month/$dayOfMonth/$year"
+//
+//            dateTextView.text = date
+//            Log.d(Constants.TAG, date)
+//        }
+//
+//        dateTextView.setOnClickListener {
+//            val calendar = Calendar.getInstance()
+//            var year = calendar.get(Calendar.YEAR)
+//            var month = calendar.get(Calendar.MONTH)
+//            var day = calendar.get(Calendar.DAY_OF_MONTH)
+//
+//
+//            var dialog: DatePickerDialog = DatePickerDialog(
+//                this,
+//                android.R.style.ThemeOverlay_Material_Dark,
+//                dateSetListener,
+//                year, month, day
+//            )
+//            dialog.show()
+//        }
+//    }
+//
+//
+//
+//    fun showAddEventDialog() {
+//        val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
+//        //Set options
+//        builder.setTitle("New Event")
+//
+//        // Content is message, view, or a list of items.
+//        val view = LayoutInflater.from(this).inflate(R.layout.dialog_new_event, null, false)
+//
+//        connectDatePicker(view.new_event_date)
+//
+//        builder.setView(view)
+//        builder.setPositiveButton(android.R.string.ok){_, _ ->
+//            calendarRef.add(
+//                CalendarEvent(
+//                    createDate=getToday(),
+//                    endDate = view.new_event_date.text.toString(),
+//                    title = view.new_event_title_edit_text.text.toString(),
+//                    desc = view.new_event_description_edit_text.text.toString())
+//            )
+//        }
+//        builder.setNegativeButton(android.R.string.cancel, null)
+//        builder.create().show()
+//    }
+//
+//    fun getToday(): String {
+//        val calendar = Calendar.getInstance()
+//        var year = calendar.get(Calendar.YEAR)
+//        var month = calendar.get(Calendar.MONTH)
+//        var day = calendar.get(Calendar.DAY_OF_MONTH)
+//        val date = "$month/$day/$year"
+//        return date
+//    }
+//
+//    fun showAddAnnouncementDialog() {
+//        val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
+//        //Set options
+//        builder.setTitle("New Announcement")
+//
+//        // Content is message, view, or a list of items.
+//        val view = LayoutInflater.from(this).inflate(R.layout.dialog_new_announcement, null, false)
+//        builder.setView(view)
+//        builder.setPositiveButton(android.R.string.ok){_, _ ->
+//            announcementRef.add(
+//                Announcement(
+//                    createDate = getToday(),
+//                    desc = view.announcement_description_edit_text.text.toString(),
+//                    title = view.announcement_title_edit_text.text.toString()
+//                )
+//            )
+//        }
+//        builder.setNegativeButton(android.R.string.cancel, null)
+//        builder.create().show()
+//    }
+//
+//    fun launchFragment(switchTo: Fragment?) {
+//        if (switchTo != null ){
+//            val ft = supportFragmentManager.beginTransaction()
+//            ft.replace(R.id.fragment_container, switchTo)
+//            ft.commit()
+//        }
+//    }
 }
 
