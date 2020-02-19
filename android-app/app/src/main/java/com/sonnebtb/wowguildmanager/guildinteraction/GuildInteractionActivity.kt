@@ -33,17 +33,17 @@ import kotlinx.android.synthetic.main.fragment_polls.*
 import java.util.*
 
 class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, CalenderEventClickListener, AnnouncementClickListener {
-    private val calendarRef = FirebaseFirestore
+    private val guildID = "mlJ1AkLOg4id5jPFHKmb"
+    private val mainRef = FirebaseFirestore
         .getInstance()
-        .collection("CalendarEvents")
+        .collection(Constants.MAIN_COLLECTION_KEY)
+        .document(guildID)
 
-    private val announcementRef = FirebaseFirestore
-        .getInstance()
-        .collection("Announcements")
+    private val calendarRef = mainRef.collection("CalendarEvents")
 
-    private val pollsRef = FirebaseFirestore
-        .getInstance()
-        .collection("Polls")
+    private val announcementRef = mainRef.collection("Announcements")
+
+    private val pollsRef = mainRef.collection("Polls")
 
     override fun calendarFabClicked() {
         showAddEventDialog()
@@ -69,7 +69,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
             var switchTo: Fragment? = null
             val handled = when(it.itemId) {
                 R.id.navigation_announcements -> {
-                    switchTo = AnnouncementsFragment(this, announcementRef)
+                    switchTo = AnnouncementsFragment(this, announcementRef, guildID)
                     true
                 }
                 R.id.navigation_members -> {
@@ -132,6 +132,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                     Announcement(
                         createDate = getToday(),
                         desc = view.new_poll_description_edit_text.text.toString(),
+                        //guild = guildID,
                         title = view.new_poll_title_edit_text.text.toString()
                     )
                 )
@@ -217,6 +218,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                 Announcement(
                     createDate = getToday(),
                     desc = view.announcement_description_edit_text.text.toString(),
+                    //guild = guildID,
                     title = view.announcement_title_edit_text.text.toString()
                 )
             )
