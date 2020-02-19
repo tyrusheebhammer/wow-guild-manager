@@ -4,7 +4,9 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
-
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apiKeyProperties = new Properties()
+apiKeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -15,6 +17,14 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "clientId", apiKeyProperties['clientId'])
+        buildConfigField("String", "clientSecret", apiKeyProperties['clientSecret'])
+        buildConfigField("String", "redirectUrl", apiKeyProperties['redirectUrl'])
+
+    }
+    configurations {
+        all*.exclude group: 'com.google.guava', module:'guava-jdk5' //This module was causing duplication issues
     }
     buildTypes {
         release {
@@ -37,13 +47,28 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.0'
-
+//    classpath 'com.google.gms:google-services:4.3.3'
     // firebase
     implementation 'com.google.firebase:firebase-auth:19.2.0'
     implementation 'com.google.firebase:firebase-firestore:21.4.0'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
     implementation 'com.google.firebase:firebase-functions:19.0.2'
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
+
+    compile('com.google.apis:google-api-services-oauth2:v2-rev112-1.22.0') {
+        exclude module: 'httpclient' //by artifact name
+        exclude group: 'org.apache.httpcomponents' //by group
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient' //by both name and group
+    }
+    //blizzard oauth
+//    implementation 'com.github.dementhius:battlenet-oauth2:0.0.2'
+
+    //fuel
+    implementation 'com.github.kittinunf.fuel:fuel:2.2.1'
+    implementation 'com.github.kittinunf.result:result:3.0.0' //for jvm
+    implementation 'com.github.kittinunf.result:result-coroutines:3.0.0'
+    implementation 'com.github.kittinunf.fuel:fuel-jackson:2.2.1'
+    implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.10.+"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

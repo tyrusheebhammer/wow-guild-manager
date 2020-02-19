@@ -46,15 +46,15 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
         .collection("Polls")
 
     override fun calendarFabClicked() {
-        showAddEventDialog()
+//        showAddEventDialog()
     }
 
     override fun announcementFabClicked() {
-        showAddAnnouncementDialog()
+//        showAddAnnouncementDialog()
     }
 
     override fun pollFabClicked() {
-        showAddPollDialog()
+//        showAddPollDialog()
     }
 
     private lateinit var auth: FirebaseAuth

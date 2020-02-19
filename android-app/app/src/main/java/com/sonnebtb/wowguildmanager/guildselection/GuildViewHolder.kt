@@ -8,6 +8,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sonnebtb.wowguildmanager.guildselection.GuildAdapter
+import com.sonnebtb.wowguildmanager.responses.Guild
 import kotlinx.android.synthetic.main.guild_card.view.*
 
 class GuildViewHolder: RecyclerView.ViewHolder {
@@ -24,7 +25,7 @@ class GuildViewHolder: RecyclerView.ViewHolder {
     }
 
     fun bind(guild: Guild) {
-        guildNameTextView.text = guild.guildName
-        guildRealmTextView.text = guild.guildRealm
+        guildNameTextView.text = guild.name
+        guildRealmTextView.text = guild.realm
     }
 }
