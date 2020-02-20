@@ -4,20 +4,23 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.*
 import com.sonnebtb.wowguildmanager.Constants
 import com.sonnebtb.wowguildmanager.R
-import com.sonnebtb.wowguildmanager.guildinteraction.calendar.CalendarAdapter
-import com.sonnebtb.wowguildmanager.guildinteraction.calendar.CalendarEvent
-import kotlinx.android.synthetic.main.fragment_calendar.view.*
+import com.sonnebtb.wowguildmanager.responses.Guild
 
-class AnnouncementsAdapter(var context: Context?, var ref: CollectionReference, var guildID: String) : RecyclerView.Adapter<AnnouncementViewHolder>() {
+class AnnouncementsAdapter(
+    var context: Context?,
+    var ref: CollectionReference,
+    var guildID: String,
+    var guild: Guild
+) : RecyclerView.Adapter<AnnouncementViewHolder>() {
     var announcements: ArrayList<Announcement> = ArrayList()
 
     init {
         ref.orderBy(Announcement.CREATE_DATE_KEY, Query.Direction.DESCENDING)
+            .whereEqualTo("guild", guild.compound)
             .addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->
             if(exception != null){
                 Log.e(Constants.TAG, "Listen error: $exception")

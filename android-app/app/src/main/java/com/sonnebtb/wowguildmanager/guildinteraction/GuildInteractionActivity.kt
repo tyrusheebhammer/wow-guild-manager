@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.DatePicker
 import android.widget.TextView
 import android.widget.Toast
@@ -32,7 +31,6 @@ import kotlinx.android.synthetic.main.activity_guild_interaction.*
 import kotlinx.android.synthetic.main.dialog_new_announcement.view.*
 import kotlinx.android.synthetic.main.dialog_new_event.view.*
 import kotlinx.android.synthetic.main.dialog_new_guild_poll.view.*
-import kotlinx.android.synthetic.main.fragment_polls.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -40,8 +38,8 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
     private val guildID = "mlJ1AkLOg4id5jPFHKmb"
     private val mainRef = FirebaseFirestore
         .getInstance()
-        .collection(Constants.MAIN_COLLECTION_KEY)
-        .document(guildID)
+//        .collection(Constants.MAIN_COLLECTION_KEY)
+
 
     private val calendarRef = mainRef.collection("CalendarEvents")
 
@@ -87,7 +85,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
             var switchTo: Fragment? = null
             val handled = when(it.itemId) {
                 R.id.navigation_announcements -> {
-                    switchTo = AnnouncementsFragment(this, announcementRef, guildID)
+                    switchTo = AnnouncementsFragment(this, announcementRef, guildID, guild=guild!!)
                     true
                 }
                 R.id.navigation_members -> {
@@ -95,11 +93,11 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                     true
                 }
                 R.id.navigation_calendar -> {
-                    switchTo = CalendarFragment(this, calendarRef)
+                    switchTo = CalendarFragment(this, calendarRef, guild=guild!!)
                     true
                 }
                 R.id.navigation_polls -> {
-                    switchTo = PollsFragment(this, pollsRef)
+                    switchTo = PollsFragment(this, pollsRef, guild=guild!!)
                     true
                 }
                 else -> false
@@ -142,7 +140,8 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                     desc = view.new_poll_description_edit_text.text.toString(),
                     title = view.new_poll_title_edit_text.text.toString(),
                     link = view.new_poll_url_edit_text.text.toString(),
-                    validDate = view.new_poll_end_date.text.toString()
+                    validDate = view.new_poll_end_date.text.toString(),
+                    guild = guild!!.compound
                 )
             )
             if (view.create_announcement_checkbox.isChecked){
@@ -150,7 +149,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                     Announcement(
                         createDate = getToday(),
                         desc = view.new_poll_description_edit_text.text.toString(),
-                        //guild = guildID,
+                        guild = guild!!.compound,
                         title = view.new_poll_title_edit_text.text.toString()
                     )
                 )
@@ -207,7 +206,9 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                     createDate=getToday(),
                     endDate = view.new_event_date.text.toString(),
                     title = view.new_event_title_edit_text.text.toString(),
-                    desc = view.new_event_description_edit_text.text.toString())
+                    desc = view.new_event_description_edit_text.text.toString(),
+                    guild = guild!!.compound)
+
             )
         }
         builder.setNegativeButton(android.R.string.cancel, null)
@@ -236,7 +237,7 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                 Announcement(
                     createDate = getToday(),
                     desc = view.announcement_description_edit_text.text.toString(),
-                    //guild = guildID,
+                    guild = guild!!.compound,
                     title = view.announcement_title_edit_text.text.toString()
                 )
             )

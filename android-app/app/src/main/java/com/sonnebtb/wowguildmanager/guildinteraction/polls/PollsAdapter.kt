@@ -4,17 +4,21 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.*
 import com.sonnebtb.wowguildmanager.Constants
 import com.sonnebtb.wowguildmanager.R
-import com.sonnebtb.wowguildmanager.guildinteraction.calendar.CalendarEvent
+import com.sonnebtb.wowguildmanager.responses.Guild
 
-class PollsAdapter(var context: Context?, var ref: CollectionReference) : RecyclerView.Adapter<PollViewHolder> (){
+class PollsAdapter(
+    var context: Context?,
+    var ref: CollectionReference,
+    var guild: Guild
+) : RecyclerView.Adapter<PollViewHolder> (){
     var polls: ArrayList<Poll> = ArrayList()
     init {
         ref.orderBy(Poll.CREATE_DATE_KEY, Query.Direction.DESCENDING)
+            .whereEqualTo("guild", guild.compound)
 //            .orderBy(CalendarEvent.END_DATE_KEY, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->
                 if (exception != null) {

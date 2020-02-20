@@ -9,8 +9,9 @@ import com.google.firebase.firestore.*
 import com.sonnebtb.wowguildmanager.Constants
 import com.sonnebtb.wowguildmanager.R
 import com.sonnebtb.wowguildmanager.guildinteraction.announcements.Announcement
+import com.sonnebtb.wowguildmanager.responses.Guild
 
-class CalendarAdapter(var context: Context?, var ref: CollectionReference) :
+class CalendarAdapter(var context: Context?, var ref: CollectionReference, var guild: Guild) :
     RecyclerView.Adapter<CalendarViewHolder>() {
 
     var calendarEvents: ArrayList<CalendarEvent> = ArrayList()
@@ -19,6 +20,7 @@ class CalendarAdapter(var context: Context?, var ref: CollectionReference) :
     init {
         ref.orderBy(CalendarEvent.START_DATE_KEY, Query.Direction.DESCENDING)
 //            .orderBy(CalendarEvent.END_DATE_KEY, Query.Direction.DESCENDING)
+            .whereEqualTo("guild", guild.compound)
             .addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->
                 if (exception != null) {
                     Log.e(Constants.TAG, "Listen error: $exception")
