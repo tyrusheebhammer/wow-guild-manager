@@ -2,6 +2,7 @@ package com.sonnebtb.wowguildmanager.guildinteraction
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.DatePicker
@@ -27,6 +28,7 @@ import com.sonnebtb.wowguildmanager.guildinteraction.polls.PollsFragment
 import com.sonnebtb.wowguildmanager.responses.BlizzardEndpointHelper
 import com.sonnebtb.wowguildmanager.responses.Guild
 import com.sonnebtb.wowguildmanager.responses.MemberCharacter
+import com.sonnebtb.wowguildmanager.responses.UserInfo
 import kotlinx.android.synthetic.main.activity_guild_interaction.*
 import kotlinx.android.synthetic.main.dialog_new_announcement.view.*
 import kotlinx.android.synthetic.main.dialog_new_event.view.*
@@ -34,7 +36,7 @@ import kotlinx.android.synthetic.main.dialog_new_guild_poll.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, CalenderEventClickListener, AnnouncementClickListener {
+class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, CalenderEventClickListener, AnnouncementClickListener, FirebaseDeleteDelegate {
     private val guildID = "mlJ1AkLOg4id5jPFHKmb"
     private val mainRef = FirebaseFirestore
         .getInstance()
@@ -62,22 +64,39 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
     private lateinit var auth: FirebaseAuth
     private var guild: Guild? = null
     private var guildMembers: MutableList<MemberCharacter>? = null
+    lateinit var userInfo: UserInfo
+    var battletag: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val allPref = preferences.all
+        val token = allPref[Constants.ACCESS_TOKEN]!! as String
+        BlizzardEndpointHelper.setToken(token)
+
+        BlizzardEndpointHelper.getUserInfo {
+            Log.e(Constants.TAG, "$it")
+            userInfo = it
+        }
+
         guild = intent?.getParcelableExtra(Guild.GUILD_PARCEL)
+
+        Log.d(Constants.TAG, "battle tag $battletag")
+
         guild?.let {
             BlizzardEndpointHelper.generateRosterForSelectedGuild(it) {result ->
                 Log.d(Constants.TAG, "Completed roster generation")
                 guildMembers = result
                 runOnUiThread {
-                    setNavBarListeners()
+                    Toast.makeText(this, "Members Ready", Toast.LENGTH_LONG)
                 }
+
             }
         }
         auth = FirebaseAuth.getInstance()
         signInAnonymously()
-
         setContentView(R.layout.activity_guild_interaction)
+        setNavBarListeners()
+        launchFragment(MembersFragment(guildMembers?: ArrayList()))
     }
 
     private fun setNavBarListeners() {
@@ -85,19 +104,20 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
             var switchTo: Fragment? = null
             val handled = when(it.itemId) {
                 R.id.navigation_announcements -> {
-                    switchTo = AnnouncementsFragment(this, announcementRef, guildID, guild=guild!!)
+                    switchTo = AnnouncementsFragment(this, announcementRef, guildID, guild=guild!!, deleteDelegate=this)
                     true
                 }
                 R.id.navigation_members -> {
+                    Log.d(Constants.TAG, "$guildMembers")
                     switchTo = MembersFragment(guildMembers?: ArrayList())
                     true
                 }
                 R.id.navigation_calendar -> {
-                    switchTo = CalendarFragment(this, calendarRef, guild=guild!!)
+                    switchTo = CalendarFragment(this, calendarRef, guild=guild!!, deleteDelegate=this)
                     true
                 }
                 R.id.navigation_polls -> {
-                    switchTo = PollsFragment(this, pollsRef, guild=guild!!)
+                    switchTo = PollsFragment(this, pollsRef, guild=guild!!, deleteDelegate=this)
                     true
                 }
                 else -> false
@@ -105,7 +125,6 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
             launchFragment(switchTo)
             handled
         }
-        launchFragment(MembersFragment(guildMembers?: ArrayList()))
     }
 
     private fun signInAnonymously() {
@@ -141,7 +160,8 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                     title = view.new_poll_title_edit_text.text.toString(),
                     link = view.new_poll_url_edit_text.text.toString(),
                     validDate = view.new_poll_end_date.text.toString(),
-                    guild = guild!!.compound
+                    guild = guild!!.compound,
+                    creator = userInfo.battletag ?: ""
                 )
             )
             if (view.create_announcement_checkbox.isChecked){
@@ -150,7 +170,8 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                         createDate = getToday(),
                         desc = view.new_poll_description_edit_text.text.toString(),
                         guild = guild!!.compound,
-                        title = view.new_poll_title_edit_text.text.toString()
+                        title = view.new_poll_title_edit_text.text.toString(),
+                        creator = userInfo.battletag ?: ""
                     )
                 )
             }
@@ -207,7 +228,8 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                     endDate = view.new_event_date.text.toString(),
                     title = view.new_event_title_edit_text.text.toString(),
                     desc = view.new_event_description_edit_text.text.toString(),
-                    guild = guild!!.compound)
+                    guild = guild!!.compound,
+                    creator = userInfo.battletag ?: "")
 
             )
         }
@@ -238,7 +260,8 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
                     createDate = getToday(),
                     desc = view.announcement_description_edit_text.text.toString(),
                     guild = guild!!.compound,
-                    title = view.announcement_title_edit_text.text.toString()
+                    title = view.announcement_title_edit_text.text.toString(),
+                    creator = userInfo.battletag ?: ""
                 )
             )
         }
@@ -253,5 +276,13 @@ class GuildInteractionActivity : AppCompatActivity(), PollsEventClickListener, C
             ft.commit()
         }
     }
+
+    override fun userIsCreator(contentCreator: String): Boolean {
+        Log.d(Constants.TAG, "$contentCreator - ${userInfo.battletag}")
+        return contentCreator == userInfo.battletag
+    }
 }
 
+interface FirebaseDeleteDelegate {
+    fun userIsCreator(contentCreator: String): Boolean
+}

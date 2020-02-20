@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.*
 import com.sonnebtb.wowguildmanager.Constants
 import com.sonnebtb.wowguildmanager.R
+import com.sonnebtb.wowguildmanager.guildinteraction.FirebaseDeleteDelegate
 import com.sonnebtb.wowguildmanager.responses.Guild
 
 class PollsAdapter(
     var context: Context?,
     var ref: CollectionReference,
-    var guild: Guild
+    var guild: Guild,
+    var deleteDelegate: FirebaseDeleteDelegate
 ) : RecyclerView.Adapter<PollViewHolder> (){
     var polls: ArrayList<Poll> = ArrayList()
     init {
@@ -25,6 +27,8 @@ class PollsAdapter(
                     Log.e(Constants.TAG, "Listen error: $exception")
                     return@addSnapshotListener
                 }
+                Log.d(Constants.TAG, "found a change")
+
                 for (docChange in snapshot!!.documentChanges) {
                     val poll = Poll.fromSnapshot(docChange.document)
                     when (docChange.type) {
@@ -54,12 +58,21 @@ class PollsAdapter(
     override fun getItemCount(): Int = polls.size
 
     fun remove(position: Int){
-        ref.document(polls[position].id).delete()
+        if(deleteDelegate.userIsCreator(polls[position].creator!!)) {
+            ref.document(polls[position].id).delete()
+        } else {
+            Log.e(Constants.TAG, "User is not creator")
+        }
     }
 
     override fun onBindViewHolder(holder: PollViewHolder, position: Int) {
         holder.bind(polls[position])
     }
 
+    fun redirectToLink(adapterPosition: Int) {
+
+    }
+
 
 }
+

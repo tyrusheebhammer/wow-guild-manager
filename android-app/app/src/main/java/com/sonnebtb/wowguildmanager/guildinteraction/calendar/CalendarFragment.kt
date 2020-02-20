@@ -9,13 +9,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.CollectionReference
 import com.sonnebtb.wowguildmanager.R
 import com.sonnebtb.wowguildmanager.buildFab
+import com.sonnebtb.wowguildmanager.guildinteraction.FirebaseDeleteDelegate
 import com.sonnebtb.wowguildmanager.responses.Guild
 import kotlinx.android.synthetic.main.fragment_calendar.view.*
 
 class CalendarFragment(
     var listener: CalenderEventClickListener,
     var ref: CollectionReference,
-    var guild: Guild
+    var guild: Guild,
+    var deleteDelegate: FirebaseDeleteDelegate
 ): Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,7 +25,7 @@ class CalendarFragment(
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_calendar, container, false)
-        view.events.adapter = CalendarAdapter(context, ref, guild=guild)
+        view.events.adapter = CalendarAdapter(context, ref, guild=guild, deleteDelegate=deleteDelegate)
         view.events.layoutManager = LinearLayoutManager(context)
         buildFab(view) {listener.calendarFabClicked()}
         return view

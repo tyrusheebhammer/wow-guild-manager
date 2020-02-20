@@ -10,10 +10,12 @@ import com.sonnebtb.wowguildmanager.Constants
 import com.sonnebtb.wowguildmanager.R
 import com.sonnebtb.wowguildmanager.guildinteraction.GuildInteractionActivity
 import com.sonnebtb.wowguildmanager.responses.Guild
+import com.sonnebtb.wowguildmanager.responses.UserInfo
 
 class GuildAdapter(
     var context: Context,
-    var guilds: MutableList<Guild> = ArrayList()
+    var guilds: MutableList<Guild> = ArrayList(),
+    var userInfo: UserInfo? = null
 ) : RecyclerView.Adapter<GuildViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, index: Int): GuildViewHolder {
@@ -30,6 +32,7 @@ class GuildAdapter(
 
         val guildIntent = Intent(context, GuildInteractionActivity::class.java)
         guildIntent.putExtra(Guild.GUILD_PARCEL, guilds[position])
+//        guildIntent.putExtra(UserInfo.USER_INFO_PARCEL, userInfo!!)
 //        guildIntent.putExtra(Guild.EXTRA_GUILD_NAME, guilds[position].guildName)
 //        guildIntent.putExtra(Guild.EXTRA_GUILD_REALM, guilds[position].guildRealm)
         context.startActivity(guildIntent)

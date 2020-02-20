@@ -8,13 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.*
 import com.sonnebtb.wowguildmanager.Constants
 import com.sonnebtb.wowguildmanager.R
+import com.sonnebtb.wowguildmanager.guildinteraction.FirebaseDeleteDelegate
 import com.sonnebtb.wowguildmanager.responses.Guild
 
 class AnnouncementsAdapter(
     var context: Context?,
     var ref: CollectionReference,
     var guildID: String,
-    var guild: Guild
+    var guild: Guild,
+    var deleteDelegate: FirebaseDeleteDelegate
 ) : RecyclerView.Adapter<AnnouncementViewHolder>() {
     var announcements: ArrayList<Announcement> = ArrayList()
 
@@ -60,7 +62,11 @@ class AnnouncementsAdapter(
     }
 
     fun remove(position: Int){
-        ref.document(announcements[position].id).delete()
+        if(deleteDelegate.userIsCreator(announcements[position].creator!!)) {
+            ref.document(announcements[position].id).delete()
+        } else {
+            Log.e(Constants.TAG, "User is not creator")
+        }
     }
 
 }

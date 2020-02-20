@@ -32,7 +32,7 @@ object BlizzardEndpointHelper {
     }
 
     //would be good idea to add a delegate here to check that the token has been completed
-    fun getUserInfo() : UserInfo? {
+    fun getUserInfo(callback: (userInfo: UserInfo) -> Unit){
         val userInfoEndpoint = "$HOST_AUTH$AUTH_USER_INFO?$tokenParam"
         var userInfo: UserInfo? = null
         userInfoEndpoint.httpGet().responseString { request, response, result ->
@@ -41,11 +41,11 @@ object BlizzardEndpointHelper {
 
                     userInfo = mapper.readValue<UserInfo>(result.get())
                     Log.d(Constants.TAG, "got user info: $userInfo")
+                    callback(userInfo!!)
                 }
                 is Result.Failure -> Log.d(Constants.TAG, "Failed yo ${result.error}")
             }
         }
-        return userInfo
     }
 
     fun getUserCharacters(callback: (characters: List<Character>?) -> Unit){

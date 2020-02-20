@@ -21,12 +21,17 @@ class PollViewHolder: RecyclerView.ViewHolder {
             adapter.remove(adapterPosition)
             true
         }
+
+        itemView.setOnClickListener {
+            adapter.redirectToLink(adapterPosition)
+        }
     }
 
     fun bind(poll: Poll) {
         desc.text = poll.desc
         title.text = poll.title
         dateRange.text = "${poll.createDate} - ${poll.validDate}"
+
 //        eventTitle.text = calendarEvent.title
 //        eventDescription.text = calendarEvent.desc
 //        var formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy")
