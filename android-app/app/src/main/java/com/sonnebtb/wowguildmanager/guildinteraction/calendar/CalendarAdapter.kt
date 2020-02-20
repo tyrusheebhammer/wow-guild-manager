@@ -67,7 +67,7 @@ class CalendarAdapter(
     }
 
     fun remove(position: Int){
-        if(deleteDelegate.userIsCreator(calendarEvents[position].creator!!)) {
+        if(deleteDelegate.userIsCreator(calendarEvents[position].creator?:"")) {
             ref.document(calendarEvents[position].id).delete()
         } else {
             Log.e(Constants.TAG, "User is not creator")

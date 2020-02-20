@@ -71,7 +71,7 @@ dependencies {
     implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.10.+"
 
     //picasso
-    implementation "com.squareup.picasso:picasso:2.4.0"
+    implementation "com.squareup.picasso:picasso:2.71828"
 
     //okttp
     implementation "com.squareup.okhttp:okhttp:2.7.5"

@@ -17,7 +17,9 @@ class MemberViewHolder(itemView: View, var adapter: MembersAdapter): RecyclerVie
     val characterRaiderIO = itemView.character_raider_io
     val characterItemLevel = itemView.character_item_level
     init {
-
+        itemView.setOnClickListener{
+            adapter.redirectToSite(adapterPosition)
+        }
     }
 
     fun bind(mc: MemberCharacter) {
@@ -36,7 +38,8 @@ class MemberViewHolder(itemView: View, var adapter: MembersAdapter): RecyclerVie
         characterLevel.text = "Level: ${ mc.member.character.level}"
         characterRank.text = "Rank: ${mc.member.rank}"
         characterRaiderIO.text = "raider.io score: 0"
-        Picasso.with(adapter.context)
+
+        Picasso.get()
             .load("https://render-us.worldofwarcraft.com/character/" + mc.character.thumbnail)
             .placeholder(R.drawable.battle_net_icon_9)
             .into(itemView.character_image)

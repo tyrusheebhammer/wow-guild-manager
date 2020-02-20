@@ -1,6 +1,8 @@
 package com.sonnebtb.wowguildmanager.guildinteraction.polls
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -70,7 +72,8 @@ class PollsAdapter(
     }
 
     fun redirectToLink(adapterPosition: Int) {
-
+        var browserIntent =  Intent(Intent.ACTION_VIEW, Uri.parse(polls[adapterPosition].link))
+        context?.startActivity(browserIntent)
     }
 
 
